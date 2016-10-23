@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/static/testApp/css/layouts/search.css">
+<link rel="stylesheet" href="/static/testApp/css/layouts/pure-min.css">
+	<link rel="stylesheet" href="/static/testApp/css/layouts/t1.css">
+	<link rel="stylesheet" href="/static/testApp/css/layouts/grids-responsive-min.css">
+	<link rel="stylesheet" href="/static/testApp/css/layouts/search.css">
+	<link rel="stylesheet" href="/static/testApp/css/layouts/tables.css">
+	<link rel="stylesheet" href="/static/testApp/css/layouts/message.css">
+{%	load staticfiles %}
+</head>
+<body>
+	
+	{% csrf_token %}
+
+	<table class="one tablesorter" id="table_one">
+	<h3>Entries </h3>
+	<thead>
+        <tr>
+        	<!-- <th>ID</th> -->
+		    <th>Image</th>
+            <th>Name</th>
+			<!--<th>Title</th>
+            <th>LinkedIn</th>
+			<th>Connections</th>-->
+			<th>Email</th>
+			<th>LinkedIn Profile</th>
+			
+        </tr>
+    </thead>
+	<tbody>
+	{% for e in entries %}
+	<tr>
+		<td></td>
+	</tr>
+
+	{% endfor %}
+
+
+
+</body>
+<script src="{% static "/static/testApp/js/jquery-3.0.0.min.js" %}"></script>
+
+<script src="{% static "/static/testApp/js/rango-ajax.js" %}"></script>
+<script src="{% static "/static/testApp/js/json2.js" %}"></script>
+</html>

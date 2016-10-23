@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search Form | LinkedIn Profile Scrapper</title>
+<link rel="stylesheet" href="/static/testApp/css/layouts/search.css">
+<link rel="stylesheet" href="/static/testApp/css/layouts/pure-min.css">
+<link rel="stylesheet" href="/static/testApp/css/layouts/grids-responsive-min.css">
+</head>
+<body>
+<div class="pure-menu-heading pure-menu-horizontal">
+    <a href="#" class="pure-menu-heading">UTD</a>
+    <ul class="pure-menu-list">
+        <li class="pure-menu-item pure-menu-selected"><a href="/testApp/search" class="pure-menu-link">SearchData</a></li>
+        <!-- <li class="pure-menu-item"><a href="/testApp/searchgrad/" class="pure-menu-link">Query</a></li> -->
+        <li class="pure-menu-item"><a href="/testApp/allresults/" class="pure-menu-link">Browse</a></li>
+        <li class="pure-menu-item"><a href="/testApp/delete/" class="pure-menu-link">Delete</a></li>
+		<li class="pure-menu-item"><a href="/testApp/upload/" class="pure-menu-link">Batch File</a></li>
+    </ul>
+</div>
+
+<div class="banner" style='height:300px;'>
+    <h1 class="banner-head">
+        LinkedIn Profile Scraper<br>
+        Dr. Latifur Khan Project.
+    </h1>
+</div>
+
+<div class="l-content"> 
+    <div class="pricing-tables pure-g">
+<form class="pure-form pure-form-aligned" method="post" enctype="multipart/form-data" action="{% url 'testApp:batchSearch' %}" style="margin-left:25%; margin-right:25%; width:100%;">
+{% csrf_token %}
+    <fieldset>
+        <div class="">
+            <input name="linkedFile" type="file" required>
+        </div>
+        <div class="pure-controls" style="margin:1.5em 0 0 -5em;">
+            <button type="submit" class="pure-button pure-button-primary">Upload</button>
+        </div> 
+    </fieldset>
+</form>
+                    <div class="post-description" style="margin-left:25%; margin-right:25%; width:100%;">
+                        <p style = "letter-spacing:0em; text-align:center">
+                            Please note to use below format for the file. 
+							<br/>Any deviations, program will ignore that line 
+							<br/>Headers required (sequence, cas sensitive) - Full Name, Email, school, Company 
+							<br/>File Format : .xls
+							
+							
+                        </p>
+                    </div>
+ </div>
+</div>
+<div class="footer l-box">
+    <p>
+        &copy.
+    </p>
+</div>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Search Form | LinkedIn Profile Scrapper</title>
+	<link rel="stylesheet" href="/static/testApp/css/layouts/search.css">
+	<link rel="stylesheet" href="/static/testApp/css/layouts/pure-min.css">
+	<link rel="stylesheet" href="/static/testApp/css/layouts/grids-responsive-min.css">
+
+</head>
+<body>
+
+	<div class="pure-menu pure-menu-horizontal">
+    <a href="#" class="pure-menu-heading">UTD</a>
+    <ul class="pure-menu-list">
+        <li class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Search</a></li>
+        <li class="pure-menu-item"><a href="/testApp/allresults/" class="pure-menu-link">Browse</a></li>
+        <li class="pure-menu-item"><a href="/testApp/delete/" class="pure-menu-link">Delete</a></li>
+		<li class="pure-menu-item"><a href="/testApp/upload/" class="pure-menu-link">Batch File</a></li>
+    </ul>
+</div>
+
+<div class="banner" style='height:300px;'>
+    <h1 class="banner-head">
+        LinkedIn Profile Scraper<br>
+        Dr. Latifur Khan Project.
+    </h1>
+</div>
+
+	<center><h1> Alumni Query </h1>
+	
+	<form class="pure-form pure-form-aligned" style="width:100%;" action="{% url 'testApp:searchgradaction' %}" method="post">
+		{% csrf_token %}
+		<fieldset>
+			<div class="pure-control-group">
+				<label for="fname">First Name</label>
+				<input name="fname" type="text" style="text-align:left;" placeholder="First Name" required>
+				<label for="lname">Last Name</label>
+		        <input name="lname" type="text" style="text-align:right;" placeholder="Last Name">
+		        <label for="email">Email</label>
+            <input name="email" type="text" style="text-align:left;" placeholder="Email" required>
+            
+    		</div>
+    		<div class="pure-control-group">
+		    
+        </div>
+
+        <div class="pure-controls">
+            <button type="submit" class="pure-button pure-button-primary">Submit</button>
+        </div> 
+
+
+
+		</fieldset>
+		
+
+	</form>
+
+</body>
+</HTML>
