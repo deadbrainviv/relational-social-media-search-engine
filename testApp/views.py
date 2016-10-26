@@ -1041,7 +1041,7 @@ def facebook(person):
     colleges.append("bangladesh university of engineering and technology")
     colleges.append("buet")
     fb_execute = FBExecute(db_host, db_port, colleges)
-    token = fb_execute.get_facebook_token("C:\\Users\\IndervirSingh\\Documents\\GitHub\\fbsearch\\properties\\facebook_key")
+    token = fb_execute.get_facebook_token("facebook_key")
     people = []
     people.append(person)
     dicts = fb_execute.get_info_about_people(token, people)
