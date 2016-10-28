@@ -55,16 +55,13 @@ class ProfilePhoto(EmbeddedDocument):
     media_picture_link_400 = StringField(default=None)
 
 class FBPerson(EmbeddedDocument): #FB Account Data model.
-    past = ListField(StringField())
-    name = ListField(StringField())
-    home = ListField(StringField())
-    studying = ListField(StringField())
-    studied = ListField(StringField())
-    past_worked = ListField(StringField())
-    current = ListField(StringField())
-    stays = ListField(StringField())
-    went_to = ListField(StringField())
-    id = ListField(StringField())
+    pic = StringField()
+    name = StringField()
+    profile = StringField()
+    education = StringField()
+    location = StringField()
+    work = StringField()
+    connections = StringField()
     
 class PhotoWrapper(EmbeddedDocument):
     profilePhoto = EmbeddedDocumentField(ProfilePhoto)

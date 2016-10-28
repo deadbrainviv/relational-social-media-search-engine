@@ -743,103 +743,6 @@ def allresults(request): #Accessing mongoengine to get data.
                'entries':persons
                }
     return render(request, 'testApp/searchGrad.html', context)
-	
-def combinedresults(request): #Accessing mongoengine to get data.
-   #res = DBRecord.objects.all()
-    # res = DBRecord.objects.order_by('record.results.person.firstName', '-record.results.person.connectionCount')
-    res = CSPerson.objects.order_by('person.firstName')
-    
-    print "INSIDE ALL RESULTS"
-    print "SESSION VARIABLE locations"
-    # print request.session.get('locations')
-    locations = ['Arizona','Seattle','California','Canada','Georgia','Texas','Portland','Waterloo']
-
-    if res is None:
-        msg = {'type':'E','message':'Currently, there are no records. Please perform Search or add few records'}
-        context = {
-            'msg':msg,}
-        return render(request,'testApp/message.html', context)
-    persons = []
-    personIdsRead = []
-    for r in res:
-        # res1 = r['record']
-        # count = res1['resultCount']se
-        # email = res1['email']
-        res1 = r['person']
-        relatedPids = res1['relatedPids']
-        # personIdsRead.append(res1['personId'])
-        isMultiple = False
-
-        if len(relatedPids) != 0:
-            isMultiple = True
-            for rpid in relatedPids:
-                personIdsRead.append(rpid) #append the Person Ids for the ones that are similar.
-        # print email
-        # if count > 1:
-        #     isMultiple = True
-        # x = res1['results'][0]
-        # person = {'email':email, 'isMultiple':isMultiple, 'personData':x['person']}
-
-        '''
-        Below part extracts the education details.
-        To be displayed in a better way on UI.
-        Use Jquery
-        '''
-        soup = BeautifulSoup(res1['educationHtml'])
-        edu_list = []
-        edu_part = soup.find_all("div",re.compile("^education"))
-        for e in edu_part:
-            temp_list = '';
-            temp_list2 = [];
-            further_part = e.find_all("header")
-            time_part = e.find_all("span","time")
-            # further_part_headers = e.find_all("header");
-            # for f in further_part:
-            temp_list2 = [header.a.contents[0] for header in further_part]
-            contents_1 = "";
-            for each in temp_list2:
-                contents_1 += each
-
-                
-            fl = list(further_part)
-            # list1 = [header.a for a in further_part]
-            for f in fl:
-                if "h5" not in str(f):
-                    # temp_list.append(f.contents[0])
-                    temp_list = temp_list+','+f.contents[0];
-                # edu_list=f.contents[1:]
-            # [item.encode('utf-8') for item in temp_list]
-            timelist = "";
-            for t in time_part:
-                timelist = timelist+t;
-            print "CONTENTS_1"
-            print contents_1
-            edu_list.append(contents_1.encode('utf-8')+timelist)
-        
-        print "LIST OF EDUCATION CREATED"
-        print edu_list
-        # [item.encode('utf-8') for item in edu_list]
-        edujson = json.dumps(edu_list)
-        print "EDUCATION JSON "
-        print edujson
-        s = edujson[1:-1]
-        s = s[1:-1]
-        # print s
-        # edu_list = s.split("\", \"")
-        # print edu_list
-
-        if res1['personId'] not in personIdsRead:
-            person_loc = res1['fmt_location']
-            person_loc_list = person_loc.split(' ')
-            # for i in person_loc_list:
-                # if any(i in s for s in locations):
-            person = { 'isMultiple':isMultiple, 'education_all':edu_list, 'personData':r['person']}
-            persons.append(person)
-    context = {
-               'entries':persons
-               }
-    return render(request, 'testApp/searchGrad.html', context)
-
 
 def update(request, email_id):
     res = DBRecord.objects(record__email=email_id)
@@ -1034,18 +937,30 @@ def upload(request):
 def delete(request):
     return render(request, 'testApp/delete.html')
 
-def facebook(person):
+def get_facebook_entries():
+    results = []
     db_host = "localhost"
     db_port = 27017
+    db_client = FBDb.connect(db_host, db_port)
+    db = db_client.facebook_db
     colleges = []
-    colleges.append("bangladesh university of engineering and technology")
+    colleges.append("bangladesh%20university%20of%20engineering%20and%20technology")
     colleges.append("buet")
-    fb_execute = FBExecute(db_host, db_port, colleges)
-    token = fb_execute.get_facebook_token("facebook_key")
-    people = []
-    people.append(person)
-    dicts = fb_execute.get_info_about_people(token, people)
-    return dicts
+    #fbexecute = FBExecute(db_host, db_port)
+    #fbexecute.get_info_about_people("input.txt", colleges, "logins.txt")
+    cursor = db.buet2.find()
+    for result in cursor:
+        results.append(result)
+    return results
+
+def facebook(request):
+    results = get_facebook_entries()
+    #for result in results:
+        #print result["person"], result["profiles"]
+    context = {
+        'entries1': results
+    }
+    return render(request, 'testApp/searchGrad.html', context)
 
 def sortView(request):
     print "SORT TYPE"
@@ -1082,7 +997,7 @@ def sortView(request):
             context = {
                 'msg':msg,}
             return render(request,'testApp/message.html', context)
-    
+
     if sort_type == 'bynamed':
         print "Sort by Name : decreasing order"
         # res = DBRecord.objects.order_by('-record.results.person.firstName')

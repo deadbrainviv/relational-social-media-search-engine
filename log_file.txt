@@ -14407,3 +14407,453 @@ INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1):
 INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
 INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
 INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+ERROR:django.request:Internal Server Error: /testApp/sortviewaction/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 1074, in sortView
+    fb_data = facebook(person)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 1044, in facebook
+    token = fb_execute.get_facebook_token("facebook_key")
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\FBExecute.py", line 27, in get_facebook_token
+    file = open(filepath, "r")
+IOError: [Errno 2] No such file or directory: 'facebook_key'
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+ERROR:django.request:Internal Server Error: /testApp/sortviewaction/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 1074, in sortView
+    fb_data = facebook(person)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 1047, in facebook
+    dicts = fb_execute.get_info_about_people(token, people)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\FBExecute.py", line 193, in get_info_about_people
+    browser = self.login_into_facebook()
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\FBExecute.py", line 152, in login_into_facebook
+    browser = self.get_creds(browser)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\FBExecute.py", line 158, in get_creds
+    f = open("logins.txt", "r")
+IOError: [Errno 2] No such file or directory: 'logins.txt'
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+ERROR:django.request:Internal Server Error: /testApp/sortviewaction/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 1074, in sortView
+    fb_data = facebook(person)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 1047, in facebook
+    dicts = fb_execute.get_info_about_people(token, people)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\FBExecute.py", line 193, in get_info_about_people
+    browser = self.login_into_facebook()
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\FBExecute.py", line 152, in login_into_facebook
+    browser = self.get_creds(browser)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\FBExecute.py", line 158, in get_creds
+    f = open("logins.txt", "r")
+IOError: [Errno 2] No such file or directory: 'logins.txt'
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+ERROR:django.request:Internal Server Error: /testApp/sortviewaction/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 1074, in sortView
+    fb_data = facebook(person)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 1047, in facebook
+    dicts = fb_execute.get_info_about_people(token, people)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\FBExecute.py", line 193, in get_info_about_people
+    browser = self.login_into_facebook()
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\FBExecute.py", line 152, in login_into_facebook
+    browser = self.get_creds(browser)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\FBExecute.py", line 158, in get_creds
+    f = open("logins.txt", "r")
+IOError: [Errno 2] No such file or directory: 'logins.txt'
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+WARNING:django.request:Not Found: /favicon.ico
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+ERROR:django.request:Internal Server Error: /testApp/sortviewaction/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 1074, in sortView
+    fb_data = facebook(person)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 1047, in facebook
+    dicts = fb_execute.get_info_about_people(token, people)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\FBExecute.py", line 192, in get_info_about_people
+    users = users + self.extract_users(graph.request(query))
+  File "c:\users\indervirsingh\src\facebook-sdk\facebook\__init__.py", line 272, in request
+    raise GraphAPIError(result)
+GraphAPIError: Error validating access token: Session has expired on Wednesday, 26-Oct-16 17:00:00 PDT. The current time is Wednesday, 26-Oct-16 17:24:55 PDT.
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): graph.facebook.com
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /testApp/facebook/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 1043, in facebook
+    fb_execute = FBExecute(db_host, db_port, colleges)
+TypeError: __init__() takes exactly 3 arguments (4 given)
+ERROR:django.request:Internal Server Error: /testApp/facebook/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 1046, in facebook
+    dicts = fbexecute.get_info_about_people("input.txt", colleges, "logins.txt")
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\FBExecute.py", line 219, in get_info_about_people
+    dict = self.visit_profile(browser, user["name"], user["profile"])
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\FBExecute.py", line 44, in visit_profile
+    response = browser.open(profile)
+  File "C:\Python27\lib\site-packages\mechanize\_mechanize.py", line 203, in open
+    return self._mech_open(url, data, timeout=timeout)
+  File "C:\Python27\lib\site-packages\mechanize\_mechanize.py", line 255, in _mech_open
+    raise response
+httperror_seek_wrapper: HTTP Error 404: Not Found
+ERROR:django.request:Internal Server Error: /testApp/facebook/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 957, in facebook
+    results = facebook()
+TypeError: facebook() takes exactly 1 argument (0 given)
+ERROR:django.request:Internal Server Error: /testApp/facebook/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 963, in facebook
+    return render(request, 'testApp/searchGrad.html', context)
+  File "C:\Python27\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python27\lib\site-packages\django\template\loader.py", line 68, in render_to_string
+    return template.render(context, request)
+  File "C:\Python27\lib\site-packages\django\template\backends\django.py", line 66, in render
+    return self.template.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 208, in render
+    return self._render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 199, in _render
+    return self.nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\loader_tags.py", line 201, in render
+    template = context.template.engine.get_template(template_name)
+  File "C:\Python27\lib\site-packages\django\template\engine.py", line 160, in get_template
+    template, origin = self.find_template(template_name)
+  File "C:\Python27\lib\site-packages\django\template\engine.py", line 134, in find_template
+    name, template_dirs=dirs, skip=skip,
+  File "C:\Python27\lib\site-packages\django\template\loaders\base.py", line 44, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 191, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 233, in compile_nodelist
+    return parser.parse()
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+TemplateSyntaxError: Invalid block tag on line 257: 'endfor', expected 'elif', 'else' or 'endif'. Did you forget to register or load this tag?
+ERROR:django.request:Internal Server Error: /testApp/facebook/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 963, in facebook
+    return render(request, 'testApp/searchGrad.html', context)
+  File "C:\Python27\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python27\lib\site-packages\django\template\loader.py", line 68, in render_to_string
+    return template.render(context, request)
+  File "C:\Python27\lib\site-packages\django\template\backends\django.py", line 66, in render
+    return self.template.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 208, in render
+    return self._render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 199, in _render
+    return self.nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\loader_tags.py", line 201, in render
+    template = context.template.engine.get_template(template_name)
+  File "C:\Python27\lib\site-packages\django\template\engine.py", line 160, in get_template
+    template, origin = self.find_template(template_name)
+  File "C:\Python27\lib\site-packages\django\template\engine.py", line 134, in find_template
+    name, template_dirs=dirs, skip=skip,
+  File "C:\Python27\lib\site-packages\django\template\loaders\base.py", line 44, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 191, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 233, in compile_nodelist
+    return parser.parse()
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+TemplateSyntaxError: Invalid block tag on line 237: 'else', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+ERROR:django.request:Internal Server Error: /testApp/facebook/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 963, in facebook
+    return render(request, 'testApp/searchGrad.html', context)
+  File "C:\Python27\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python27\lib\site-packages\django\template\loader.py", line 68, in render_to_string
+    return template.render(context, request)
+  File "C:\Python27\lib\site-packages\django\template\backends\django.py", line 66, in render
+    return self.template.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 208, in render
+    return self._render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 199, in _render
+    return self.nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\loader_tags.py", line 210, in render
+    return template.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 210, in render
+    return self._render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 199, in _render
+    return self.nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 200, in render
+    .format(num_loopvars, len_item),
+ValueError: Need 2 values to unpack in for loop; got 7. 
+ERROR:django.request:Internal Server Error: /testApp/facebook/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 963, in facebook
+    return render(request, 'testApp/searchGrad.html', context)
+  File "C:\Python27\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python27\lib\site-packages\django\template\loader.py", line 68, in render_to_string
+    return template.render(context, request)
+  File "C:\Python27\lib\site-packages\django\template\backends\django.py", line 66, in render
+    return self.template.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 208, in render
+    return self._render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 199, in _render
+    return self.nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\loader_tags.py", line 210, in render
+    return template.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 210, in render
+    return self._render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 199, in _render
+    return self.nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 200, in render
+    .format(num_loopvars, len_item),
+ValueError: Need 2 values to unpack in for loop; got 7. 
+ERROR:django.request:Internal Server Error: /testApp/facebook/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 958, in facebook
+    for k,v in results:
+ValueError: too many values to unpack
+ERROR:django.request:Internal Server Error: /testApp/facebook/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 964, in facebook
+    return render(request, 'testApp/searchGrad.html', context)
+  File "C:\Python27\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python27\lib\site-packages\django\template\loader.py", line 68, in render_to_string
+    return template.render(context, request)
+  File "C:\Python27\lib\site-packages\django\template\backends\django.py", line 66, in render
+    return self.template.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 208, in render
+    return self._render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 199, in _render
+    return self.nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\loader_tags.py", line 210, in render
+    return template.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 210, in render
+    return self._render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 199, in _render
+    return self.nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 200, in render
+    .format(num_loopvars, len_item),
+ValueError: Need 2 values to unpack in for loop; got 7. 
+WARNING:django.request:Not Found: /favicon.ico
