@@ -14857,3 +14857,159 @@ Traceback (most recent call last):
     .format(num_loopvars, len_item),
 ValueError: Need 2 values to unpack in for loop; got 7. 
 WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /markProfile/
+WARNING:django.request:Not Found: /markProfile/
+WARNING:django.request:Not Found: /markProfile/
+WARNING:django.request:Not Found: /testApp/markProfile/
+WARNING:django.request:Not Found: /testApp/facebook/markProfile/
+WARNING:django.request:Not Found: /testApp/facebook/testApp/markProfile/
+WARNING:django.request:Not Found: /testApp/facebook/testApp/markProfile/
+WARNING:django.request:Forbidden (CSRF token missing or incorrect.): /testApp/markProfile/
+WARNING:django.request:Forbidden (CSRF token missing or incorrect.): /testApp/markProfile/
+WARNING:django.request:Forbidden (CSRF token missing or incorrect.): /testApp/markProfile/
+WARNING:django.request:Forbidden (CSRF token missing or incorrect.): /testApp/markProfile/
+WARNING:django.request:Forbidden (CSRF token missing or incorrect.): /testApp/markProfile/
+WARNING:django.request:Forbidden (CSRF token missing or incorrect.): /testApp/markProfile/
+ERROR:django.request:Internal Server Error: /testApp/markProfile/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 973, in markProfile
+    print request.GET["facebook_profile"]
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "'facebook_profile'"
+ERROR:django.request:Internal Server Error: /testApp/markProfile/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 1009, in markProfile
+    print result["person"], result["profiles"]
+NameError: global name 'result' is not defined
+ERROR:django.request:Internal Server Error: /testApp/markProfile/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 976, in markProfile
+    print person_name
+  File "C:\Python27\lib\encodings\cp437.py", line 12, in encode
+    return codecs.charmap_encode(input,errors,encoding_map)
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 26-29: character maps to <undefined>
+ERROR:django.request:Internal Server Error: /testApp/markProfile/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 973, in markProfile
+    print person
+  File "C:\Python27\lib\encodings\cp437.py", line 12, in encode
+    return codecs.charmap_encode(input,errors,encoding_map)
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 26-29: character maps to <undefined>
+ERROR:django.request:Internal Server Error: /testApp/markProfile/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 973, in markProfile
+    print person
+  File "C:\Python27\lib\encodings\cp437.py", line 12, in encode
+    return codecs.charmap_encode(input,errors,encoding_map)
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 26-29: character maps to <undefined>
+ERROR:django.request:Internal Server Error: /testApp/markProfile/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 973, in markProfile
+    print person
+  File "C:\Python27\lib\encodings\cp437.py", line 12, in encode
+    return codecs.charmap_encode(input,errors,encoding_map)
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 26-29: character maps to <undefined>
+ERROR:django.request:Internal Server Error: /testApp/markProfile/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 1000, in markProfile
+    if person["person"] == person_name and profile["profile"] == person_profile:
+NameError: global name 'person_name' is not defined
+ERROR:django.request:Internal Server Error: /testApp/markProfile/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 1001, in markProfile
+    print person_name, " ==> ", person_profile
+NameError: global name 'person_name' is not defined
+ERROR:django.request:Internal Server Error: /testApp/markProfile/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 1001, in markProfile
+    print person_name, " ==> ", person_profile
+NameError: global name 'person_name' is not defined
+ERROR:django.request:Internal Server Error: /testApp/markProfile/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 992, in markProfile
+    if profile["profile"] == facebook_profile:
+NameError: global name 'facebook_profile' is not defined

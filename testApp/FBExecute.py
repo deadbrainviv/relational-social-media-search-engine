@@ -171,7 +171,7 @@ class FBExecute:
             users.append(user)
         return users
 
-    def get_info_about_people(self, input_file, colleges, creds_file, db_host, db_port):
+    def get_info_about_people(self, input_file, colleges, creds_file, db_host, db_port, replace):
         dicts = []
         db_client = FBDb.connect(db_host, db_port)
         browser = self.login_into_facebook(creds_file)
@@ -212,11 +212,14 @@ class FBExecute:
             users = new_users
             print person_bkp, " ==> ", users
             dict = FBDb.find_dict(db_client, person_bkp)
+            if replace:
+                dict = None
+                FBDb.remove_dict(db_client, person_bkp)
             if dict is None:
                 dict = {}
                 profiles = []
                 for user in users:
-                    time.sleep(1.0)
+                    time.sleep(2.0)
                     profile = self.visit_profile(browser, user["name"], user["profile"])
                     if profile is not None:
                         profiles.append(profile)

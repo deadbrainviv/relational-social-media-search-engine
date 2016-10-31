@@ -14,6 +14,7 @@
 {%	load staticfiles %}
 </head>
 <body>
+	<form action="/testApp/markProfile/" method="post">
 	{% csrf_token %}
 	<div class="l-content"> 
     <div id="selections_list" class="pricing-tables pure-g">
@@ -242,7 +243,11 @@
 									NA
 								</td>
 								<td colspan="1" style="width:110px" >
-									<input type="checkbox" class="check_class" name="{{profile.profile}}" />
+									{% if profile.actual == "yes" %}
+										<input type="checkbox" class="check_class" name="facebook_profile" value="{{profile.profile}}" checked /><br/><br/>
+									{% else %}
+										<input type="checkbox" class="check_class" name="facebook_profile" value="{{profile.profile}}" /><br/><br/>
+									{% endif %}
 								</td>
 							</tr>
 						{% endfor %}
@@ -251,12 +256,20 @@
 				</td>
 			</tr>
 			{% endfor %}
+			<tr style="width:1200px">
+				<td colspan="10" style="width:1200px">
+					<br/>
+						<b><div align="center"><input name="facebook_form_submit" type="submit" value="Submit changes!"></div></b>
+					<br/>
+				</td>
+			</tr>
 		</tbody>
 	</table>
 	<p>
 		If you don't see any output, then probably 
 		the email and university combination was not accurate, check your details.
 	</p>
+	</form>
 </body>
 	<script src="{% static "/static/testApp/js/jquery-3.0.0.min.js" %}"></script>
 	<script src="{% static "/static/testApp/js/rango-ajax.js" %}"></script>

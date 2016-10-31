@@ -962,6 +962,41 @@ def facebook(request):
     }
     return render(request, 'testApp/searchGrad.html', context)
 
+def markProfile(request):
+    #for result in results:
+        #print result["person"], result["profiles"]
+    db_host = "localhost"
+    db_port = 27017
+    db_client = FBDb.connect(db_host, db_port)
+    cursor = db_client.facebook_db.buet2.find()
+
+    facebook_profiles = request.POST.getlist("facebook_profile")
+
+    for person in cursor:
+        for profile in person["profiles"]:
+            if profile["profile"] in facebook_profiles:
+                profile["actual"] = "yes"
+            else:
+                profile["actual"] = "no"
+        db_client.facebook_db.buet2.update(
+            {"_id": person["_id"]},
+            {
+                "person": person["person"],
+                "profiles": person["profiles"]
+            }
+        )
+
+    results = get_facebook_entries()
+    for person in results:
+        for profile in person["profiles"]:
+            if profile["profile"] in facebook_profiles:
+                print person["person"], " ==> ", profile["profile"]
+
+    context = {
+        'entries1': results
+    }
+    return render(request, 'testApp/searchGrad.html', context)
+
 def sortView(request):
     print "SORT TYPE"
     print request.POST.get('sort_type','')

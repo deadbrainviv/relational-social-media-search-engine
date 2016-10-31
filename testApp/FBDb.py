@@ -24,3 +24,7 @@ class FBDb:
             return None
         for entry in entries:
             return entry
+
+    @staticmethod
+    def remove_dict(db_client, person):
+        db_client.facebook_db.buet2.remove({'person': {'$eq': person}})
