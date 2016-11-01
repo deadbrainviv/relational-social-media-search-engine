@@ -68,7 +68,7 @@
 				<td colspan="10" style="width:1200px">
 					{{message}}	
 					{% for e in entries %}
-					{% if e is not None%}
+					{% if not e%}
 					<table border="1" style="width:1200px">
 						<tr style="width:1100px;border-style:hidden;">
 							<td colspan="10" style="width:1100px">
@@ -178,7 +178,7 @@
 							</tr>
 							{% else %}
 							{% for f in e.personData.fbData %}
-							{% if f is not None%}
+							{% if not f%}
 							<tr style="width:1100px">
 								<td style="width:110px">
 								{{f.past}}
