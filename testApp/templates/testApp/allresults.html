@@ -16,9 +16,37 @@
 <body>
 	<form action="/testApp/markProfile/" method="post">
 	{% csrf_token %}
+	<br>
+	{% if metadata%}
+	<table id="table_one" border="0" style="table-layout: fixed;width:1200px;margin-left:2cm;">
+		<tr style="width:1200px">
+			<td colspan="3" style="width:1200px">
+				<b><font size="3">Input people list &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp;  {{metadata.total}}</font></b>
+			</td>
+		</tr>
+		<tr style="width:1200px">
+			<td colspan="3" style="width:1200px">
+				<b><font size="3">Facebook profiles FOUND against &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.some}}</font></b>
+			</td>
+		</tr>
+		<tr style="width:1200px">
+			<td colspan="3" style="width:1200px">
+				<b><font size="3">People with only ONE Facebook profile &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.one}}</font></b>
+			</td>
+		</tr>
+		<tr style="width:1200px">
+			<td colspan="4" style="width:1200px">
+				<b><font size="3">People with NO Facebook profiles &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.empty}}</font></b>
+			</td>
+		</tr>
+		</tr>
+	</table>
+	{% endif %}
+	<br>
+	<br>
+	<br>
 	<div class="l-content"> 
     <div id="selections_list" class="pricing-tables pure-g">
-	<br>
 	<table id="table_one" border="3" style="table-layout: fixed;width:1200px;margin-left:2cm;">
 		<thead style="width:1200px">
 			<tr style="width:1200px">

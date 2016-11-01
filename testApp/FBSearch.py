@@ -11,22 +11,17 @@ colleges = []
 colleges.append("bangladesh%20university%20of%20engineering%20and%20technology")
 colleges.append("buet")
 
-# fbexecute = FBExecute()
-# fbexecute.get_info_about_people("input.txt", colleges, "logins.txt", db_host, db_port, True)
+fbexecute = FBExecute()
+fbexecute.get_info_about_people("input.txt", colleges, "logins.txt", db_host, db_port, True)
+# db_client.facebook_db.buet2.remove({"_id":ObjectId("5817c37d80d62e46dc8f8b59")});
 
-print "Printing buet2 collection in facebook_db database:"
-cursor = db_client.facebook_db.buet2.find()
+print "Printing buet2test collection in facebook_db database:"
+cursor = db_client.facebook_db.buet2test.find()
 for person in cursor:
     print person
-    # for profile in person["profiles"]:
-    #     profile["actual"] = "no"
-    # db_client.facebook_db.buet2.update(
-    #     {"_id": person["_id"]},
-    #     {
-    #         "person": person["person"],
-    #         "profiles": person["profiles"]
-    #     }
-    # )
+
+
+
 
 
 

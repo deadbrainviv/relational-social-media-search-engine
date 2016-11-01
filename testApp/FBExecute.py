@@ -36,13 +36,13 @@ class FBExecute:
         return people
 
     def visit_profile(self, browser, name, profile):
-        #print "Opening:", profile
         response = browser.open(profile)
         html = response.read()
         lines = html.split("\n")
         dict = {}
         dict["name"] = name
         dict["profile"] = profile
+        dict["actual"] = "no"
         for line in lines:
             if "Profile Photo" in line:
                 line1 = line.split("Profile Photo\" src=\"")[1]
@@ -55,7 +55,6 @@ class FBExecute:
                 line1 = string.replace(line1, "  ", " ")
                 line1 = line1.strip()
                 lines1 = line1.split("        ")
-                #print lines1
                 former = ""
                 worked = ""
                 went = ""
@@ -141,11 +140,9 @@ class FBExecute:
                 browser.form["pass"] = line[1]
                 break
         browser.submit()
-        #return response.read()
         return browser
 
     def process(self, browser, url):
-        #print "Hitting:",url
         url = browser.open(url)
         response = url.read()
         splits = response.split("<div class=\"_5d-5\">")
@@ -155,7 +152,6 @@ class FBExecute:
             curr = splits[i+1]
             name = curr.split("</div>")[0]
             name = name.strip()
-            #print "Name:", name
             next = splits[i]
             link = next.split("<div class=\"_gll\"><div><a href=\"")[1].split("\" data-testid=\"serp_result_link")[0]
             link = link.strip()
@@ -164,7 +160,6 @@ class FBExecute:
             if link.endswith("&amp;ref=br_rs"):
                 link = link.split("&amp;ref=br_rs")[0]
             link = link.strip()
-            #print "Link:", link
             user = {}
             user["name"] = name
             user["profile"] = link
@@ -173,6 +168,7 @@ class FBExecute:
 
     def get_info_about_people(self, input_file, colleges, creds_file, db_host, db_port, replace):
         dicts = []
+        base_facebook_search_url = "https://www.facebook.com/search/people/?q="
         db_client = FBDb.connect(db_host, db_port)
         browser = self.login_into_facebook(creds_file)
         people = self.get_input_people_list(input_file)
@@ -180,31 +176,46 @@ class FBExecute:
             users = []
             person = person.strip()
             person_bkp = person
-            person = re.sub("\\s+", "%20", person)
+            person = re.sub("\.", "", person)
+            urls = []
+            print "********** " + person + " ************"
             if colleges is not None and len(colleges) > 0:
-                if person.startswith("Md.") or person.startswith("Md "):
-                    for college in colleges:
-                        url = "https://www.facebook.com/search/people/?q=Mohammed%20" + person.split("Md.")[1] + "%20" + college
-                        users = users + self.process(browser, url)
-                        url = "https://www.facebook.com/search/people/?q=Mohammad%20" + person.split("Md.")[1] + "%20" + college
-                        users = users + self.process(browser, url)
-                        url = "https://www.facebook.com/search/people/?q=" + person + "%20" + college
-                        users = users + self.process(browser, url)
-                else:
-                    for college in colleges:
-                        url = "https://www.facebook.com/search/people/?q=" + person + "%20" + college
-                        users = users + self.process(browser, url)
+                for college in colleges:
+                    if person.startswith("Md"):
+                        urls.append(base_facebook_search_url + person.strip() + " " + college)
+                        urls.append(base_facebook_search_url + person.split("Md")[1].strip() + " " + college)
+                        urls.append(base_facebook_search_url + "Mohammed " + person.split("Md")[1].strip() + " " + college)
+                        urls.append(base_facebook_search_url + "Mohammad " + person.split("Md")[1].strip() + " " + college)
+                        if len(person.split("Md")[1].split()) == 3:
+                            urls.append(base_facebook_search_url + person.strip().split()[0] + " " + person.strip().split()[1] + " " + person.strip().split()[3] + " " + college)
+                            urls.append(base_facebook_search_url + person.split("Md")[1].strip().split()[0] + " " + person.split("Md")[1].strip().split()[2] + " " + college)
+                            urls.append(base_facebook_search_url + "Mohammed " + person.split("Md")[1].strip().split()[0] + " " + person.split("Md")[1].strip().split()[2] + " " + college)
+                            urls.append(base_facebook_search_url + "Mohammad " + person.split("Md")[1].strip().split()[0] + " " + person.split("Md")[1].strip().split()[2] + " " + college)
+                    else:
+                        urls.append(base_facebook_search_url + person.strip() + " " + college)
+                        if len(person.strip().split()) == 3:
+                            urls.append(base_facebook_search_url + person.strip().split()[0] + " " + person.strip().split()[2] + " " + college)
             else:
-                if person.startswith("Md.") or person.startswith("Md "):
-                    url = "https://www.facebook.com/search/people/?q=Mohammed%20" + person.split("Md.")[1]
-                    users = users + self.process(browser, url)
-                    url = "https://www.facebook.com/search/people/?q=Mohammad%20" + person.split("Md.")[1]
-                    users = users + self.process(browser, url)
-                    url = "https://www.facebook.com/search/people/?q=" + person
-                    users = users + self.process(browser, url)
+                if person.startswith("Md"):
+                    urls.append(base_facebook_search_url + person.strip())
+                    urls.append(base_facebook_search_url + person.split("Md")[1].strip())
+                    urls.append(base_facebook_search_url + "Mohammed " + person.split("Md")[1].strip())
+                    urls.append(base_facebook_search_url + "Mohammad " + person.split("Md")[1].strip())
+                    if len(person.split("Md")[1].split()) == 3:
+                        urls.append(base_facebook_search_url + person.strip().split()[0] + " " + person.strip().split()[1] + " " + person.strip().split()[3])
+                        urls.append(base_facebook_search_url + person.split("Md")[1].strip().split()[0] + " " + person.split("Md")[1].strip().split()[2])
+                        urls.append(base_facebook_search_url + "Mohammed " + person.split("Md")[1].strip().split()[0] + " " + person.split("Md")[1].strip().split()[2])
+                        urls.append(base_facebook_search_url + "Mohammad " + person.split("Md")[1].strip().split()[0] + " " + person.split("Md")[1].strip().split()[2])
                 else:
-                    url = "https://www.facebook.com/search/people/?q=" + person
-                    users = users + self.process(browser, url)
+                    urls.append(base_facebook_search_url + person.strip())
+                    if len(person.strip().split()) == 3:
+                        urls.append(base_facebook_search_url + person.strip().split()[0] + " " + person.strip().split()[2])
+            for url in urls:
+                url = url.strip()
+                url = re.sub("\\s+", " ", url)
+                url = re.sub(" ", "%20", url)
+                print url
+                users = users + self.process(browser, url)
             new_users = []
             for user in users:
                 if user not in new_users:

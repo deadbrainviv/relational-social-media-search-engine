@@ -955,10 +955,26 @@ def get_facebook_entries():
 
 def facebook(request):
     results = get_facebook_entries()
-    #for result in results:
-        #print result["person"], result["profiles"]
+    counter_empty = 0
+    counter_one = 0
+    counter_some = 0
+    counter_total = 0
+    for person in results:
+        counter_total = counter_total + 1
+        if len(person["profiles"]) == 0:
+            counter_empty = counter_empty + 1
+        if len(person["profiles"]) == 1:
+            counter_one = counter_one + 1
+        if len(person["profiles"]) > 0:
+            counter_some = counter_some + 1
+    metadata = {}
+    metadata["empty"] = counter_empty
+    metadata["one"] = counter_one
+    metadata["some"] = counter_some
+    metadata["total"] = counter_total
     context = {
-        'entries1': results
+        "entries1": results,
+        "metadata": metadata
     }
     return render(request, 'testApp/searchGrad.html', context)
 
