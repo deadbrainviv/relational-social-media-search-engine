@@ -14,12 +14,12 @@ class FBDb:
 
     @staticmethod
     def store_profile(db_client, dict):
-        #print "# Adding dict:", dict
-        db_client.facebook_db.buet2test.save(dict)
+        print "# Adding dict:", dict
+        db_client.facebook_db.buet3.save(dict)
 
     @staticmethod
     def find_dict(db_client, person):
-        entries = db_client.facebook_db.buet2test.find({'person':{'$eq':person}})
+        entries = db_client.facebook_db.buet3.find({'person':{'$eq':person}})
         if entries.count() is 0:
             return None
         for entry in entries:
@@ -27,4 +27,4 @@ class FBDb:
 
     @staticmethod
     def remove_dict(db_client, person):
-        db_client.facebook_db.buet2test.remove({'person': {'$eq': person}})
+        db_client.facebook_db.buet3.remove({'person': {'$eq': person}})

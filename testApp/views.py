@@ -948,7 +948,7 @@ def get_facebook_entries():
     colleges.append("buet")
     #fbexecute = FBExecute(db_host, db_port)
     #fbexecute.get_info_about_people("input.txt", colleges, "logins.txt")
-    cursor = db.buet2.find()
+    cursor = db.buet3.find()
     for result in cursor:
         results.append(result)
     return results
@@ -984,7 +984,7 @@ def markProfile(request):
     db_host = "localhost"
     db_port = 27017
     db_client = FBDb.connect(db_host, db_port)
-    cursor = db_client.facebook_db.buet2.find()
+    cursor = db_client.facebook_db.buet3.find()
 
     facebook_profiles = request.POST.getlist("facebook_profile")
 
@@ -994,7 +994,7 @@ def markProfile(request):
                 profile["actual"] = "yes"
             else:
                 profile["actual"] = "no"
-        db_client.facebook_db.buet2.update(
+        db_client.facebook_db.buet3.update(
             {"_id": person["_id"]},
             {
                 "person": person["person"],

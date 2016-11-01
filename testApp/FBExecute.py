@@ -178,7 +178,6 @@ class FBExecute:
             person_bkp = person
             person = re.sub("\.", "", person)
             urls = []
-            print "********** " + person + " ************"
             if colleges is not None and len(colleges) > 0:
                 for college in colleges:
                     if person.startswith("Md"):
@@ -214,7 +213,6 @@ class FBExecute:
                 url = url.strip()
                 url = re.sub("\\s+", " ", url)
                 url = re.sub(" ", "%20", url)
-                print url
                 users = users + self.process(browser, url)
             new_users = []
             for user in users:
