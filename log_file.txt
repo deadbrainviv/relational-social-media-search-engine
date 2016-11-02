@@ -15013,3 +15013,4 @@ Traceback (most recent call last):
   File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 992, in markProfile
     if profile["profile"] == facebook_profile:
 NameError: global name 'facebook_profile' is not defined
+WARNING:django.request:Not Found: /favicon.ico

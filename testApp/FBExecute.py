@@ -47,6 +47,8 @@ class FBExecute:
             if "Profile Photo" in line:
                 line1 = line.split("Profile Photo\" src=\"")[1]
                 line1 = line1.split("\" /></a></div>")[0]
+                if "amp;" in line1:
+                    line1 = line1.split("amp;")[0] + line1.split("amp;")[1]
                 dict["pic"] = line1
             if "Former" in line or "Studies at " in line or "Studied or " in line or "Lives in " in line or "From " in line:
                 line1 = re.sub("<[^>]*>", " ", line)
@@ -155,11 +157,16 @@ class FBExecute:
             next = splits[i]
             link = next.split("<div class=\"_gll\"><div><a href=\"")[1].split("\" data-testid=\"serp_result_link")[0]
             link = link.strip()
-            if link.endswith("?ref=br_rs"):
-                link = link.split("?ref=br_rs")[0]
-            if link.endswith("&amp;ref=br_rs"):
-                link = link.split("&amp;ref=br_rs")[0]
+            if "&amp;" in link:
+                link = link.split("&amp;")[0]
+            if "?fref=pb" in link:
+                link = link.split("?fref=pb")[0]
+            if "?ref=br" in link:
+                link = link.split("?ref=br")[0]
+            if link.endswith("/"):
+                link = link[:-1]
             link = link.strip()
+            link = link.lower()
             user = {}
             user["name"] = name
             user["profile"] = link

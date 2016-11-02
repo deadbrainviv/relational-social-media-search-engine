@@ -265,7 +265,15 @@
 									{{profile.work}}
 								</td>
 								<td colspan="1" style="width:110px" >
-									NA
+									<table style="width:110px">
+									{% for fr in profile.friends %}
+										<tr style="width:110px">
+											<td style="width:110px">
+												<a href="{{fr}}">{{fr}}</a>
+											</td>
+										</tr>
+									{% endfor %}
+									</table>
 								</td>
 								<td colspan="1" style="width:110px" >
 									NA
