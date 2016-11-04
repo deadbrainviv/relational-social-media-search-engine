@@ -18,24 +18,24 @@
 	{% csrf_token %}
 	<br>
 	{% if metadata%}
-	<table id="table_one" border="0" style="table-layout: fixed;width:1200px;margin-left:2cm;">
-		<tr style="width:1200px">
-			<td colspan="3" style="width:1200px">
+	<table id="table_one" border="0" style="table-layout: fixed;width:1600px;margin-left:2cm;">
+		<tr style="width:1600px">
+			<td colspan="3" style="width:1600px">
 				<b><font size="3">Input people list &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp;  {{metadata.total}}</font></b>
 			</td>
 		</tr>
-		<tr style="width:1200px">
-			<td colspan="3" style="width:1200px">
+		<tr style="width:1600px">
+			<td colspan="3" style="width:1600px">
 				<b><font size="3">Facebook profiles FOUND against &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.some}}</font></b>
 			</td>
 		</tr>
-		<tr style="width:1200px">
-			<td colspan="3" style="width:1200px">
+		<tr style="width:1600px">
+			<td colspan="3" style="width:1600px">
 				<b><font size="3">People with only ONE Facebook profile &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.one}}</font></b>
 			</td>
 		</tr>
-		<tr style="width:1200px">
-			<td colspan="4" style="width:1200px">
+		<tr style="width:1600px">
+			<td colspan="4" style="width:1600px">
 				<b><font size="3">People with NO Facebook profiles &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.empty}}</font></b>
 			</td>
 		</tr>
@@ -47,56 +47,56 @@
 	<br>
 	<div class="l-content"> 
     <div id="selections_list" class="pricing-tables pure-g">
-	<table id="table_one" border="3" style="table-layout: fixed;width:1200px;margin-left:2cm;">
-		<thead style="width:1200px">
-			<tr style="width:1200px">
-				<th bgcolor="#FD6D4F" colspan="1" style="width:110px;word-wrap:break-word">Image</th>
-				<th bgcolor="#FD6D4F" colspan="1" style="width:110px;word-wrap:break-word">Name</th>
-				<th bgcolor="#FD6D4F" colspan="1" style="width:110px;word-wrap:break-word">Profile</th>
-				<th bgcolor="#FD6D4F" colspan="1" style="width:110px;word-wrap:break-word">University</th>
-				<th bgcolor="#FD6D4F" colspan="1" style="width:110px;word-wrap:break-word">Industry</th>
-				<th bgcolor="#FD6D4F" colspan="1" style="width:110px;word-wrap:break-word">Location</th>
-				<th bgcolor="#FD6D4F" colspan="1" style="width:110px;word-wrap:break-word">Work Info</th>
-				<th bgcolor="#FD6D4F" colspan="1" style="width:110px;word-wrap:break-word">Connections</th>
-				<th bgcolor="#FD6D4F" colspan="1" style="width:110px;word-wrap:break-word">Multiple</th>
-				<th bgcolor="#FD6D4F" colspan="1" style="width:110px;word-wrap:break-word">Select</th>
+	<table id="table_one" border="3" style="table-layout: fixed;width:1600px;margin-left:2cm;">
+		<thead style="width:1600px">
+			<tr style="width:1600px">
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Image</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Name</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Profile</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">University</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Industry</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Location</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Work Info</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Connections</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Multiple</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Select</th>
 			</tr>
 		</thead>
 		<br>
-		<tbody style="width:1200px">
-			<tr style="width:1200px">
-				<td colspan="10" style="width:1200px">
+		<tbody style="width:1600px">
+			<tr style="width:1600px">
+				<td colspan="10" style="width:1600px">
 					{{message}}	
 					{% for e in entries %}
 					{% if not e%}
-					<table border="1" style="width:1200px">
-						<tr style="width:1100px;border-style:hidden;">
-							<td colspan="10" style="width:1100px">
+					<table border="1" style="width:1600px">
+						<tr style="width:1500px;border-style:hidden;">
+							<td colspan="10" style="width:1500">
 								&nbsp&nbsp&nbsp<b>Searched for '{{e.personData.firstName}} {{e.personData.lastName}}'</b>
 							</td>
 						</tr>
-						<tr style="width:1100px;border-style:hidden;">
-							<td colspan="10" style="width:1100px" align="left">
+						<tr style="width:1500px;border-style:hidden;">
+							<td colspan="10" style="width:1500" align="left">
 								&nbsp&nbsp&nbsp<b>LinkedIn entries</b>
 							</td>
 						</tr>
-						<tr style="width:1100px;border-style:solid;"></tr>
+						<tr style="width:1500px;border-style:solid;"></tr>
 						{%	if forloop.counter|divisibleby:2 %}
-						<tr style="width:1100px;border-style:solid;">
-							<td colspan="1" style="width:110px">
+						<tr style="width:1500px;border-style:solid;">
+							<td colspan="1" style="width:150px">
 								{% if e.personData.isProfilePic %}
 								<img src={{e.personData.profilePhoto.profilePhoto.media_picture_link_100}}>
 								{% else %}
 								<img src={{e.personData.profilePhoto.profilePhoto.genericGhostImage}}>
 								{% endif %}
 							</td>
-							<td colspan="1" style="width:110px" >
+							<td colspan="1" style="width:150px" >
 								{{e.personData.firstName}} {{e.personData.lastName}}
 							</td>
-							<td colspan="1" style="width:110px" >
+							<td colspan="1" style="width:150px" >
 								<a href="{{ e.personData.link_nprofile_view_3 }}/">LinkedIn Profile</a>
 							</td>
-							<td colspan="1" style="width:110px" >
+							<td colspan="1" style="width:150px" >
 								<ul>
 								{% for t in e.education_all %}
 									<li >{{t}}</li>
@@ -104,51 +104,51 @@
 								{% endfor %}
 								</ul>
 							</td>
-							<td colspan="1" style="width:110px" >
+							<td colspan="1" style="width:150px" >
 								{{e.personData.fmt_industry}}
 							</td>
-							<td colspan="1" style="width:110px" >
+							<td colspan="1" style="width:150px" >
 								{{e.personData.fmt_location}}
 							</td>
-							<td colspan="1" style="width:110px" >
+							<td colspan="1" style="width:150px" >
 								{{e.personData.fmt_headline}}
 							</td>
-							<td colspan="1" style="width:110px" >
+							<td colspan="1" style="width:150px" >
 								{{e.personData.connectionCount}}
 							</td>
-							<td colspan="1" style="width:110px" >
+							<td colspan="1" style="width:150px" >
 								{% if e.isMultiple %}
 								<a href="{% url 'testApp:updateByID' personId=e.personData.personId %}">
 									Multiple
 								</a>
 								{% endif %}
 							</td>
-							<td colspan="1" style="width:110px" >
+							<td colspan="1" style="width:150px" >
 								<input type="checkbox" class="check_class" name="{{e.personData.personId}}" />
 							</td>
 						</tr>
 						{% else %}
-						<tr style="width:1100px;border-style:solid;">
-							<td style="width:110px">
+						<tr style="width:1500px;border-style:solid;">
+							<td style="width:150px">
 								{% if e.personData.isProfilePic %}
 								<img src={{e.personData.profilePhoto.profilePhoto.media_picture_link_100}}>
 								{% else %}
 								<img src={{e.personData.profilePhoto.profilePhoto.genericGhostImage}}>
 								{% endif %}
 							</td>
-							<td style="width:110px">{{e.personData.firstName}} {{e.personData.lastName}}</td>
-							<td style="width:110px"><a target="_blank" href="{{ e.personData.link_nprofile_view_3 }}/">LinkedIn Profile</a>
+							<td style="width:150px">{{e.personData.firstName}} {{e.personData.lastName}}</td>
+							<td style="width:150px"><a target="_blank" href="{{ e.personData.link_nprofile_view_3 }}/">LinkedIn Profile</a>
 							</td>
-							<td style="width:110px">
+							<td style="width:150px">
 								{{ e.education_all }}
 							</td>
-							<td style="width:110px">
+							<td style="width:150px">
 							{{e.personData.fmt_industry}}
 							</td>
-							<td style="width:110px">{{e.personData.fmt_location}}</td>
-							<td style="width:110px">{{e.personData.workinfo}}</td>
-							<td style="width:110px">{{e.personData.connectionCount}}</td>
-							<td style="width:110px">
+							<td style="width:150px">{{e.personData.fmt_location}}</td>
+							<td style="width:150px">{{e.personData.workinfo}}</td>
+							<td style="width:150px">{{e.personData.connectionCount}}</td>
+							<td style="width:150px">
 								{% if e.isMultiple %}
 								<a href="{% url 'testApp:updateByID' personId=e.personData.personId %}">
 									Multiple
@@ -157,60 +157,60 @@
 								No Multiples
 								{% endif %}
 							</td>
-							<td style="width:110px"><input type="checkbox" class="check_class" name="{{e.personData.personId}}" /></td>
+							<td style="width:150px"><input type="checkbox" class="check_class" name="{{e.personData.personId}}" /></td>
 						</tr>
 						{% endif %}
-						<tr style="width:1100px;border-style:solid;"></tr>
-						<tr style="width:1100px;border-style:hidden;">
-							<td colspan="10" style="width:1100px" align="left">
+						<tr style="width:1500px;border-style:solid;"></tr>
+						<tr style="width:1500px;border-style:hidden;">
+							<td colspan="10" style="width:1500" align="left">
 								<br>&nbsp&nbsp&nbsp<b>Facebook entries</b>
 							</td>
 						</tr>
-						<tr style="width:1100px;border-style:solid;"></tr>
-						<tr style="width:1100px;border-style:solid;">
-							<td colspan="10" style="width:1100px">
+						<tr style="width:1500px;border-style:solid;"></tr>
+						<tr style="width:1500px;border-style:solid;">
+							<td colspan="10" style="width:1500">
 							<table>
 							{% if e.personData.fbData|length == 0%}
-							<tr style="width:1100px">
-								<td style="width:1100px">
+							<tr style="width:1500">
+								<td style="width:1500">
 									0 Facebook entries found
 								</td>
 							</tr>
 							{% else %}
 							{% for f in e.personData.fbData %}
 							{% if not f%}
-							<tr style="width:1100px">
-								<td style="width:110px">
+							<tr style="width:1500">
+								<td style="width:150px">
 								{{f.past}}
 								</td>
-								<td style="width:110px">
+								<td style="width:150px">
 								{{f.name}}
 								</td>
-								<td style="width:110px">
+								<td style="width:150px">
 								{{f.home}}
 								</td>
-								<td style="width:110px">
+								<td style="width:150px">
 								{{f.studying}}
 								</td>
-								<td style="width:110px">
+								<td style="width:150px">
 								{{f.studied}}
 								</td>
-								<td style="width:110px">
+								<td style="width:150px">
 								{{f.past_worked}}
 								</td>
-								<td style="width:110px">
+								<td style="width:150px">
 								{{f.current}}
 								</td>
-								<td style="width:110px">
+								<td style="width:150px">
 								{{f.stays}}
 								</td>
-								<td style="width:110px">
+								<td style="width:150px">
 								{{f.went_to}}
 								</td>
-								<td style="width:110px">
+								<td style="width:150px">
 								{{f.id}}
 								</td>
-								<td style="width:110px"><input type="checkbox" class="check_class" name="{{e.personData.personId}}" /></td>
+								<td style="width:150px"><input type="checkbox" class="check_class" name="{{e.personData.personId}}" /></td>
 							</tr>
 							{% endif %}
 							{% endfor %}
@@ -223,79 +223,93 @@
 				</td>
 			</tr>
 			{% for e1 in entries1 %}
-			<tr style="width:1200px">
-				<td colspan="10" style="width:1200px">
-					<table border="1" style="width:1200px">
+			<tr style="width:1600px">
+				<td colspan="10" style="width:1600px">
+					<table border="1" style="width:1600px">
 						<br/>
-						<tr style="width:1100px;border-style:hidden;">
-							<td colspan="10" style="width:1100px">
+						<tr style="width:1500px;border-style:hidden;">
+							<td colspan="10" style="width:1500">
 								&nbsp&nbsp&nbsp<b>Searched for '{{e1.person}}'</b>
 							</td>
 						</tr>
 						{% if e1.profiles|length == 0%}
-							<tr style="width:1100px;border-style:solid;"></tr>
-							<tr style="width:1100px;border-style:solid;">
-								<td colspan="1" style="width:110px" >
+							<tr style="width:1500px;border-style:solid;"></tr>
+							<tr style="width:1500px;border-style:solid;">
+								<td colspan="1" style="width:150px" >
 									No (0) Facebook profiles found.
 								</td>
 							</tr>
 						{% else %}
 							{% for profile in e1.profiles %}
-							<tr style="width:1100px;border-style:solid;"></tr>
-							<tr style="width:1100px;border-style:solid;">
-								<td colspan="1" style="width:110px">
-									<img src="{{profile.pic}}">
-								</td>
-								<td colspan="1" style="width:110px" >
-									{{profile.name}}
-								</td>
-								<td colspan="1" style="width:110px" >
-									<a href="{{profile.profile}}">Facebook Profile</a>
-								</td>
-								<td colspan="1" style="width:110px" >
-									{{profile.education}}
-								</td>
-								<td colspan="1" style="width:110px" >
-									{{profile.work}}
-								</td>
-								<td colspan="1" style="width:110px" >
-									{{profile.location}}
-								</td>
-								<td colspan="1" style="width:110px" >
-									{{profile.work}}
-								</td>
-								<td colspan="1" style="width:110px" >
-									<table style="width:110px">
-									{% for fr in profile.friends %}
-										<tr style="width:110px">
-											<td style="width:110px">
-												<a href="{{fr}}">{{fr}}</a>
-											</td>
-										</tr>
-									{% endfor %}
-									</table>
-								</td>
-								<td colspan="1" style="width:110px" >
-									NA
-								</td>
-								<td colspan="1" style="width:110px" >
-									{% if profile.actual == "yes" %}
-										<input type="checkbox" class="check_class" name="facebook_profile" value="{{profile.profile}}" checked /><br/><br/>
-									{% else %}
-										<input type="checkbox" class="check_class" name="facebook_profile" value="{{profile.profile}}" /><br/><br/>
-									{% endif %}
-								</td>
-							</tr>
-						{% endfor %}
+								{% if profile.actual != "no"%}
+									<tr style="width:1500px;border-style:solid;"></tr>
+									<tr style="width:1500px;border-style:solid;">
+										<td colspan="1" style="width:150px">
+											<img src="{{profile.pic}}">
+										</td>
+										<td colspan="1" style="width:150px" >
+											{{profile.name}}
+										</td>
+										<td colspan="1" style="width:150px" >
+											<a href="{{profile.profile}}">Facebook Profile</a>
+										</td>
+										<td colspan="1" style="width:150px" >
+											{{profile.education}}
+										</td>
+										<td colspan="1" style="width:150px" >
+											{{profile.work}}
+										</td>
+										<td colspan="1" style="width:150px" >
+											{{profile.location}}
+										</td>
+										<td colspan="1" style="width:150px" >
+											{{profile.work}}
+										</td>
+										<td colspan="1" style="width:150px" >
+											Friend list hidden.
+											<!--<table style="width:150px">
+											{% for fr in profile.friends %}
+												<tr style="width:150px">
+													<td style="width:150px">
+														<a href="{{fr}}">{{fr}}</a>
+													</td>
+												</tr>
+											{% endfor %}
+											</table>-->
+										</td>
+										<td colspan="1" style="width:150px" >
+											NA
+										</td>
+										<td colspan="1" style="width:150px" >
+											{% if profile.actual == "na" %}
+												Please indicate ground truth:<br/>
+												Yes:&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="yes__{{profile.profile}}" /><br/>
+												No:&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="no__{{profile.profile}}" /><br/>
+											{% endif %}
+											{% if profile.actual == "yes" %}
+												TRUE(+):&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="yes__{{profile.profile}}" checked disabled /><br/>
+											{% endif %}
+											{% if profile.actual == "no" %}
+												FALSE(-):&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="no__{{profile.profile}}" disabled /><br/>
+											{% endif %}
+										</td>
+									</tr>
+								{% endif %}
+							{% endfor %}
 						{% endif %}
 					</table>
 				</td>
 			</tr>
 			{% endfor %}
-			<tr style="width:1200px">
-				<td colspan="10" style="width:1200px">
+			<tr style="width:1600px">
+				<td colspan="5" style="width:800px">
 					<br/>
 						<b><div align="center"><input name="facebook_form_submit" type="submit" value="Submit changes!"></div></b>
+					<br/>
+				</td>
+				<td colspan="5" style="width:800px">
+					<br/>
+						<b><div align="center"><input name="facebook_form_submit" type="submit" value="Reset Ground Truth!"></div></b>
 					<br/>
 				</td>
 			</tr>

@@ -986,26 +986,45 @@ def markProfile(request):
     db_client = FBDb.connect(db_host, db_port)
     cursor = db_client.facebook_db.buet3.find()
 
-    facebook_profiles = request.POST.getlist("facebook_profile")
-
-    for person in cursor:
-        for profile in person["profiles"]:
-            if profile["profile"] in facebook_profiles:
-                profile["actual"] = "yes"
-            else:
-                profile["actual"] = "no"
-        db_client.facebook_db.buet3.update(
-            {"_id": person["_id"]},
-            {
-                "person": person["person"],
-                "profiles": person["profiles"]
-            }
-        )
+    params_dict = {}
+    facebook_profiles1 = []
+    submit = request.POST.get("facebook_form_submit")
+    if submit == "Reset Ground Truth!":
+        for person in cursor:
+            for profile in person["profiles"]:
+                profile["actual"] = "na"
+            db_client.facebook_db.buet3.update(
+                {"_id": person["_id"]},
+                {
+                    "person": person["person"],
+                    "profiles": person["profiles"]
+                }
+            )
+    elif submit == "Submit changes!":
+        facebook_profiles = request.POST.getlist("facebook_profile")
+        for facebook_profile in facebook_profiles:
+            if facebook_profile.startswith("yes__"):
+                facebook_profiles1.append(facebook_profile.split("yes__")[1])
+                params_dict[facebook_profile.split("yes__")[1]] = "yes"
+            if facebook_profile.startswith("no__"):
+                facebook_profiles1.append(facebook_profile.split("no__")[1])
+                params_dict[facebook_profile.split("no__")[1]] = "no"
+        for person in cursor:
+            for profile in person["profiles"]:
+                if profile["profile"] in facebook_profiles1:
+                    profile["actual"] = params_dict[profile["profile"]]
+            db_client.facebook_db.buet3.update(
+                {"_id": person["_id"]},
+                {
+                    "person": person["person"],
+                    "profiles": person["profiles"]
+                }
+            )
 
     results = get_facebook_entries()
     for person in results:
         for profile in person["profiles"]:
-            if profile["profile"] in facebook_profiles:
+            if profile["profile"] in facebook_profiles1:
                 print person["person"], " ==> ", profile["profile"]
 
     context = {

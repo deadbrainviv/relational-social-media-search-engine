@@ -42,7 +42,7 @@ class FBExecute:
         dict = {}
         dict["name"] = name
         dict["profile"] = profile
-        dict["actual"] = "no"
+        dict["actual"] = "na"
         for line in lines:
             if "Profile Photo" in line:
                 line1 = line.split("Profile Photo\" src=\"")[1]
