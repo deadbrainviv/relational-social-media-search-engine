@@ -15,19 +15,11 @@ colleges.append("buet")
 # fbexecute.get_info_about_people("input.txt", colleges, "logins.txt", db_host, db_port, True)
 # db_client.facebook_db.buet2.remove({"_id":ObjectId("5817c37d80d62e46dc8f8b59")});
 
-print "Printing buet3 collection in facebook_db database:"
 cursor = db_client.facebook_db.buet3.find()
-
 for person in cursor:
+    print "############",person["person"],"############"
     for profile in person["profiles"]:
-        profile["actual"] = "na"
-    db_client.facebook_db.buet3.update(
-    {"_id": person["_id"]},
-    {
-        "person": person["person"],
-        "profiles": person["profiles"]
-    }
-    )
+        print profile["profile"]," - ",profile["score"]
 
 
 
@@ -36,28 +28,62 @@ for person in cursor:
 
 
 
+# Sorting the scores
+# cursor = db_client.facebook_db.buet3.find()
+# for person in cursor:
+#     person["profiles"] = sorted(person["profiles"], key=lambda k: k["score"], reverse=True)
+#     db_client.facebook_db.buet3.update(
+#     {"_id": person["_id"]},
+#     {
+#         "person": person["person"],
+#         "profiles": person["profiles"]
+#     }
+#     )
 
+# Updating scores of all the profiles
+# all_facebook_profiles = []
+# cursor = db_client.facebook_db.buet3.find()
+# for person in cursor:
+#     for profile in person["profiles"]:
+#         #print profile
+#         all_facebook_profiles.append(profile["profile"])
+# counter = 0
+# all_facebook_profiles_score_dict = {}
+# print "############################## Finding relationships from Social Graph (Starts) ##############################"
+# for facebook_profile in all_facebook_profiles:
+#     counter_local = 0
+#     cursor = db_client.facebook_db.buet3.find()
+#     for person in cursor:
+#         for profile in person["profiles"]:
+#             friends = profile["friends"]
+#             for friend in friends:
+#                 if facebook_profile == friend:
+#                     counter = counter + 1
+#                     counter_local = counter_local + 1
+#                     all_facebook_profiles_score_dict[facebook_profile] = counter_local
+#                     print facebook_profile, "found in friend list of ", profile["profile"]
+# print "Total:", counter, "relationships found!"
+# print "Going to iterate score map:"
+# for k,v in all_facebook_profiles_score_dict.items():
+#     print k, " - ", v
+# print "Done iterating the score map!"
+# print "############################## Finding relationships from Social Graph (Ends) ##############################"
+# cursor = db_client.facebook_db.buet3.find()
+# for person in cursor:
+#     for profile in person["profiles"]:
+#         if profile["profile"] in all_facebook_profiles_score_dict.keys():
+#             profile["score"] = all_facebook_profiles_score_dict[profile["profile"]]
+#         else:
+#             profile["score"] = 0;
+#     db_client.facebook_db.buet3.update(
+#     {"_id": person["_id"]},
+#     {
+#         "person": person["person"],
+#         "profiles": person["profiles"]
+#     }
+#     )
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Finding friends of profiles
 # flag = False
 # browser = fbexecute.login_into_facebook(creds_file="logins.txt")
 # for person in cursor:
