@@ -21,6 +21,7 @@ from bson.json_util import dumps
 from os.path import join, dirname, abspath
 
 from FBExecute import *
+from operator import itemgetter
 
 logging.basicConfig(filename='log_file.txt',level=logging.INFO)
 
@@ -937,7 +938,7 @@ def upload(request):
 def delete(request):
     return render(request, 'testApp/delete.html')
 
-def get_facebook_entries():
+def get_facebook_entries(sort_param):
     results = []
     db_host = "localhost"
     db_port = 27017
@@ -950,11 +951,44 @@ def get_facebook_entries():
     #fbexecute.get_info_about_people("input.txt", colleges, "logins.txt")
     cursor = db.buet3.find()
     for result in cursor:
+        if sort_param == "social":
+            show = False
+            result["profiles"] = sorted(result["profiles"], key=itemgetter("score"), reverse=True)
+            for profile in result["profiles"]:
+                if profile["score"] > 0:
+                    show = True
+            if show:
+                result["showscore"] = True
+            else:
+                result["showscore"] = False
+        elif sort_param == "ground":
+            show = False
+            result["profiles"] = sorted(result["profiles"], key=itemgetter("score1"), reverse=True)
+            for profile in result["profiles"]:
+                if profile["score1"] > 0:
+                    show = True
+            if show:
+                result["showscore1"] = True
+            else:
+                result["showscore1"] = False
+        elif sort_param == "combined":
+            show = False
+            result["profiles"] = sorted(result["profiles"], key=itemgetter("score2"), reverse=True)
+            for profile in result["profiles"]:
+                if profile["score2"] > 0:
+                    show = True
+            if show:
+                result["showscore2"] = True
+            else:
+                result["showscore2"] = False
+        else:
+            result["profiles"] = sorted(result["profiles"], key=itemgetter("score1", "score2", "score"), reverse=True)
         results.append(result)
     return results
 
 def facebook(request):
-    results = get_facebook_entries()
+    print "Method facebook called!"
+    results = get_facebook_entries("default")
     counter_empty = 0
     counter_one = 0
     counter_some = 0
@@ -974,7 +1008,89 @@ def facebook(request):
     metadata["total"] = counter_total
     context = {
         "entries1": results,
-        "metadata": metadata
+        "metadata": metadata,
+        "type": "facebook"
+    }
+    return render(request, 'testApp/searchGrad.html', context)
+
+def facebookone(request):
+    print "Method facebookone called!"
+    results = get_facebook_entries("social")
+    counter_empty = 0
+    counter_one = 0
+    counter_some = 0
+    counter_total = 0
+    for person in results:
+        counter_total = counter_total + 1
+        if len(person["profiles"]) == 0:
+            counter_empty = counter_empty + 1
+        if len(person["profiles"]) == 1:
+            counter_one = counter_one + 1
+        if len(person["profiles"]) > 0:
+            counter_some = counter_some + 1
+    metadata = {}
+    metadata["empty"] = counter_empty
+    metadata["one"] = counter_one
+    metadata["some"] = counter_some
+    metadata["total"] = counter_total
+    context = {
+        "entries1": results,
+        "metadata": metadata,
+        "type": "facebookone"
+    }
+    return render(request, 'testApp/searchGrad.html', context)
+
+def facebooktwo(request):
+    print "Method facebooktwo called!"
+    results = get_facebook_entries("ground")
+    counter_empty = 0
+    counter_one = 0
+    counter_some = 0
+    counter_total = 0
+    for person in results:
+        counter_total = counter_total + 1
+        if len(person["profiles"]) == 0:
+            counter_empty = counter_empty + 1
+        if len(person["profiles"]) == 1:
+            counter_one = counter_one + 1
+        if len(person["profiles"]) > 0:
+            counter_some = counter_some + 1
+    metadata = {}
+    metadata["empty"] = counter_empty
+    metadata["one"] = counter_one
+    metadata["some"] = counter_some
+    metadata["total"] = counter_total
+    context = {
+        "entries1": results,
+        "metadata": metadata,
+        "type": "facebooktwo"
+    }
+    return render(request, 'testApp/searchGrad.html', context)
+
+def facebookthree(request):
+    print "Method facebookthree called!"
+    results = get_facebook_entries("combined")
+    counter_empty = 0
+    counter_one = 0
+    counter_some = 0
+    counter_total = 0
+    for person in results:
+        counter_total = counter_total + 1
+        if len(person["profiles"]) == 0:
+            counter_empty = counter_empty + 1
+        if len(person["profiles"]) == 1:
+            counter_one = counter_one + 1
+        if len(person["profiles"]) > 0:
+            counter_some = counter_some + 1
+    metadata = {}
+    metadata["empty"] = counter_empty
+    metadata["one"] = counter_one
+    metadata["some"] = counter_some
+    metadata["total"] = counter_total
+    context = {
+        "entries1": results,
+        "metadata": metadata,
+        "type": "facebookthree"
     }
     return render(request, 'testApp/searchGrad.html', context)
 
@@ -1021,7 +1137,7 @@ def markProfile(request):
                 }
             )
 
-    results = get_facebook_entries()
+    results = get_facebook_entries("default")
     for person in results:
         for profile in person["profiles"]:
             if profile["profile"] in facebook_profiles1:
