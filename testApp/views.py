@@ -953,36 +953,58 @@ def get_facebook_entries(sort_param):
     for result in cursor:
         if sort_param == "social":
             show = False
+            result["showscore"] = False
+            result["showscore1"] = False
+            result["showscore2"] = False
             result["profiles"] = sorted(result["profiles"], key=itemgetter("score"), reverse=True)
             for profile in result["profiles"]:
                 if profile["score"] > 0:
                     show = True
             if show:
                 result["showscore"] = True
-            else:
-                result["showscore"] = False
         elif sort_param == "ground":
             show = False
+            result["showscore"] = False
+            result["showscore1"] = False
+            result["showscore2"] = False
             result["profiles"] = sorted(result["profiles"], key=itemgetter("score1"), reverse=True)
             for profile in result["profiles"]:
                 if profile["score1"] > 0:
                     show = True
             if show:
                 result["showscore1"] = True
-            else:
-                result["showscore1"] = False
         elif sort_param == "combined":
             show = False
+            result["showscore"] = False
+            result["showscore1"] = False
+            result["showscore2"] = False
             result["profiles"] = sorted(result["profiles"], key=itemgetter("score2"), reverse=True)
             for profile in result["profiles"]:
                 if profile["score2"] > 0:
                     show = True
             if show:
                 result["showscore2"] = True
-            else:
-                result["showscore2"] = False
         else:
+            showscore = False
+            showscore1 = False
+            showscore2 = False
+            result["showscore"] = False
+            result["showscore1"] = False
+            result["showscore2"] = False
             result["profiles"] = sorted(result["profiles"], key=itemgetter("score1", "score2", "score"), reverse=True)
+            for profile in result["profiles"]:
+                if profile["score"] > 0:
+                    showscore = True
+                if profile["score1"] > 0:
+                    showscore1 = True
+                if profile["score2"] > 0:
+                    showscore2 = True
+            if showscore:
+                result["showscore"] = True
+            if showscore1:
+                result["showscore1"] = True
+            if showscore2:
+                result["showscore2"] = True
         results.append(result)
     return results
 
@@ -1006,6 +1028,19 @@ def facebook(request):
     metadata["one"] = counter_one
     metadata["some"] = counter_some
     metadata["total"] = counter_total
+    score = 0
+    score1 = 0
+    score2 = 0
+    for person in results:
+        if person["showscore"]:
+            score = score + 1
+        if person["showscore1"]:
+            score1 = score1 + 1
+        if person["showscore2"]:
+            score2 = score2 + 1
+    metadata["score"] = score
+    metadata["score1"] = score1
+    metadata["score2"] = score2
     context = {
         "entries1": results,
         "metadata": metadata,
@@ -1033,6 +1068,19 @@ def facebookone(request):
     metadata["one"] = counter_one
     metadata["some"] = counter_some
     metadata["total"] = counter_total
+    score = 0
+    score1 = 0
+    score2 = 0
+    for person in results:
+        if person["showscore"]:
+            score = score + 1
+        if person["showscore1"]:
+            score1 = score1 + 1
+        if person["showscore2"]:
+            score2 = score2 + 1
+    metadata["score"] = score
+    metadata["score1"] = score1
+    metadata["score2"] = score2
     context = {
         "entries1": results,
         "metadata": metadata,
@@ -1060,6 +1108,19 @@ def facebooktwo(request):
     metadata["one"] = counter_one
     metadata["some"] = counter_some
     metadata["total"] = counter_total
+    score = 0
+    score1 = 0
+    score2 = 0
+    for person in results:
+        if person["showscore"]:
+            score = score + 1
+        if person["showscore1"]:
+            score1 = score1 + 1
+        if person["showscore2"]:
+            score2 = score2 + 1
+    metadata["score"] = score
+    metadata["score1"] = score1
+    metadata["score2"] = score2
     context = {
         "entries1": results,
         "metadata": metadata,
@@ -1087,6 +1148,19 @@ def facebookthree(request):
     metadata["one"] = counter_one
     metadata["some"] = counter_some
     metadata["total"] = counter_total
+    score = 0
+    score1 = 0
+    score2 = 0
+    for person in results:
+        if person["showscore"]:
+            score = score + 1
+        if person["showscore1"]:
+            score1 = score1 + 1
+        if person["showscore2"]:
+            score2 = score2 + 1
+    metadata["score"] = score
+    metadata["score1"] = score1
+    metadata["score2"] = score2
     context = {
         "entries1": results,
         "metadata": metadata,
