@@ -15516,3 +15516,4 @@ Traceback (most recent call last):
   File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 1013, in facebook
     if person["showscore"]:
 KeyError: 'showscore'
+WARNING:django.request:Not Found: /favicon.ico
