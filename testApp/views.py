@@ -956,6 +956,7 @@ def get_facebook_entries(sort_param):
             result["showscore"] = False
             result["showscore1"] = False
             result["showscore2"] = False
+            result["showjacc"] = False
             result["profiles"] = sorted(result["profiles"], key=itemgetter("score"), reverse=True)
             for profile in result["profiles"]:
                 if profile["score"] > 0:
@@ -967,6 +968,7 @@ def get_facebook_entries(sort_param):
             result["showscore"] = False
             result["showscore1"] = False
             result["showscore2"] = False
+            result["showjacc"] = False
             result["profiles"] = sorted(result["profiles"], key=itemgetter("score1"), reverse=True)
             for profile in result["profiles"]:
                 if profile["score1"] > 0:
@@ -979,6 +981,7 @@ def get_facebook_entries(sort_param):
             result["showscore"] = False
             result["showscore1"] = False
             result["showscore2"] = False
+            result["showjacc"] = False
             result["profiles"] = sorted(result["profiles"], key=itemgetter("score2"), reverse=True)
             for profile in result["profiles"]:
                 if profile["score2"] > 0:
@@ -997,6 +1000,7 @@ def get_facebook_entries(sort_param):
             result["showscore"] = False
             result["showscore1"] = False
             result["showscore2"] = False
+            result["showjacc"] = False
             result["profiles"] = sorted(result["profiles"], key=itemgetter("score1", "score2", "score"), reverse=True)
             for profile in result["profiles"]:
                 if profile["score"] > 0:
@@ -1041,6 +1045,7 @@ def facebook(request):
     score = 0
     score1 = 0
     score2 = 0
+    jacc = 0
     for person in results:
         if person["showscore"]:
             score = score + 1
@@ -1048,9 +1053,12 @@ def facebook(request):
             score1 = score1 + 1
         if person["showscore2"]:
             score2 = score2 + 1
+        if person["showjacc"]:
+            jacc = jacc + 1
     metadata["score"] = score
     metadata["score1"] = score1
     metadata["score2"] = score2
+    metadata["jacc"] = jacc
     context = {
         "entries1": results,
         "metadata": metadata,
@@ -1081,6 +1089,7 @@ def facebookone(request):
     score = 0
     score1 = 0
     score2 = 0
+    jacc = 0
     for person in results:
         if person["showscore"]:
             score = score + 1
@@ -1088,9 +1097,12 @@ def facebookone(request):
             score1 = score1 + 1
         if person["showscore2"]:
             score2 = score2 + 1
+        if person["showjacc"]:
+            jacc = jacc + 1
     metadata["score"] = score
     metadata["score1"] = score1
     metadata["score2"] = score2
+    metadata["jacc"] = jacc
     context = {
         "entries1": results,
         "metadata": metadata,
@@ -1121,6 +1133,7 @@ def facebooktwo(request):
     score = 0
     score1 = 0
     score2 = 0
+    jacc = 0
     for person in results:
         if person["showscore"]:
             score = score + 1
@@ -1128,9 +1141,12 @@ def facebooktwo(request):
             score1 = score1 + 1
         if person["showscore2"]:
             score2 = score2 + 1
+        if person["showjacc"]:
+            jacc = jacc + 1
     metadata["score"] = score
     metadata["score1"] = score1
     metadata["score2"] = score2
+    metadata["jacc"] = jacc
     context = {
         "entries1": results,
         "metadata": metadata,
@@ -1161,6 +1177,7 @@ def facebookthree(request):
     score = 0
     score1 = 0
     score2 = 0
+    jacc = 0
     for person in results:
         if person["showscore"]:
             score = score + 1
@@ -1168,9 +1185,12 @@ def facebookthree(request):
             score1 = score1 + 1
         if person["showscore2"]:
             score2 = score2 + 1
+        if person["showjacc"]:
+            jacc = jacc + 1
     metadata["score"] = score
     metadata["score1"] = score1
     metadata["score2"] = score2
+    metadata["jacc"] = jacc
     context = {
         "entries1": results,
         "metadata": metadata,

@@ -30,6 +30,7 @@
 				<b><font size="3">'Social Graph' based pruned profiles &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.score}}</font></b><br/>
 				<b><font size="3">'Ground Truth' based pruned profiles &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.score1}}</font></b><br/>
 				<b><font size="3">'Combined Approach' based pruned profiles &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.score2}}</font></b><br/>
+				<b><font size="3">'Seed Friends Ground Truth Approach' based pruned profiles &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.jacc}}</font></b><br/>
 			</td>
 		</tr>
 		</tr>
@@ -250,7 +251,7 @@
 							<tr style="width:1500px;border-style:solid;"></tr>
 							<tr style="width:1500px;border-style:solid;">
 								<td colspan="1" style="width:150px" >
-									No (0) Facebook profiles found complying to 'Combined Scores Heuristic' and 'Seed Friends Truth'.
+									No (0) Facebook profiles found complying to 'Combined Scores Heuristic' and 'Seed Friends Ground Truth'.
 								</td>
 							</tr>
 						{% else %}
@@ -265,7 +266,7 @@
 												<b>Ground Truth:&nbsp;&nbsp;{{profile.score1}}</b><br/>
 												<b>Combined:&nbsp;&nbsp;{{profile.score2}}</b><br/>
 												{% if profile.jaccard %}
-												<b>Seed Friends Truth:&nbsp;&nbsp;{{profile.jaccard}}</b><br/>
+												<b>Seed Friends Ground Truth:&nbsp;&nbsp;{{profile.jaccard}}</b><br/>
 												{% endif %}
 											</td>
 											<td colspan="1" style="width:150px" >
@@ -461,7 +462,7 @@
 											<tr style="width:1500px;border-style:solid;">
 												<td colspan="1" style="width:150px">
 													<img src="{{profile.pic}}"><br/>
-													<font color="red"><b>Seed Friends Truth:&nbsp;&nbsp;{{profile.jaccard}}</b><br/></font>
+													<font color="red"><b>Seed Friends Ground Truth:&nbsp;&nbsp;{{profile.jaccard}}</b><br/></font>
 												</td>
 												<td colspan="1" style="width:150px" >
 													{{profile.name}}
