@@ -975,6 +975,7 @@ def get_facebook_entries(sort_param):
                 result["showscore1"] = True
         elif sort_param == "combined":
             show = False
+            showjacc = False
             result["showscore"] = False
             result["showscore1"] = False
             result["showscore2"] = False
@@ -982,12 +983,17 @@ def get_facebook_entries(sort_param):
             for profile in result["profiles"]:
                 if profile["score2"] > 0:
                     show = True
+                if profile.has_key("jaccard") and profile["jaccard"] > 0.0:
+                    showjacc = True
             if show:
                 result["showscore2"] = True
+            if showjacc:
+                result["showjacc"] = True
         else:
             showscore = False
             showscore1 = False
             showscore2 = False
+            showjacc = False
             result["showscore"] = False
             result["showscore1"] = False
             result["showscore2"] = False
@@ -999,12 +1005,16 @@ def get_facebook_entries(sort_param):
                     showscore1 = True
                 if profile["score2"] > 0:
                     showscore2 = True
+                if profile.has_key("jaccard") and profile["jaccard"] > 0.0:
+                    showjacc = True
             if showscore:
                 result["showscore"] = True
             if showscore1:
                 result["showscore1"] = True
             if showscore2:
                 result["showscore2"] = True
+            if showjacc:
+                result["showjacc"] = True
         results.append(result)
     return results
 

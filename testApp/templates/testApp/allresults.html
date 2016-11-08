@@ -246,11 +246,11 @@
 									No (0) Facebook profiles found complying to 'Ground Truth Scores Heuristic'.
 								</td>
 							</tr>
-						{% elif type == "facebookthree" and e1.showscore2 == False %}
+						{% elif type == "facebookthree" and e1.showscore2 == False and e1.showjacc == False %}
 							<tr style="width:1500px;border-style:solid;"></tr>
 							<tr style="width:1500px;border-style:solid;">
 								<td colspan="1" style="width:150px" >
-									No (0) Facebook profiles found complying to 'Combined Scores Heuristic'.
+									No (0) Facebook profiles found complying to 'Combined Scores Heuristic' and 'Seed Friends Truth'.
 								</td>
 							</tr>
 						{% else %}
@@ -264,6 +264,9 @@
 												<b>Social Graph:&nbsp;&nbsp;{{profile.score}}</b><br/>
 												<b>Ground Truth:&nbsp;&nbsp;{{profile.score1}}</b><br/>
 												<b>Combined:&nbsp;&nbsp;{{profile.score2}}</b><br/>
+												{% if profile.jaccard %}
+												<b>Seed Friends Truth:&nbsp;&nbsp;{{profile.jaccard}}</b><br/>
+												{% endif %}
 											</td>
 											<td colspan="1" style="width:150px" >
 												{{profile.name}}
@@ -414,6 +417,51 @@
 												<td colspan="1" style="width:150px">
 													<img src="{{profile.pic}}"><br/>
 													<b>Combined:&nbsp;&nbsp;{{profile.score2}}</b><br/>
+												</td>
+												<td colspan="1" style="width:150px" >
+													{{profile.name}}
+												</td>
+												<td colspan="1" style="width:150px" >
+													<a href="{{profile.profile}}">Facebook Profile</a>
+												</td>
+												<td colspan="1" style="width:150px" >
+													{{profile.education}}
+												</td>
+												<td colspan="1" style="width:150px" >
+													{{profile.work}}
+												</td>
+												<td colspan="1" style="width:150px" >
+													{{profile.location}}
+												</td>
+												<td colspan="1" style="width:150px" >
+													{{profile.work}}
+												</td>
+												<td colspan="1" style="width:150px" >
+													Friend list hidden.
+													<!--<table style="width:150px">
+													{% for fr in profile.friends %}
+														<tr style="width:150px">
+															<td style="width:150px">
+																<a href="{{fr}}">{{fr}}</a>
+															</td>
+														</tr>
+													{% endfor %}
+													</table>-->
+												</td>
+												<td colspan="1" style="width:150px" >
+													NA
+												</td>
+												<td colspan="1" style="width:150px" >
+													NA
+												</td>
+											</tr>
+										{% endif %}
+										{% if profile.jaccard %}
+											<tr style="width:1500px;border-style:solid;"></tr>
+											<tr style="width:1500px;border-style:solid;">
+												<td colspan="1" style="width:150px">
+													<img src="{{profile.pic}}"><br/>
+													<font color="red"><b>Seed Friends Truth:&nbsp;&nbsp;{{profile.jaccard}}</b><br/></font>
 												</td>
 												<td colspan="1" style="width:150px" >
 													{{profile.name}}
