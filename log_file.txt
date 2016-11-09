@@ -15618,3 +15618,461 @@ Traceback (most recent call last):
   File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 1056, in facebook
     if person["showjacc"]:
 KeyError: 'showjacc'
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /testApp/facebook/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 1050, in facebook
+    if person["watson"]:
+KeyError: 'watson'
+ERROR:django.request:Internal Server Error: /testApp/facebook/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 1050, in facebook
+    if person["watson"]:
+KeyError: 'watson'
+ERROR:django.request:Internal Server Error: /testApp/facebook/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 1050, in facebook
+    if person["watson"]:
+KeyError: 'watson'
+ERROR:django.request:Internal Server Error: /testApp/facebook/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 1063, in facebook
+    return render(request, 'testApp/searchGrad.html', context)
+  File "C:\Python27\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python27\lib\site-packages\django\template\loader.py", line 68, in render_to_string
+    return template.render(context, request)
+  File "C:\Python27\lib\site-packages\django\template\backends\django.py", line 66, in render
+    return self.template.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 208, in render
+    return self._render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 199, in _render
+    return self.nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\loader_tags.py", line 210, in render
+    return template.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 210, in render
+    return self._render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 199, in _render
+    return self.nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 315, in render
+    return nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 315, in render
+    return nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 315, in render
+    return nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 315, in render
+    return nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 165, in render
+    values = list(values)
+TypeError: 'int' object is not iterable
+ERROR:django.request:Internal Server Error: /testApp/facebook/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 1063, in facebook
+    return render(request, 'testApp/searchGrad.html', context)
+  File "C:\Python27\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python27\lib\site-packages\django\template\loader.py", line 68, in render_to_string
+    return template.render(context, request)
+  File "C:\Python27\lib\site-packages\django\template\backends\django.py", line 66, in render
+    return self.template.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 208, in render
+    return self._render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 199, in _render
+    return self.nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\loader_tags.py", line 210, in render
+    return template.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 210, in render
+    return self._render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 199, in _render
+    return self.nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 315, in render
+    return nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 315, in render
+    return nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 315, in render
+    return nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 315, in render
+    return nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 165, in render
+    values = list(values)
+TypeError: 'int' object is not iterable
+ERROR:django.request:Internal Server Error: /testApp/facebook/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 1063, in facebook
+    return render(request, 'testApp/searchGrad.html', context)
+  File "C:\Python27\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python27\lib\site-packages\django\template\loader.py", line 68, in render_to_string
+    return template.render(context, request)
+  File "C:\Python27\lib\site-packages\django\template\backends\django.py", line 66, in render
+    return self.template.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 208, in render
+    return self._render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 199, in _render
+    return self.nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\loader_tags.py", line 210, in render
+    return template.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 210, in render
+    return self._render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 199, in _render
+    return self.nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 315, in render
+    return nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 315, in render
+    return nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 315, in render
+    return nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 315, in render
+    return nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 165, in render
+    values = list(values)
+TypeError: 'int' object is not iterable
+ERROR:django.request:Internal Server Error: /testApp/facebook/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 1063, in facebook
+    return render(request, 'testApp/searchGrad.html', context)
+  File "C:\Python27\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python27\lib\site-packages\django\template\loader.py", line 68, in render_to_string
+    return template.render(context, request)
+  File "C:\Python27\lib\site-packages\django\template\backends\django.py", line 66, in render
+    return self.template.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 208, in render
+    return self._render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 199, in _render
+    return self.nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\loader_tags.py", line 210, in render
+    return template.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 210, in render
+    return self._render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 199, in _render
+    return self.nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 315, in render
+    return nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 315, in render
+    return nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 315, in render
+    return nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 315, in render
+    return nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 165, in render
+    values = list(values)
+TypeError: 'int' object is not iterable
+ERROR:django.request:Internal Server Error: /testApp/facebook/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 1063, in facebook
+    return render(request, 'testApp/searchGrad.html', context)
+  File "C:\Python27\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python27\lib\site-packages\django\template\loader.py", line 68, in render_to_string
+    return template.render(context, request)
+  File "C:\Python27\lib\site-packages\django\template\backends\django.py", line 66, in render
+    return self.template.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 208, in render
+    return self._render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 199, in _render
+    return self.nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\loader_tags.py", line 210, in render
+    return template.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 210, in render
+    return self._render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 199, in _render
+    return self.nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 315, in render
+    return nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 315, in render
+    return nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 315, in render
+    return nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 315, in render
+    return nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\defaulttags.py", line 165, in render
+    values = list(values)
+TypeError: 'int' object is not iterable
+ERROR:django.request:Internal Server Error: /testApp/facebook/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 1063, in facebook
+    return render(request, 'testApp/searchGrad.html', context)
+  File "C:\Python27\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python27\lib\site-packages\django\template\loader.py", line 68, in render_to_string
+    return template.render(context, request)
+  File "C:\Python27\lib\site-packages\django\template\backends\django.py", line 66, in render
+    return self.template.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 208, in render
+    return self._render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 199, in _render
+    return self.nodelist.render(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Python27\lib\site-packages\django\template\loader_tags.py", line 201, in render
+    template = context.template.engine.get_template(template_name)
+  File "C:\Python27\lib\site-packages\django\template\engine.py", line 160, in get_template
+    template, origin = self.find_template(template_name)
+  File "C:\Python27\lib\site-packages\django\template\engine.py", line 134, in find_template
+    name, template_dirs=dirs, skip=skip,
+  File "C:\Python27\lib\site-packages\django\template\loaders\base.py", line 44, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 191, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 233, in compile_nodelist
+    return parser.parse()
+  File "C:\Python27\lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+TemplateSyntaxError: Could not parse the remainder: '% endif %' from '% endif %'

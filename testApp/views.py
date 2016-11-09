@@ -952,73 +952,65 @@ def get_facebook_entries(sort_param):
     cursor = db.buet3.find()
     for result in cursor:
         if sort_param == "social":
-            show = False
             result["showscore"] = False
             result["showscore1"] = False
             result["showscore2"] = False
             result["showjacc"] = False
+            result["watson"] = False
             result["profiles"] = sorted(result["profiles"], key=itemgetter("score"), reverse=True)
             for profile in result["profiles"]:
                 if profile["score"] > 0:
-                    show = True
-            if show:
-                result["showscore"] = True
+                    result["showscore"] = True
         elif sort_param == "ground":
-            show = False
             result["showscore"] = False
             result["showscore1"] = False
             result["showscore2"] = False
             result["showjacc"] = False
+            result["watson"] = False
             result["profiles"] = sorted(result["profiles"], key=itemgetter("score1"), reverse=True)
             for profile in result["profiles"]:
                 if profile["score1"] > 0:
-                    show = True
-            if show:
-                result["showscore1"] = True
+                    result["showscore1"] = True
         elif sort_param == "combined":
-            show = False
-            showjacc = False
             result["showscore"] = False
             result["showscore1"] = False
             result["showscore2"] = False
             result["showjacc"] = False
+            result["watson"] = False
             result["profiles"] = sorted(result["profiles"], key=itemgetter("score2"), reverse=True)
             for profile in result["profiles"]:
                 if profile["score2"] > 0:
-                    show = True
+                    result["showscore2"] = True
                 if profile.has_key("jaccard") and profile["jaccard"] > 0.0:
-                    showjacc = True
-            if show:
-                result["showscore2"] = True
-            if showjacc:
-                result["showjacc"] = True
-        else:
-            showscore = False
-            showscore1 = False
-            showscore2 = False
-            showjacc = False
+                    result["showjacc"] = True
+        elif sort_param == "watson":
             result["showscore"] = False
             result["showscore1"] = False
             result["showscore2"] = False
             result["showjacc"] = False
+            result["watson"] = False
+            result["profiles"] = sorted(result["profiles"], key=itemgetter("score2"), reverse=True)
+            for profile in result["profiles"]:
+                if profile.has_key("watson") and profile["watson"]:
+                    result["watson"] = True
+        else:
+            result["showscore"] = False
+            result["showscore1"] = False
+            result["showscore2"] = False
+            result["showjacc"] = False
+            result["watson"] = False
             result["profiles"] = sorted(result["profiles"], key=itemgetter("score1", "score2", "score"), reverse=True)
             for profile in result["profiles"]:
                 if profile["score"] > 0:
-                    showscore = True
+                    result["showscore"] = True
                 if profile["score1"] > 0:
-                    showscore1 = True
+                    result["showscore1"] = True
                 if profile["score2"] > 0:
-                    showscore2 = True
+                    result["showscore2"] = True
                 if profile.has_key("jaccard") and profile["jaccard"] > 0.0:
-                    showjacc = True
-            if showscore:
-                result["showscore"] = True
-            if showscore1:
-                result["showscore1"] = True
-            if showscore2:
-                result["showscore2"] = True
-            if showjacc:
-                result["showjacc"] = True
+                    result["showjacc"] = True
+                if profile.has_key("watson") and profile["watson"]:
+                    result["watson"] = True
         results.append(result)
     return results
 
@@ -1046,6 +1038,7 @@ def facebook(request):
     score1 = 0
     score2 = 0
     jacc = 0
+    watson = 0
     for person in results:
         if person["showscore"]:
             score = score + 1
@@ -1055,10 +1048,13 @@ def facebook(request):
             score2 = score2 + 1
         if person["showjacc"]:
             jacc = jacc + 1
+        if person["watson"]:
+            watson = watson + 1
     metadata["score"] = score
     metadata["score1"] = score1
     metadata["score2"] = score2
     metadata["jacc"] = jacc
+    metadata["watson"] = watson
     context = {
         "entries1": results,
         "metadata": metadata,
@@ -1195,6 +1191,54 @@ def facebookthree(request):
         "entries1": results,
         "metadata": metadata,
         "type": "facebookthree"
+    }
+    return render(request, 'testApp/searchGrad.html', context)
+
+def facebookfour(request):
+    print "Method facebookfour called!"
+    results = get_facebook_entries("watson")
+    counter_empty = 0
+    counter_one = 0
+    counter_some = 0
+    counter_total = 0
+    for person in results:
+        counter_total = counter_total + 1
+        if len(person["profiles"]) == 0:
+            counter_empty = counter_empty + 1
+        if len(person["profiles"]) == 1:
+            counter_one = counter_one + 1
+        if len(person["profiles"]) > 0:
+            counter_some = counter_some + 1
+    metadata = {}
+    metadata["empty"] = counter_empty
+    metadata["one"] = counter_one
+    metadata["some"] = counter_some
+    metadata["total"] = counter_total
+    score = 0
+    score1 = 0
+    score2 = 0
+    jacc = 0
+    watson = 0
+    for person in results:
+        if person["showscore"]:
+            score = score + 1
+        if person["showscore1"]:
+            score1 = score1 + 1
+        if person["showscore2"]:
+            score2 = score2 + 1
+        if person["showjacc"]:
+            jacc = jacc + 1
+        if person["watson"]:
+            watson = watson + 1
+    metadata["score"] = score
+    metadata["score1"] = score1
+    metadata["score2"] = score2
+    metadata["jacc"] = jacc
+    metadata["watson"] = watson
+    context = {
+        "entries1": results,
+        "metadata": metadata,
+        "type": "facebookfour"
     }
     return render(request, 'testApp/searchGrad.html', context)
 
