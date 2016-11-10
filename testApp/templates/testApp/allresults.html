@@ -40,6 +40,7 @@
 	<br>
 	<br>
 	<br>
+	{% if type != "facebookfive" %}
 	<div class="l-content"> 
     <div id="selections_list" class="pricing-tables pure-g">
 	<table id="table_one" border="3" style="table-layout: fixed;width:1600px;margin-left:2cm;">
@@ -227,7 +228,7 @@
 								&nbsp&nbsp&nbsp<b>Searched for '{{e1.person}}'</b>
 							</td>
 						</tr>
-						{% if e1.profiles|length == 0%}
+						{% if e1.profiles|length == 0 %}
 							<tr style="width:1500px;border-style:solid;"></tr>
 							<tr style="width:1500px;border-style:solid;">
 								<td colspan="1" style="width:150px" >
@@ -580,6 +581,403 @@
 			</tr>
 		</tbody>
 	</table>
+	{% else %}
+	<table id="table_one" border="3" style="table-layout: fixed;width:1600px;margin-left:2cm;">
+		<thead style="width:1600px">
+			<tr style="width:1600px">
+				<th bgcolor="#FD6D4F" colspan="10" style="width:150px;word-wrap:break-word"><font size="3">SOCIAL GRAPH APPROACH</font></th>
+			</tr>
+		</thead>
+		<thead style="width:1600px">
+			<tr style="width:1600px">
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Image</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Name</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Profile</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">University</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Industry</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Location</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Work Info</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Connections</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Multiple</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Select</th>
+			</tr>
+		</thead>
+		<br>
+		<tbody style="width:1600px">
+			{% for e1 in entries1 %}
+			<tr style="width:1600px">
+				<td colspan="10" style="width:1600px">
+					<table border="1" style="width:1600px">
+						<br/>
+						<tr style="width:1500px;border-style:hidden;">
+							<td colspan="10" style="width:1500">
+								&nbsp&nbsp&nbsp<b>Searched for '{{e1.person}}'</b>
+							</td>
+						</tr>
+						{% for profile in e1.profiles %}
+						{% if profile.actual != "no" and profile.score > 0 %}
+						<tr style="width:1500px;border-style:solid;"></tr>
+						<tr style="width:1500px;border-style:solid;">
+							<td colspan="1" style="width:150px">
+								<img src="{{profile.pic}}"><br/>
+								<b>Social Graph score:&nbsp;&nbsp;{{profile.score}}</b><br/>
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.name}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								<a href="{{profile.profile}}">Facebook Profile</a>
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.education}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.work}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.location}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.work}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								Friend list hidden.
+							</td>
+							<td colspan="1" style="width:150px" >
+								NA
+							</td>
+							<td colspan="1" style="width:150px" >
+								NA
+							</td>
+						</tr>
+					{% endif %}
+					{% endfor %}
+					</table>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<br/><br/><br/>
+	<table id="table_one" border="3" style="table-layout: fixed;width:1600px;margin-left:2cm;">
+		<thead style="width:1600px">
+			<tr style="width:1600px">
+				<th bgcolor="#FD6D4F" colspan="10" style="width:150px;word-wrap:break-word"><font size="3">GROUND TRUTH APPROACH</font></th>
+			</tr>
+		</thead>
+		<thead style="width:1600px">
+			<tr style="width:1600px">
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Image</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Name</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Profile</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">University</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Industry</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Location</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Work Info</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Connections</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Multiple</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Select</th>
+			</tr>
+		</thead>
+		<br>
+		<tbody style="width:1600px">
+			{% for e1 in entries1 %}
+			<tr style="width:1600px">
+				<td colspan="10" style="width:1600px">
+					<table border="1" style="width:1600px">
+						<br/>
+						<tr style="width:1500px;border-style:hidden;">
+							<td colspan="10" style="width:1500">
+								&nbsp&nbsp&nbsp<b>Searched for '{{e1.person}}'</b>
+							</td>
+						</tr>
+						{% for profile in e1.profiles %}
+						{% if profile.actual != "no" and profile.score1 > 0 %}
+						<tr style="width:1500px;border-style:solid;"></tr>
+						<tr style="width:1500px;border-style:solid;">
+							<td colspan="1" style="width:150px">
+								<img src="{{profile.pic}}"><br/>
+								<b>Ground Truth Graph score:&nbsp;&nbsp;{{profile.score1}}</b><br/>
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.name}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								<a href="{{profile.profile}}">Facebook Profile</a>
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.education}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.work}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.location}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.work}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								Friend list hidden.
+							</td>
+							<td colspan="1" style="width:150px" >
+								NA
+							</td>
+							<td colspan="1" style="width:150px" >
+								NA
+							</td>
+						</tr>
+					{% endif %}
+					{% endfor %}
+					</table>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<br/><br/><br/>
+	<table id="table_one" border="3" style="table-layout: fixed;width:1600px;margin-left:2cm;">
+		<thead style="width:1600px">
+			<tr style="width:1600px">
+				<th bgcolor="#FD6D4F" colspan="10" style="width:150px;word-wrap:break-word"><font size="3">COMBINED (S + GT) APPROACH</font></th>
+			</tr>
+		</thead>
+		<thead style="width:1600px">
+			<tr style="width:1600px">
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Image</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Name</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Profile</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">University</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Industry</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Location</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Work Info</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Connections</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Multiple</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Select</th>
+			</tr>
+		</thead>
+		<br>
+		<tbody style="width:1600px">
+			{% for e1 in entries1 %}
+			<tr style="width:1600px">
+				<td colspan="10" style="width:1600px">
+					<table border="1" style="width:1600px">
+						<br/>
+						<tr style="width:1500px;border-style:hidden;">
+							<td colspan="10" style="width:1500">
+								&nbsp&nbsp&nbsp<b>Searched for '{{e1.person}}'</b>
+							</td>
+						</tr>
+						{% for profile in e1.profiles %}
+						{% if profile.actual != "no" and profile.score2 > 0 %}
+						<tr style="width:1500px;border-style:solid;"></tr>
+						<tr style="width:1500px;border-style:solid;">
+							<td colspan="1" style="width:150px">
+								<img src="{{profile.pic}}"><br/>
+								<b>Combined (S + GT) Graph score:&nbsp;&nbsp;{{profile.score2}}</b><br/>
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.name}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								<a href="{{profile.profile}}">Facebook Profile</a>
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.education}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.work}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.location}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.work}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								Friend list hidden.
+							</td>
+							<td colspan="1" style="width:150px" >
+								NA
+							</td>
+							<td colspan="1" style="width:150px" >
+								NA
+							</td>
+						</tr>
+					{% endif %}
+					{% endfor %}
+					</table>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<br/><br/><br/>
+	<table id="table_one" border="3" style="table-layout: fixed;width:1600px;margin-left:2cm;">
+		<thead style="width:1600px">
+			<tr style="width:1600px">
+				<th bgcolor="#FD6D4F" colspan="10" style="width:150px;word-wrap:break-word"><font size="3">SEED FRIENDS LIST APPROACH</font></th>
+			</tr>
+		</thead>
+		<thead style="width:1600px">
+			<tr style="width:1600px">
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Image</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Name</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Profile</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">University</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Industry</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Location</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Work Info</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Connections</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Multiple</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Select</th>
+			</tr>
+		</thead>
+		<br>
+		<tbody style="width:1600px">
+			{% for e1 in entries1 %}
+			<tr style="width:1600px">
+				<td colspan="10" style="width:1600px">
+					<table border="1" style="width:1600px">
+						<br/>
+						<tr style="width:1500px;border-style:hidden;">
+							<td colspan="10" style="width:1500">
+								&nbsp&nbsp&nbsp<b>Searched for '{{e1.person}}'</b>
+							</td>
+						</tr>
+						{% for profile in e1.profiles %}
+						{% if profile.actual != "no" and profile.jaccard %}
+						<tr style="width:1500px;border-style:solid;"></tr>
+						<tr style="width:1500px;border-style:solid;">
+							<td colspan="1" style="width:150px">
+								<img src="{{profile.pic}}"><br/>
+								<b>Seed Friends Graph score:&nbsp;&nbsp;{{profile.jaccard}}</b><br/>
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.name}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								<a href="{{profile.profile}}">Facebook Profile</a>
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.education}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.work}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.location}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.work}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								Friend list hidden.
+							</td>
+							<td colspan="1" style="width:150px" >
+								NA
+							</td>
+							<td colspan="1" style="width:150px" >
+								NA
+							</td>
+						</tr>
+					{% endif %}
+					{% endfor %}
+					</table>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<br/><br/><br/>
+	<table id="table_one" border="3" style="table-layout: fixed;width:1600px;margin-left:2cm;">
+		<thead style="width:1600px">
+			<tr style="width:1600px">
+				<th bgcolor="#FD6D4F" colspan="10" style="width:150px;word-wrap:break-word"><font size="3">WATSON APPROACH</font></th>
+			</tr>
+		</thead>
+		<thead style="width:1600px">
+			<tr style="width:1600px">
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Image</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Name</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Profile</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">University</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Industry</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Location</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Work Info</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Connections</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Multiple</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Select</th>
+			</tr>
+		</thead>
+		<br>
+		<tbody style="width:1600px">
+			{% for e1 in entries1 %}
+			<tr style="width:1600px">
+				<td colspan="10" style="width:1600px">
+					<table border="1" style="width:1600px">
+						<br/>
+						<tr style="width:1500px;border-style:hidden;">
+							<td colspan="10" style="width:1500">
+								&nbsp&nbsp&nbsp<b>Searched for '{{e1.person}}'</b>
+							</td>
+						</tr>
+						{% for profile in e1.profiles %}
+						{% if profile.actual != "no" and profile.watson %}
+						<tr style="width:1500px;border-style:solid;"></tr>
+						<tr style="width:1500px;border-style:solid;">
+							<td colspan="1" style="width:150px">
+								<img src="{{profile.pic}}"><br/>
+								<font color="red"><br/>
+									{% for k,v in profile.watson.items %}
+										{% if k == "images" %}
+											{% for vv in v%}
+												{% for vvv in vv.faces %}
+													<b>Gender:&nbsp;&nbsp;{{vvv.gender}}<br/>
+													Age:&nbsp;&nbsp;{{vvv.age}}<br/><br/></b>
+												{% endfor %}
+											{% endfor %}
+										{% endif %}
+									{% endfor %}
+								</font>
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.name}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								<a href="{{profile.profile}}">Facebook Profile</a>
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.education}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.work}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.location}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.work}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								Friend list hidden.
+							</td>
+							<td colspan="1" style="width:150px" >
+								NA
+							</td>
+							<td colspan="1" style="width:150px" >
+								NA
+							</td>
+						</tr>
+					{% endif %}
+					{% endfor %}
+					</table>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% endif %}
 	<p>
 		If you don't see any output, then probably 
 		the email and university combination was not accurate, check your details.
