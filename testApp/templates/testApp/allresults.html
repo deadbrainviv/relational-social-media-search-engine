@@ -32,6 +32,12 @@
 				<b><font size="3">'Combined Approach' based pruned profiles &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.score2}}</font></b><br/>
 				<b><font size="3">'Seed Friends Ground Truth Approach' based pruned profiles &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.jacc}}</font></b><br/>
 				<b><font size="3">'Watson Info' present for profiles &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.watson}}</font></b><br/>
+				<br/><br/>
+				<b><font size="3">Facebook Precision &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.precision.precision1}}</font></b><br/>
+				<b><font size="3">Social Graph Heuristic Precision &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.precision.precision2}}</font></b><br/>
+				<b><font size="3">Ground Truth Social Graph Precision &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.precision.precision3}}</font></b><br/>
+				<b><font size="3">Combined (Social + GT) Precision &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.precision.precision4}}</font></b><br/>
+				<b><font size="3">Seed friends Ground Truth Precision &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.precision.precision5}}</font></b><br/>
 			</td>
 		</tr>
 		</tr>
@@ -67,12 +73,12 @@
 					{% if not e%}
 					<table border="1" style="width:1600px">
 						<tr style="width:1500px;border-style:hidden;">
-							<td colspan="10" style="width:1500">
+							<td colspan="10" style="width:1500px">
 								&nbsp&nbsp&nbsp<b>Searched for '{{e.personData.firstName}} {{e.personData.lastName}}'</b>
 							</td>
 						</tr>
 						<tr style="width:1500px;border-style:hidden;">
-							<td colspan="10" style="width:1500" align="left">
+							<td colspan="10" style="width:1500px" align="left">
 								&nbsp&nbsp&nbsp<b>LinkedIn entries</b>
 							</td>
 						</tr>
@@ -158,24 +164,24 @@
 						{% endif %}
 						<tr style="width:1500px;border-style:solid;"></tr>
 						<tr style="width:1500px;border-style:hidden;">
-							<td colspan="10" style="width:1500" align="left">
+							<td colspan="10" style="width:1500px" align="left">
 								<br>&nbsp&nbsp&nbsp<b>Facebook entries</b>
 							</td>
 						</tr>
 						<tr style="width:1500px;border-style:solid;"></tr>
 						<tr style="width:1500px;border-style:solid;">
-							<td colspan="10" style="width:1500">
+							<td colspan="10" style="width:1500px">
 							<table>
 							{% if e.personData.fbData|length == 0%}
-							<tr style="width:1500">
-								<td style="width:1500">
+							<tr style="width:1500px">
+								<td style="width:1500px">
 									0 Facebook entries found
 								</td>
 							</tr>
 							{% else %}
 							{% for f in e.personData.fbData %}
 							{% if not f%}
-							<tr style="width:1500">
+							<tr style="width:1500px">
 								<td style="width:150px">
 								{{f.past}}
 								</td>
@@ -224,7 +230,7 @@
 					<table border="1" style="width:1600px">
 						<br/>
 						<tr style="width:1500px;border-style:hidden;">
-							<td colspan="10" style="width:1500">
+							<td colspan="10" style="width:1500px">
 								&nbsp&nbsp&nbsp<b>Searched for '{{e1.person}}'</b>
 							</td>
 						</tr>
@@ -610,7 +616,7 @@
 					<table border="1" style="width:1600px">
 						<br/>
 						<tr style="width:1500px;border-style:hidden;">
-							<td colspan="10" style="width:1500">
+							<td colspan="10" style="width:1500px">
 								&nbsp&nbsp&nbsp<b>Searched for '{{e1.person}}'</b>
 							</td>
 						</tr>
@@ -687,7 +693,7 @@
 					<table border="1" style="width:1600px">
 						<br/>
 						<tr style="width:1500px;border-style:hidden;">
-							<td colspan="10" style="width:1500">
+							<td colspan="10" style="width:1500px">
 								&nbsp&nbsp&nbsp<b>Searched for '{{e1.person}}'</b>
 							</td>
 						</tr>
@@ -764,7 +770,7 @@
 					<table border="1" style="width:1600px">
 						<br/>
 						<tr style="width:1500px;border-style:hidden;">
-							<td colspan="10" style="width:1500">
+							<td colspan="10" style="width:1500px">
 								&nbsp&nbsp&nbsp<b>Searched for '{{e1.person}}'</b>
 							</td>
 						</tr>
@@ -841,7 +847,7 @@
 					<table border="1" style="width:1600px">
 						<br/>
 						<tr style="width:1500px;border-style:hidden;">
-							<td colspan="10" style="width:1500">
+							<td colspan="10" style="width:1500px">
 								&nbsp&nbsp&nbsp<b>Searched for '{{e1.person}}'</b>
 							</td>
 						</tr>
@@ -918,7 +924,7 @@
 					<table border="1" style="width:1600px">
 						<br/>
 						<tr style="width:1500px;border-style:hidden;">
-							<td colspan="10" style="width:1500">
+							<td colspan="10" style="width:1500px">
 								&nbsp&nbsp&nbsp<b>Searched for '{{e1.person}}'</b>
 							</td>
 						</tr>
@@ -1009,7 +1015,7 @@
 						{% for profile in e1.profiles %}
 						{% if profile.actual == "yes" %}
 						<tr style="width:1500px;border-style:hidden;">
-							<td colspan="10" style="width:1500">
+							<td colspan="10" style="width:1500px">
 								&nbsp&nbsp&nbsp<b>Searched for '{{e1.person}}'</b>
 							</td>
 						</tr>
@@ -1060,7 +1066,7 @@
 	<table id="table_one" border="3" style="table-layout: fixed;width:1600px;margin-left:2cm;">
 		<thead style="width:1600px">
 			<tr style="width:1600px">
-				<th bgcolor="#FD6D4F" colspan="10" style="width:150px;word-wrap:break-word"><font size="3">NON VERIFIED PROFILES {{metadata.negatives}}</font></th>
+				<th bgcolor="#FD6D4F" colspan="10" style="width:150px;word-wrap:break-word"><font size="3">NON VERIFIED PROFILES {{metadata.non_positives}}</font></th>
 			</tr>
 		</thead>
 		<thead style="width:1600px">
@@ -1086,16 +1092,36 @@
 						<br/>
 						{% for e1 in entries1 %}
 						{% for profile in e1.profiles %}
-						{% if profile.actual == "na" %}
+						{% if profile.actual != "yes" %}
 						<tr style="width:1500px;border-style:hidden;">
-							<td colspan="10" style="width:1500">
+							<td colspan="10" style="width:1500px">
 								&nbsp&nbsp&nbsp<b>Searched for '{{e1.person}}'</b>
 							</td>
 						</tr>
-						<tr style="width:1500px;border-style:solid;"></tr>
+						<tr style="width:1500px;border-style:solid;"><td colspan="10" style="width:1500px"></td></tr>
 						<tr style="width:1500px;border-style:solid;">
 							<td colspan="1" style="width:150px">
 								<img src="{{profile.pic}}"><br/>
+								<b>Social Graph:&nbsp;&nbsp;{{profile.score}}</b><br/>
+								<b>Ground Truth:&nbsp;&nbsp;{{profile.score1}}</b><br/>
+								<b>Combined:&nbsp;&nbsp;{{profile.score2}}</b><br/>
+								{% if profile.jaccard %}
+									<b>Seed Friends Ground Truth:&nbsp;&nbsp;{{profile.jaccard}}</b><br/>
+								{% endif %}
+								{% if profile.watson %}
+									<font color="red"><br/>
+									{% for k,v in profile.watson.items %}
+										{% if k == "images" %}
+											{% for vv in v%}
+												{% for vvv in vv.faces %}
+													<b>Gender:&nbsp;&nbsp;{{vvv.gender}}<br/>
+													Age:&nbsp;&nbsp;{{vvv.age}}<br/><br/></b>
+												{% endfor %}
+											{% endfor %}
+										{% endif %}
+									{% endfor %}
+									</font>
+								{% endif %}
 							</td>
 							<td colspan="1" style="width:150px" >
 								{{profile.name}}
@@ -1119,18 +1145,15 @@
 								Friend list hidden.
 							</td>
 							<td colspan="1" style="width:150px" >
-								NA
-							</td>
-							<td colspan="1" style="width:150px" >
 								Please indicate ground truth:<br/>
 								Yes:&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="yes__{{profile.profile}}" /><br/>
 								No:&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="no__{{profile.profile}}" /><br/>
 							</td>
 						</tr>
-						<tr style="width:1500px;border-style:solid;"></tr>
-					{% endif %}
-					{% endfor %}
-					{% endfor %}
+						<tr style="width:1500px;border-style:solid;"><td colspan="10" style="width:1500px"></td></tr>
+						{% endif %}
+						{% endfor %}
+						{% endfor %}
 					</table>
 				</td>
 			</tr>
@@ -1169,7 +1192,7 @@
 						{% if e1.profiles|length == 0 %}
 						<tr style="width:1500px;border-style:solid;"></tr>
 						<tr style="width:1500px;border-style:hidden;">
-							<td colspan="10" style="width:1500">
+							<td colspan="10" style="width:1500px">
 								&nbsp&nbsp&nbsp<b>No Facebook profile found for '{{e1.person}}'</b>
 							</td>
 						</tr>

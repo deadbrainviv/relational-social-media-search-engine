@@ -1331,20 +1331,101 @@ def facebooksix(request):
     metadata["score2"] = score2
     metadata["jacc"] = jacc
     metadata["watson"] = watson
+
     positives = 0
-    negatives = 0
+    non_positives = 0
     no_profile = 0
+    ground_truth = {}
     for person in results:
         for profile in person["profiles"]:
             if profile.has_key("actual") and profile["actual"] == "yes":
                 positives = positives + 1
+                ground_truth[person["person"]] = profile["profile"]
             if profile.has_key("actual") and profile["actual"] != "yes":
-                negatives = negatives + 1
+                non_positives = non_positives + 1
         if len(person["profiles"]) == 0:
             no_profile = no_profile + 1
+
+    print "Printing ground truth."
+    count = 1
+    tp1 = 0.0
+    fp1 = 0.0
+    fn1 = 0.0
+    tp2 = 0.0
+    fp2 = 0.0
+    fn2 = 0.0
+    tp3 = 0.0
+    fp3 = 0.0
+    fn3 = 0.0
+    tp4 = 0.0
+    fp4 = 0.0
+    fn4 = 0.0
+    tp5 = 0.0
+    fp5 = 0.0
+    fn5 = 0.0
+    for k, v in ground_truth.iteritems():
+        print count, "==>", k, "==>", v
+        for person in results:
+            if person["person"] == k:
+                profile_facebook = person["profiles"][0]["profile"]
+                person["profiles"] = sorted(person["profiles"], key=itemgetter("score"), reverse=True)
+                profile_social = person["profiles"][0]["profile"]
+                person["profiles"] = sorted(person["profiles"], key=itemgetter("score1"), reverse=True)
+                profile_gt = person["profiles"][0]["profile"]
+                person["profiles"] = sorted(person["profiles"], key=itemgetter("score2"), reverse=True)
+                profile_combined = person["profiles"][0]["profile"]
+                for profile in person["profiles"]:
+                    if not profile.has_key("jaccard"):
+                        profile["jaccard"] = 0.0
+                person["profiles"] = sorted(person["profiles"], key=itemgetter("jaccard"), reverse=True)
+                profile_jacc = person["profiles"][0]["profile"]
+                if profile_facebook == v:
+                    tp1 = tp1 + 1
+                elif profile_facebook:
+                    fp1 = fp1 + 1
+                    print "Did not match1:", profile_facebook
+                if profile_social == v:
+                    tp2 = tp2 + 1
+                elif profile_social:
+                    fp2 = fp2 + 1
+                    print "Did not match2:", profile_social
+                if profile_gt == v:
+                    tp3 = tp3 + 1
+                elif profile_gt:
+                    fp3 = fp3 + 1
+                    print "Did not match3:", profile_gt
+                if profile_combined == v:
+                    tp4 = tp4 + 1
+                elif profile_combined:
+                    fp4 = fp4 + 1
+                    print "Did not match4:", profile_combined
+                if profile_jacc == v:
+                    tp5 = tp5 + 1
+                elif profile_jacc:
+                    fp5 = fp5 + 1
+                    print "Did not match5:", profile_jacc
+        count = count + 1
+    precision1 = tp1 / (tp1 + fp1)
+    print "Precision:", precision1
+    precision2 = tp2 / (tp2 + fp2)
+    print "Precision:", precision2
+    precision3 = tp3 / (tp3 + fp3)
+    print "Precision:", precision3
+    precision4 = tp4 / (tp4 + fp4)
+    print "Precision:", precision4
+    precision5 = tp5 / (tp5 + fp5)
+    print "Precision:", precision5
+    precision = {}
+    precision["precision1"] = precision1
+    precision["precision2"] = precision2
+    precision["precision3"] = precision3
+    precision["precision4"] = precision4
+    precision["precision5"] = precision5
+
     metadata["positives"] = positives
-    metadata["negatives"] = negatives
-    metadata["no_profile"] = no_profile
+    metadata["non_positives"] = non_positives
+    metadata["no_prentries1ofile"] = no_profile
+    metadata["precision"] = precision
     context = {
         "entries1": results,
         "metadata": metadata,
