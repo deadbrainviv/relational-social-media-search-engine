@@ -1331,6 +1331,20 @@ def facebooksix(request):
     metadata["score2"] = score2
     metadata["jacc"] = jacc
     metadata["watson"] = watson
+    positives = 0
+    negatives = 0
+    no_profile = 0
+    for person in results:
+        for profile in person["profiles"]:
+            if profile.has_key("actual") and profile["actual"] == "yes":
+                positives = positives + 1
+            if profile.has_key("actual") and profile["actual"] != "yes":
+                negatives = negatives + 1
+        if len(person["profiles"]) == 0:
+            no_profile = no_profile + 1
+    metadata["positives"] = positives
+    metadata["negatives"] = negatives
+    metadata["no_profile"] = no_profile
     context = {
         "entries1": results,
         "metadata": metadata,
