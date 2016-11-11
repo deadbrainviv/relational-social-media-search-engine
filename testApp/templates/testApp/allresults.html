@@ -1166,49 +1166,15 @@
 					<table border="1" style="width:1600px">
 						<br/>
 						{% for e1 in entries1 %}
-						{% for profile in e1.profiles %}
-						{% if profile.actual == "no" %}
+						{% if e1.profiles|length == 0 %}
+						<tr style="width:1500px;border-style:solid;"></tr>
 						<tr style="width:1500px;border-style:hidden;">
 							<td colspan="10" style="width:1500">
-								&nbsp&nbsp&nbsp<b>Searched for '{{e1.person}}'</b>
-							</td>
-						</tr>
-						<tr style="width:1500px;border-style:solid;"></tr>
-						<tr style="width:1500px;border-style:solid;">
-							<td colspan="1" style="width:150px">
-								<img src="{{profile.pic}}"><br/>
-							</td>
-							<td colspan="1" style="width:150px" >
-								{{profile.name}}
-							</td>
-							<td colspan="1" style="width:150px" >
-								<a href="{{profile.profile}}">Facebook Profile</a>
-							</td>
-							<td colspan="1" style="width:150px" >
-								{{profile.education}}
-							</td>
-							<td colspan="1" style="width:150px" >
-								{{profile.work}}
-							</td>
-							<td colspan="1" style="width:150px" >
-								{{profile.location}}
-							</td>
-							<td colspan="1" style="width:150px" >
-								{{profile.work}}
-							</td>
-							<td colspan="1" style="width:150px" >
-								Friend list hidden.
-							</td>
-							<td colspan="1" style="width:150px" >
-								NA
-							</td>
-							<td colspan="1" style="width:150px" >
-								FALSE(-):&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="no__{{profile.profile}}" disabled /><br/>
+								&nbsp&nbsp&nbsp<b>No Facebook profile found for '{{e1.person}}'</b>
 							</td>
 						</tr>
 						<tr style="width:1500px;border-style:solid;"></tr>
 						{% endif %}
-						{% endfor %}
 						{% endfor %}
 					</table>
 				</td>
