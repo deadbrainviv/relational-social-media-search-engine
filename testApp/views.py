@@ -1363,7 +1363,8 @@ def facebooksix(request):
     tp5 = 0.0
     fp5 = 0.0
     fn5 = 0.0
-    profiles_did_not_match = {}
+    false_positives = {}
+    false_negatives = {}
     for k, v in ground_truth.iteritems():
         print count, "==>", k, "==>", v
         for person in results:
@@ -1385,42 +1386,63 @@ def facebooksix(request):
                 elif profile_facebook:
                     fp1 = fp1 + 1
                     #print "Did not match1:", profile_facebook
-                    profiles_did_not_match[person["person"]] = profile_facebook
+                    false_positives[person["person"]] = profile_facebook
+                for fb1 in person["profiles"][1:]:
+                    if fb1["profile"] == v:
+                        fn1 = fn1 + 1
+                        false_negatives[person["person"]] = v
+                        break
                 if profile_social == v:
                     tp2 = tp2 + 1
                 elif profile_social:
                     fp2 = fp2 + 1
                     #print "Did not match2:", profile_social
-                    profiles_did_not_match[person["person"]] = profile_social
+                    false_positives[person["person"]] = profile_social
+                for fb1 in person["profiles"][1:]:
+                    if fb1["profile"] == v:
+                        fn2 = fn2 + 1
+                        false_negatives[person["person"]] = v
+                        break
                 if profile_gt == v:
                     tp3 = tp3 + 1
                 elif profile_gt:
                     fp3 = fp3 + 1
                     #print "Did not match3:", profile_gt
-                    profiles_did_not_match[person["person"]] = profile_gt
+                    false_positives[person["person"]] = profile_gt
+                for fb1 in person["profiles"][1:]:
+                    if fb1["profile"] == v:
+                        fn3 = fn3 + 1
+                        false_negatives[person["person"]] = v
+                        break
                 if profile_combined == v:
                     tp4 = tp4 + 1
                 elif profile_combined:
                     fp4 = fp4 + 1
                     #print "Did not match4:", profile_combined
-                    profiles_did_not_match[person["person"]] = profile_combined
+                    false_positives[person["person"]] = profile_combined
+                for fb1 in person["profiles"][1:]:
+                    if fb1["profile"] == v:
+                        fn4 = fn4 + 1
+                        false_negatives[person["person"]] = v
+                        break
                 if profile_jacc == v:
                     tp5 = tp5 + 1
                 elif profile_jacc:
                     fp5 = fp5 + 1
                     #print "Did not match5:", profile_jacc
-                    profiles_did_not_match[person["person"]] = profile_jacc
+                    false_positives[person["person"]] = profile_jacc
+                for fb1 in person["profiles"][1:]:
+                    if fb1["profile"] == v:
+                        fn5 = fn5 + 1
+                        false_negatives[person["person"]] = v
+                        break
         count = count + 1
+
     precision1 = tp1 / (tp1 + fp1)
-    print "Precision:", precision1
     precision2 = tp2 / (tp2 + fp2)
-    print "Precision:", precision2
     precision3 = tp3 / (tp3 + fp3)
-    print "Precision:", precision3
     precision4 = tp4 / (tp4 + fp4)
-    print "Precision:", precision4
     precision5 = tp5 / (tp5 + fp5)
-    print "Precision:", precision5
     precision = {}
     precision["precision1"] = precision1
     precision["precision2"] = precision2
@@ -1428,11 +1450,47 @@ def facebooksix(request):
     precision["precision4"] = precision4
     precision["precision5"] = precision5
 
+    recall1 = tp1 / (tp1 + fn1)
+    recall2 = tp2 / (tp2 + fn2)
+    recall3 = tp3 / (tp3 + fn3)
+    recall4 = tp4 / (tp4 + fn4)
+    recall5 = tp5 / (tp5 + fn5)
+    recall = {}
+    recall["recall1"] = recall1
+    recall["recall2"] = recall2
+    recall["recall3"] = recall3
+    recall["recall4"] = recall4
+    recall["recall5"] = recall5
+
+    true_positives = {}
+    true_positives["tp1"] = tp1
+    true_positives["tp2"] = tp2
+    true_positives["tp3"] = tp3
+    true_positives["tp4"] = tp4
+    true_positives["tp5"] = tp5
+
+    false_positives = {}
+    false_positives["fp1"] = fp1
+    false_positives["fp2"] = fp2
+    false_positives["fp3"] = fp3
+    false_positives["fp4"] = fp4
+    false_positives["fp5"] = fp5
+
+    false_negatives = {}
+    false_negatives["fn1"] = fn1
+    false_negatives["fn2"] = fn2
+    false_negatives["fn3"] = fn3
+    false_negatives["fn4"] = fn4
+    false_negatives["fn5"] = fn5
+
     metadata["positives"] = positives
     metadata["non_positives"] = non_positives
-    metadata["no_prentries1ofile"] = no_profile
     metadata["precision"] = precision
-    metadata["profilesnotmatching"] = profiles_did_not_match
+    metadata["recall"] = recall
+    metadata["true_positives"] = true_positives
+    metadata["false_positives"] = false_positives
+    metadata["false_negatives"] = false_negatives
+
     context = {
         "entries1": results,
         "metadata": metadata,

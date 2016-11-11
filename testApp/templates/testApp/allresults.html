@@ -32,36 +32,134 @@
 				<b><font size="3">'Combined Approach' based pruned profiles &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.score2}}</font></b><br/>
 				<b><font size="3">'Seed Friends Ground Truth Approach' based pruned profiles &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.jacc}}</font></b><br/>
 				<b><font size="3">'Watson Info' present for profiles &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.watson}}</font></b><br/>
-				<br/><br/>
-				<b><font size="3">Facebook Precision &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.precision.precision1}}</font></b><br/>
-				<b><font size="3">Social Graph Heuristic Precision &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.precision.precision2}}</font></b><br/>
-				<b><font size="3">Ground Truth Social Graph Precision &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.precision.precision3}}</font></b><br/>
-				<b><font size="3">Combined (Social + GT) Precision &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.precision.precision4}}</font></b><br/>
-				<b><font size="3">Seed friends Ground Truth Precision &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.precision.precision5}}</font></b><br/>
 			</td>
 		</tr>
 		</tr>
 	</table>
+	{% if metadata.precision or metadata.recall %}
 	<br>
 	<br>
 	<br>
-	{% if metadata.profilesnotmatching %}
 	<table id="table_one" border="3" style="table-layout: fixed;width:1600px;margin-left:2cm;">
-		<tr style="width:1600px">
-			<td colspan="3" style="width:1600px">
-				<b><font color="red" size="3">Following profiles did not match while lead to the above mentioned precision.</font></b><br/>
+		<tr style="width:1000px">
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">data</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">FACEBOOK</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">FACEBOOK + SOCIAL</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">FACEBOOK + GROUND TRUTH</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">FACEBOOK + COMBINED (SOCIAL + GROUND TRUTH)</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">FACEBOOK + SEEDS FRIENDS GROUND TRUTH</font></b><br/>
 			</td>
 		</tr>
-		{% for k11, v11 in metadata.profilesnotmatching.items %}
-		<tr style="width:1600px">
-			<td colspan="1" style="width:1600px">
-				<b><font color="green" size="3">{{k11}}</font></b><br/>
+		<tr style="width:1000px">
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">precision</font></b><br/>
 			</td>
-			<td colspan="2" style="width:1600px">
-				<b><font color="blue" size="3"><a href="{{v11}}">{{v11}}</a></font></b><br/>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.precision.precision1}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.precision.precision2}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.precision.precision3}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.precision.precision4}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.precision.precision5}}</font></b><br/>
 			</td>
 		</tr>
-		{% endfor %}
+		<tr style="width:1000px">
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">recall</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.recall.recall1}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.recall.recall2}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.recall.recall3}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.recall.recall4}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.recall.recall5}}</font></b><br/>
+			</td>
+		</tr>
+		<tr style="width:1000px">
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">true +ve</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.true_positives.tp1}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.true_positives.tp2}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.true_positives.tp3}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.true_positives.tp4}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.true_positives.tp5}}</font></b><br/>
+			</td>
+		</tr>
+		<tr style="width:1000px">
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">false +ve</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.false_positives.fp1}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.false_positives.fp2}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.false_positives.fp3}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.false_positives.fp4}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.false_positives.fp5}}</font></b><br/>
+			</td>
+		</tr>
+		<tr style="width:1000px">
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">false -ve</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.false_negatives.fn1}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.false_negatives.fn2}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.false_negatives.fn3}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.false_negatives.fn4}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.false_negatives.fn5}}</font></b><br/>
+			</td>
 		</tr>
 	</table>
 	{% endif %}
