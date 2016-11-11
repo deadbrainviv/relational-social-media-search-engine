@@ -42,6 +42,29 @@
 		</tr>
 		</tr>
 	</table>
+	<br>
+	<br>
+	<br>
+	{% if metadata.profilesnotmatching %}
+	<table id="table_one" border="3" style="table-layout: fixed;width:1600px;margin-left:2cm;">
+		<tr style="width:1600px">
+			<td colspan="3" style="width:1600px">
+				<b><font color="red" size="3">Following profiles did not match while lead to the above mentioned precision.</font></b><br/>
+			</td>
+		</tr>
+		{% for k11, v11 in metadata.profilesnotmatching.items %}
+		<tr style="width:1600px">
+			<td colspan="1" style="width:1600px">
+				<b><font color="green" size="3">{{k11}}</font></b><br/>
+			</td>
+			<td colspan="2" style="width:1600px">
+				<b><font color="blue" size="3"><a href="{{v11}}">{{v11}}</a></font></b><br/>
+			</td>
+		</tr>
+		{% endfor %}
+		</tr>
+	</table>
+	{% endif %}
 	{% endif %}
 	<br>
 	<br>

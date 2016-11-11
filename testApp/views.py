@@ -1363,6 +1363,7 @@ def facebooksix(request):
     tp5 = 0.0
     fp5 = 0.0
     fn5 = 0.0
+    profiles_did_not_match = {}
     for k, v in ground_truth.iteritems():
         print count, "==>", k, "==>", v
         for person in results:
@@ -1383,27 +1384,32 @@ def facebooksix(request):
                     tp1 = tp1 + 1
                 elif profile_facebook:
                     fp1 = fp1 + 1
-                    print "Did not match1:", profile_facebook
+                    #print "Did not match1:", profile_facebook
+                    profiles_did_not_match[person["person"]] = profile_facebook
                 if profile_social == v:
                     tp2 = tp2 + 1
                 elif profile_social:
                     fp2 = fp2 + 1
-                    print "Did not match2:", profile_social
+                    #print "Did not match2:", profile_social
+                    profiles_did_not_match[person["person"]] = profile_social
                 if profile_gt == v:
                     tp3 = tp3 + 1
                 elif profile_gt:
                     fp3 = fp3 + 1
-                    print "Did not match3:", profile_gt
+                    #print "Did not match3:", profile_gt
+                    profiles_did_not_match[person["person"]] = profile_gt
                 if profile_combined == v:
                     tp4 = tp4 + 1
                 elif profile_combined:
                     fp4 = fp4 + 1
-                    print "Did not match4:", profile_combined
+                    #print "Did not match4:", profile_combined
+                    profiles_did_not_match[person["person"]] = profile_combined
                 if profile_jacc == v:
                     tp5 = tp5 + 1
                 elif profile_jacc:
                     fp5 = fp5 + 1
-                    print "Did not match5:", profile_jacc
+                    #print "Did not match5:", profile_jacc
+                    profiles_did_not_match[person["person"]] = profile_jacc
         count = count + 1
     precision1 = tp1 / (tp1 + fp1)
     print "Precision:", precision1
@@ -1426,6 +1432,7 @@ def facebooksix(request):
     metadata["non_positives"] = non_positives
     metadata["no_prentries1ofile"] = no_profile
     metadata["precision"] = precision
+    metadata["profilesnotmatching"] = profiles_did_not_match
     context = {
         "entries1": results,
         "metadata": metadata,
