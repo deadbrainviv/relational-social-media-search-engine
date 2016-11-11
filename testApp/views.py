@@ -1290,6 +1290,54 @@ def facebookfive(request):
     }
     return render(request, 'testApp/searchGrad.html', context)
 
+def facebooksix(request):
+    print "Method facebooksix called!"
+    results = get_facebook_entries("default")
+    counter_empty = 0
+    counter_one = 0
+    counter_some = 0
+    counter_total = 0
+    for person in results:
+        counter_total = counter_total + 1
+        if len(person["profiles"]) == 0:
+            counter_empty = counter_empty + 1
+        if len(person["profiles"]) == 1:
+            counter_one = counter_one + 1
+        if len(person["profiles"]) > 0:
+            counter_some = counter_some + 1
+    metadata = {}
+    metadata["empty"] = counter_empty
+    metadata["one"] = counter_one
+    metadata["some"] = counter_some
+    metadata["total"] = counter_total
+    score = 0
+    score1 = 0
+    score2 = 0
+    jacc = 0
+    watson = 0
+    for person in results:
+        if person["showscore"]:
+            score = score + 1
+        if person["showscore1"]:
+            score1 = score1 + 1
+        if person["showscore2"]:
+            score2 = score2 + 1
+        if person["showjacc"]:
+            jacc = jacc + 1
+        if person["watson"]:
+            watson = watson + 1
+    metadata["score"] = score
+    metadata["score1"] = score1
+    metadata["score2"] = score2
+    metadata["jacc"] = jacc
+    metadata["watson"] = watson
+    context = {
+        "entries1": results,
+        "metadata": metadata,
+        "type": "facebooksix"
+    }
+    return render(request, 'testApp/searchGrad.html', context)
+
 def markProfile(request):
     #for result in results:
         #print result["person"], result["profiles"]

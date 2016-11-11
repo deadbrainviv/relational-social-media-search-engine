@@ -40,7 +40,7 @@
 	<br>
 	<br>
 	<br>
-	{% if type != "facebookfive" %}
+	{% if type == "facebook" or type == "facebookone" or type == "facebooktwo" or type == "facebookthree" or type == "facebookfour" %}
 	<div class="l-content"> 
     <div id="selections_list" class="pricing-tables pure-g">
 	<table id="table_one" border="3" style="table-layout: fixed;width:1600px;margin-left:2cm;">
@@ -581,7 +581,7 @@
 			</tr>
 		</tbody>
 	</table>
-	{% else %}
+	{% elif type == "facebookfive" %}
 	<table id="table_one" border="3" style="table-layout: fixed;width:1600px;margin-left:2cm;">
 		<thead style="width:1600px">
 			<tr style="width:1600px">
@@ -967,6 +967,236 @@
 							</td>
 							<td colspan="1" style="width:150px" >
 								NA
+							</td>
+						</tr>
+					{% endif %}
+					{% endfor %}
+					</table>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% elif type == "facebooksix" %}
+	<table id="table_one" border="3" style="table-layout: fixed;width:1600px;margin-left:2cm;">
+		<thead style="width:1600px">
+			<tr style="width:1600px">
+				<th bgcolor="#FD6D4F" colspan="10" style="width:150px;word-wrap:break-word"><font size="3">VERIFIED LIST (POSITIVE EXAMPLES)</font></th>
+			</tr>
+		</thead>
+		<thead style="width:1600px">
+			<tr style="width:1600px">
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Image</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Name</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Profile</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">University</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Industry</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Location</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Work Info</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Connections</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Multiple</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Select</th>
+			</tr>
+		</thead>
+		<br>
+		<tbody style="width:1600px">
+			{% for e1 in entries1 %}
+			<tr style="width:1600px">
+				<td colspan="10" style="width:1600px">
+					<table border="1" style="width:1600px">
+						<br/>
+						<tr style="width:1500px;border-style:hidden;">
+							<td colspan="10" style="width:1500">
+								&nbsp&nbsp&nbsp<b>Searched for '{{e1.person}}'</b>
+							</td>
+						</tr>
+						{% for profile in e1.profiles %}
+						{% if profile.actual == "yes" %}
+						<tr style="width:1500px;border-style:solid;"></tr>
+						<tr style="width:1500px;border-style:solid;">
+							<td colspan="1" style="width:150px">
+								<img src="{{profile.pic}}"><br/>
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.name}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								<a href="{{profile.profile}}">Facebook Profile</a>
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.education}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.work}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.location}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.work}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								Friend list hidden.
+							</td>
+							<td colspan="1" style="width:150px" >
+								NA
+							</td>
+							<td colspan="1" style="width:150px" >
+								TRUE(+):&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="yes__{{profile.profile}}" checked disabled /><br/>
+							</td>
+						</tr>
+					{% endif %}
+					{% endfor %}
+					</table>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<br/><br/><br/>
+	<table id="table_one" border="3" style="table-layout: fixed;width:1600px;margin-left:2cm;">
+		<thead style="width:1600px">
+			<tr style="width:1600px">
+				<th bgcolor="#FD6D4F" colspan="10" style="width:150px;word-wrap:break-word"><font size="3">NON VERIFIED LIST (NEGATIVE EXAMPLES)</font></th>
+			</tr>
+		</thead>
+		<thead style="width:1600px">
+			<tr style="width:1600px">
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Image</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Name</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Profile</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">University</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Industry</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Location</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Work Info</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Connections</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Multiple</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Select</th>
+			</tr>
+		</thead>
+		<br>
+		<tbody style="width:1600px">
+			{% for e1 in entries1 %}
+			<tr style="width:1600px">
+				<td colspan="10" style="width:1600px">
+					<table border="1" style="width:1600px">
+						<br/>
+						<tr style="width:1500px;border-style:hidden;">
+							<td colspan="10" style="width:1500">
+								&nbsp&nbsp&nbsp<b>Searched for '{{e1.person}}'</b>
+							</td>
+						</tr>
+						{% for profile in e1.profiles %}
+						{% if profile.actual == "na" %}
+						<tr style="width:1500px;border-style:solid;"></tr>
+						<tr style="width:1500px;border-style:solid;">
+							<td colspan="1" style="width:150px">
+								<img src="{{profile.pic}}"><br/>
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.name}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								<a href="{{profile.profile}}">Facebook Profile</a>
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.education}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.work}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.location}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.work}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								Friend list hidden.
+							</td>
+							<td colspan="1" style="width:150px" >
+								NA
+							</td>
+							<td colspan="1" style="width:150px" >
+								Please indicate ground truth:<br/>
+								Yes:&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="yes__{{profile.profile}}" /><br/>
+								No:&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="no__{{profile.profile}}" /><br/>
+							</td>
+						</tr>
+					{% endif %}
+					{% endfor %}
+					</table>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<br/><br/><br/>
+	<table id="table_one" border="3" style="table-layout: fixed;width:1600px;margin-left:2cm;">
+		<thead style="width:1600px">
+			<tr style="width:1600px">
+				<th bgcolor="#FD6D4F" colspan="10" style="width:150px;word-wrap:break-word"><font size="3">NO PROFILE FOUND LIST (NO GROUND TRUTH</font></th>
+			</tr>
+		</thead>
+		<thead style="width:1600px">
+			<tr style="width:1600px">
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Image</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Name</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Profile</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">University</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Industry</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Location</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Work Info</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Connections</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Multiple</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Select</th>
+			</tr>
+		</thead>
+		<br>
+		<tbody style="width:1600px">
+			{% for e1 in entries1 %}
+			<tr style="width:1600px">
+				<td colspan="10" style="width:1600px">
+					<table border="1" style="width:1600px">
+						<br/>
+						<tr style="width:1500px;border-style:hidden;">
+							<td colspan="10" style="width:1500">
+								&nbsp&nbsp&nbsp<b>Searched for '{{e1.person}}'</b>
+							</td>
+						</tr>
+						{% for profile in e1.profiles %}
+						{% if profile.actual == "no" %}
+						<tr style="width:1500px;border-style:solid;"></tr>
+						<tr style="width:1500px;border-style:solid;">
+							<td colspan="1" style="width:150px">
+								<img src="{{profile.pic}}"><br/>
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.name}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								<a href="{{profile.profile}}">Facebook Profile</a>
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.education}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.work}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.location}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.work}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								Friend list hidden.
+							</td>
+							<td colspan="1" style="width:150px" >
+								NA
+							</td>
+							<td colspan="1" style="width:150px" >
+								FALSE(-):&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="no__{{profile.profile}}" disabled /><br/>
 							</td>
 						</tr>
 					{% endif %}
