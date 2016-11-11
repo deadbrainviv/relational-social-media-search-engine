@@ -1462,6 +1462,20 @@ def facebooksix(request):
     recall["recall4"] = recall4
     recall["recall5"] = recall5
 
+    f1 = {}
+    f1["f1_1"] = 2*precision1*recall1/(precision1+recall1)
+    f1["f1_2"] = 2*precision2*recall2/(precision2+recall2)
+    f1["f1_3"] = 2*precision3*recall3/(precision3+recall3)
+    f1["f1_4"] = 2*precision4*recall4/(precision4+recall4)
+    f1["f1_5"] = 2*precision5*recall5/(precision5+recall5)
+
+    f2 = {}
+    f2["f2_1"] = 5*tp1/(5*tp1 + 4*fn1 + fp1)
+    f2["f2_2"] = 5*tp2/(5*tp2 + 4*fn2 + fp2)
+    f2["f2_3"] = 5*tp3/(5*tp3 + 4*fn3 + fp3)
+    f2["f2_4"] = 5*tp4/(5*tp4 + 4*fn4 + fp4)
+    f2["f2_5"] = 5*tp5/(5*tp5 + 4*fn5 + fp5)
+
     true_positives = {}
     true_positives["tp1"] = tp1
     true_positives["tp2"] = tp2
@@ -1487,6 +1501,8 @@ def facebooksix(request):
     metadata["non_positives"] = non_positives
     metadata["precision"] = precision
     metadata["recall"] = recall
+    metadata["f1"] = f1
+    metadata["f2"] = f2
     metadata["true_positives"] = true_positives
     metadata["false_positives"] = false_positives
     metadata["false_negatives"] = false_negatives
