@@ -1000,11 +1000,12 @@
 		</thead>
 		<br>
 		<tbody style="width:1600px">
-			{% for e1 in entries1 %}
+			
 			<tr style="width:1600px">
 				<td colspan="10" style="width:1600px">
 					<table border="1" style="width:1600px">
 						<br/>
+						{% for e1 in entries1 %}
 						{% for profile in e1.profiles %}
 						{% if profile.actual == "yes" %}
 						<tr style="width:1500px;border-style:hidden;">
@@ -1045,12 +1046,14 @@
 								TRUE(+):&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="yes__{{profile.profile}}" checked disabled /><br/>
 							</td>
 						</tr>
-					{% endif %}
-					{% endfor %}
+						<tr style="width:1500px;border-style:solid;"></tr>
+						{% endif %}
+						{% endfor %}
+						{% endfor %}
 					</table>
 				</td>
 			</tr>
-			{% endfor %}
+			
 		</tbody>
 	</table>
 	<br/><br/><br/>
@@ -1076,11 +1079,12 @@
 		</thead>
 		<br>
 		<tbody style="width:1600px">
-			{% for e1 in entries1 %}
+			
 			<tr style="width:1600px">
 				<td colspan="10" style="width:1600px">
 					<table border="1" style="width:1600px">
 						<br/>
+						{% for e1 in entries1 %}
 						{% for profile in e1.profiles %}
 						{% if profile.actual == "na" %}
 						<tr style="width:1500px;border-style:hidden;">
@@ -1123,12 +1127,14 @@
 								No:&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="no__{{profile.profile}}" /><br/>
 							</td>
 						</tr>
+						<tr style="width:1500px;border-style:solid;"></tr>
 					{% endif %}
+					{% endfor %}
 					{% endfor %}
 					</table>
 				</td>
 			</tr>
-			{% endfor %}
+			
 		</tbody>
 	</table>
 	<br/><br/><br/>
@@ -1154,11 +1160,12 @@
 		</thead>
 		<br>
 		<tbody style="width:1600px">
-			{% for e1 in entries1 %}
+			
 			<tr style="width:1600px">
 				<td colspan="10" style="width:1600px">
 					<table border="1" style="width:1600px">
 						<br/>
+						{% for e1 in entries1 %}
 						{% for profile in e1.profiles %}
 						{% if profile.actual == "no" %}
 						<tr style="width:1500px;border-style:hidden;">
@@ -1199,12 +1206,14 @@
 								FALSE(-):&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="no__{{profile.profile}}" disabled /><br/>
 							</td>
 						</tr>
-					{% endif %}
-					{% endfor %}
+						<tr style="width:1500px;border-style:solid;"></tr>
+						{% endif %}
+						{% endfor %}
+						{% endfor %}
 					</table>
 				</td>
 			</tr>
-			{% endfor %}
+			
 		</tbody>
 	</table>
 	{% endif %}
