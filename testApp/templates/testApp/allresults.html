@@ -1005,14 +1005,14 @@
 				<td colspan="10" style="width:1600px">
 					<table border="1" style="width:1600px">
 						<br/>
-						<!--<tr style="width:1500px;border-style:hidden;">
+						{% for profile in e1.profiles %}
+						{% if profile.actual == "yes" %}
+						<tr style="width:1500px;border-style:hidden;">
 							<td colspan="10" style="width:1500">
 								&nbsp&nbsp&nbsp<b>Searched for '{{e1.person}}'</b>
 							</td>
-						</tr>-->
-						{% for profile in e1.profiles %}
-						{% if profile.actual == "yes" %}
-						<!--<tr style="width:1500px;border-style:solid;"></tr>-->
+						</tr>
+						<tr style="width:1500px;border-style:solid;"></tr>
 						<tr style="width:1500px;border-style:solid;">
 							<td colspan="1" style="width:150px">
 								<img src="{{profile.pic}}"><br/>
@@ -1081,14 +1081,14 @@
 				<td colspan="10" style="width:1600px">
 					<table border="1" style="width:1600px">
 						<br/>
-						<!--<tr style="width:1500px;border-style:hidden;">
+						{% for profile in e1.profiles %}
+						{% if profile.actual == "na" %}
+						<tr style="width:1500px;border-style:hidden;">
 							<td colspan="10" style="width:1500">
 								&nbsp&nbsp&nbsp<b>Searched for '{{e1.person}}'</b>
 							</td>
-						</tr>-->
-						{% for profile in e1.profiles %}
-						{% if profile.actual == "na" %}
-						<!--<tr style="width:1500px;border-style:solid;"></tr>-->
+						</tr>
+						<tr style="width:1500px;border-style:solid;"></tr>
 						<tr style="width:1500px;border-style:solid;">
 							<td colspan="1" style="width:150px">
 								<img src="{{profile.pic}}"><br/>
@@ -1159,14 +1159,14 @@
 				<td colspan="10" style="width:1600px">
 					<table border="1" style="width:1600px">
 						<br/>
-						<!--<tr style="width:1500px;border-style:hidden;">
+						{% for profile in e1.profiles %}
+						{% if profile.actual == "no" %}
+						<tr style="width:1500px;border-style:hidden;">
 							<td colspan="10" style="width:1500">
 								&nbsp&nbsp&nbsp<b>Searched for '{{e1.person}}'</b>
 							</td>
-						</tr>-->
-						{% for profile in e1.profiles %}
-						{% if profile.actual == "no" %}
-						<!--<tr style="width:1500px;border-style:solid;"></tr>-->
+						</tr>
+						<tr style="width:1500px;border-style:solid;"></tr>
 						<tr style="width:1500px;border-style:solid;">
 							<td colspan="1" style="width:150px">
 								<img src="{{profile.pic}}"><br/>
