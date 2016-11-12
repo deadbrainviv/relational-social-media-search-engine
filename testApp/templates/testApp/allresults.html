@@ -103,6 +103,86 @@
 		</tr>
 		<tr style="width:1000px">
 			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">accuracy</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.accuracy.accuracy1}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.accuracy.accuracy2}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.accuracy.accuracy3}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.accuracy.accuracy4}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.accuracy.accuracy5}}</font></b><br/>
+			</td>
+		</tr>
+		<tr style="width:1000px">
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">true negative rate</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.tnr.tnr1}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.tnr.tnr2}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.tnr.tnr3}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.tnr.tnr4}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.tnr.tnr5}}</font></b><br/>
+			</td>
+		</tr>
+		<tr style="width:1000px">
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">f1</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.f1.f1_1}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.f1.f1_2}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.f1.f1_3}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.f1.f1_4}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.f1.f1_5}}</font></b><br/>
+			</td>
+		</tr>
+		<tr style="width:1000px">
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">f2</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.f2.f2_1}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.f2.f2_2}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.f2.f2_3}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.f2.f2_4}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.f2.f2_5}}</font></b><br/>
+			</td>
+		</tr>
+		<tr style="width:1000px">
+			<td colspan="1" style="width:100px">
 				<b><font color="black" size="3"># of total verified</font></b><br/>
 			</td>
 			<td colspan="1" style="width:100px">
@@ -147,18 +227,58 @@
 			</td>
 			<td colspan="1" style="width:100px">
 				<b><font color="black" size="3">{{metadata.false_positives.fp1}}</font></b><br/>
+				{% for k,v in metadata.false_positives_dict.false_positives_1.items %}
+				<br/>
+				<br/>
+				<font color="blue" size="2">{{k}}</font><br/>
+				<font color="blue" size="2">{{v}}</font><br/>
+				{% endfor %}
+				<br/>
+				<br/>
 			</td>
 			<td colspan="1" style="width:100px">
 				<b><font color="black" size="3">{{metadata.false_positives.fp2}}</font></b><br/>
+				{% for k,v in metadata.false_positives_dict.false_positives_2.items %}
+				<br/>
+				<br/>
+				<font color="blue" size="2">{{k}}</font><br/>
+				<font color="blue" size="2">{{v}}</font><br/>
+				{% endfor %}
+				<br/>
+				<br/>
 			</td>
 			<td colspan="1" style="width:100px">
 				<b><font color="black" size="3">{{metadata.false_positives.fp3}}</font></b><br/>
+				{% for k,v in metadata.false_positives_dict.false_positives_3.items %}
+				<br/>
+				<br/>
+				<font color="blue" size="2">{{k}}</font><br/>
+				<font color="blue" size="2">{{v}}</font><br/>
+				{% endfor %}
+				<br/>
+				<br/>
 			</td>
 			<td colspan="1" style="width:100px">
 				<b><font color="black" size="3">{{metadata.false_positives.fp4}}</font></b><br/>
+				{% for k,v in metadata.false_positives_dict.false_positives_4.items %}
+				<br/>
+				<br/>
+				<font color="blue" size="2">{{k}}</font><br/>
+				<font color="blue" size="2">{{v}}</font><br/>
+				{% endfor %}
+				<br/>
+				<br/>
 			</td>
 			<td colspan="1" style="width:100px">
 				<b><font color="black" size="3">{{metadata.false_positives.fp5}}</font></b><br/>
+				{% for k,v in metadata.false_positives_dict.false_positives_5.items %}
+				<br/>
+				<br/>
+				<font color="blue" size="2">{{k}}</font><br/>
+				<font color="blue" size="2">{{v}}</font><br/>
+				{% endfor %}
+				<br/>
+				<br/>
 			</td>
 		</tr>
 		<tr style="width:1000px">
@@ -166,59 +286,79 @@
 				<b><font color="black" size="3"># of false -ve examples</font></b><br/>
 			</td>
 			<td colspan="1" style="width:100px">
-				<b><font color="black" size="3">{{metadata.false_negatives.fn1}}</font></b><br/>
+				<b><font color="black" size="3">{{metadata.false_negatives.fp1}}</font></b><br/>
+				{% for k,v in metadata.false_negatives_dict.false_negatives_1.items %}
+				<br/>
+				<br/>
+				<font color="blue" size="2">{{k}}</font><br/>
+				<font color="blue" size="2">{{v}}</font><br/>
+				{% endfor %}
+				<br/>
+				<br/>
 			</td>
 			<td colspan="1" style="width:100px">
-				<b><font color="black" size="3">{{metadata.false_negatives.fn2}}</font></b><br/>
+				<b><font color="black" size="3">{{metadata.false_negatives.fp2}}</font></b><br/>
+				{% for k,v in metadata.false_negatives_dict.false_negatives_2.items %}
+				<br/>
+				<br/>
+				<font color="blue" size="2">{{k}}</font><br/>
+				<font color="blue" size="2">{{v}}</font><br/>
+				{% endfor %}
+				<br/>
+				<br/>
 			</td>
 			<td colspan="1" style="width:100px">
-				<b><font color="black" size="3">{{metadata.false_negatives.fn3}}</font></b><br/>
+				<b><font color="black" size="3">{{metadata.false_negatives.fp3}}</font></b><br/>
+				{% for k,v in metadata.false_negatives_dict.false_negatives_3.items %}
+				<br/>
+				<br/>
+				<font color="blue" size="2">{{k}}</font><br/>
+				<font color="blue" size="2">{{v}}</font><br/>
+				{% endfor %}
+				<br/>
+				<br/>
 			</td>
 			<td colspan="1" style="width:100px">
-				<b><font color="black" size="3">{{metadata.false_negatives.fn4}}</font></b><br/>
+				<b><font color="black" size="3">{{metadata.false_negatives.fp4}}</font></b><br/>
+				{% for k,v in metadata.false_negatives_dict.false_negatives_4.items %}
+				<br/>
+				<br/>
+				<font color="blue" size="2">{{k}}</font><br/>
+				<font color="blue" size="2">{{v}}</font><br/>
+				{% endfor %}
+				<br/>
+				<br/>
 			</td>
 			<td colspan="1" style="width:100px">
-				<b><font color="black" size="3">{{metadata.false_negatives.fn5}}</font></b><br/>
+				<b><font color="black" size="3">{{metadata.false_negatives.fp5}}</font></b><br/>
+				{% for k,v in metadata.false_negatives_dict.false_negatives_5.items %}
+				<br/>
+				<br/>
+				<font color="blue" size="2">{{k}}</font><br/>
+				<font color="blue" size="2">{{v}}</font><br/>
+				{% endfor %}
+				<br/>
+				<br/>
 			</td>
 		</tr>
 		<tr style="width:1000px">
 			<td colspan="1" style="width:100px">
-				<b><font color="red" size="3">f1</font></b><br/>
+				<b><font color="black" size="3"># of true -ve examples</font></b><br/>
 			</td>
 			<td colspan="1" style="width:100px">
-				<b><font color="red" size="3">{{metadata.f1.f1_1}}</font></b><br/>
+				<b><font color="black" size="3">{{metadata.true_negatives.tn1}}</font></b><br/>
 			</td>
 			<td colspan="1" style="width:100px">
-				<b><font color="red" size="3">{{metadata.f1.f1_2}}</font></b><br/>
+				<b><font color="black" size="3">{{metadata.true_negatives.tn2}}</font></b><br/>
 			</td>
 			<td colspan="1" style="width:100px">
-				<b><font color="red" size="3">{{metadata.f1.f1_3}}</font></b><br/>
+				<b><font color="black" size="3">{{metadata.true_negatives.tn3}}</font></b><br/>
 			</td>
 			<td colspan="1" style="width:100px">
-				<b><font color="red" size="3">{{metadata.f1.f1_4}}</font></b><br/>
+				<b><font color="black" size="3">{{metadata.true_negatives.tn4}}</font></b><br/>
 			</td>
 			<td colspan="1" style="width:100px">
-				<b><font color="red" size="3">{{metadata.f1.f1_5}}</font></b><br/>
-			</td>
-		</tr>
-		<tr style="width:1000px">
-			<td colspan="1" style="width:100px">
-				<b><font color="red" size="3">f2</font></b><br/>
-			</td>
-			<td colspan="1" style="width:100px">
-				<b><font color="red" size="3">{{metadata.f2.f2_1}}</font></b><br/>
-			</td>
-			<td colspan="1" style="width:100px">
-				<b><font color="red" size="3">{{metadata.f2.f2_2}}</font></b><br/>
-			</td>
-			<td colspan="1" style="width:100px">
-				<b><font color="red" size="3">{{metadata.f2.f2_3}}</font></b><br/>
-			</td>
-			<td colspan="1" style="width:100px">
-				<b><font color="red" size="3">{{metadata.f2.f2_4}}</font></b><br/>
-			</td>
-			<td colspan="1" style="width:100px">
-				<b><font color="red" size="3">{{metadata.f2.f2_5}}</font></b><br/>
+				<b><font color="black" size="3">{{metadata.true_negatives.tn5}}</font></b><br/>
 			</td>
 		</tr>
 	</table>

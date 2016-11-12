@@ -1346,97 +1346,140 @@ def facebooksix(request):
         if len(person["profiles"]) == 0:
             no_profile = no_profile + 1
 
-    print "Printing ground truth."
-    count = 1
     tp1 = 0.0
+    tn1 = 0.0
     fp1 = 0.0
     fn1 = 0.0
     tp2 = 0.0
+    tn2 = 0.0
     fp2 = 0.0
     fn2 = 0.0
     tp3 = 0.0
+    tn3 = 0.0
     fp3 = 0.0
     fn3 = 0.0
     tp4 = 0.0
+    tn4 = 0.0
     fp4 = 0.0
     fn4 = 0.0
     tp5 = 0.0
+    tn5 = 0.0
     fp5 = 0.0
     fn5 = 0.0
-    false_positives = {}
-    false_negatives = {}
+
+    false_positives_1 = {}
+    false_negatives_1 = {}
+    false_positives_2 = {}
+    false_negatives_2 = {}
+    false_positives_3 = {}
+    false_negatives_3 = {}
+    false_positives_4 = {}
+    false_negatives_4 = {}
+    false_positives_5 = {}
+    false_negatives_5 = {}
+
     for k, v in ground_truth.iteritems():
-        print count, "==>", k, "==>", v
+
         for person in results:
+
             if person["person"] == k:
+
+                profile_facebook_pos = []
+                profile_facebook_neg = []
                 profile_facebook = person["profiles"][0]["profile"]
+                profile_facebook_pos.append(profile_facebook)
+                for p in person["profiles"]:
+                    if p["profile"] != profile_facebook:
+                        profile_facebook_neg.append(p["profile"])
+                if profile_facebook and profile_facebook == v:
+                    tp1 = tp1 + 1
+                if profile_facebook and profile_facebook != v:
+                    fp1 = fp1 + 1
+                    false_positives_1[k] = profile_facebook
+                if v in profile_facebook_neg:
+                    fn1 = fn1 + 1
+                    false_negatives_1[k] = v
+                if v not in profile_facebook_neg:
+                    tn1 = tn1 + len(profile_facebook_neg)
+
+                profile_social_pos = []
+                profile_social_neg = []
                 person["profiles"] = sorted(person["profiles"], key=itemgetter("score"), reverse=True)
                 profile_social = person["profiles"][0]["profile"]
+                profile_social_pos.append(profile_social)
+                for p in person["profiles"]:
+                    if p["profile"] != profile_social:
+                        profile_social_neg.append(p["profile"])
+                if profile_social and profile_social == v:
+                    tp2 = tp2 + 1
+                if profile_social and profile_social != v:
+                    fp2 = fp2 + 1
+                    false_positives_2[k] = profile_social
+                if v in profile_social_neg:
+                    fn2 = fn2 + 1
+                    false_negatives_2[k] = v
+                if v not in profile_social_neg:
+                    tn2 = tn2 + len(profile_social_neg)
+
+                profile_gt_pos = []
+                profile_gt_neg = []
                 person["profiles"] = sorted(person["profiles"], key=itemgetter("score1"), reverse=True)
                 profile_gt = person["profiles"][0]["profile"]
+                profile_gt_pos.append(profile_gt)
+                for p in person["profiles"]:
+                    if p["profile"] != profile_gt:
+                        profile_gt_neg.append(p["profile"])
+                if profile_gt and profile_gt == v:
+                    tp3 = tp3 + 1
+                if profile_gt and profile_gt != v:
+                    fp3 = fp3 + 1
+                    false_positives_3[k] = profile_gt
+                if v in profile_gt_neg:
+                    fn3 = fn3 + 1
+                    false_negatives_3[k] = v
+                if v not in profile_gt_neg:
+                    tn3 = tn3 + len(profile_gt_neg)
+
+                profile_combined_pos = []
+                profile_combined_neg = []
                 person["profiles"] = sorted(person["profiles"], key=itemgetter("score2"), reverse=True)
                 profile_combined = person["profiles"][0]["profile"]
-                for profile in person["profiles"]:
-                    if not profile.has_key("jaccard"):
-                        profile["jaccard"] = 0.0
+                profile_combined_pos.append(profile_combined)
+                for p in person["profiles"]:
+                    if p["profile"] != profile_combined:
+                        profile_combined_neg.append(p["profile"])
+                if profile_combined and profile_combined == v:
+                    tp4 = tp4 + 1
+                if profile_combined and profile_combined != v:
+                    fp4 = fp4 + 1
+                    false_positives_4[k] = profile_combined
+                if v in profile_combined_neg:
+                    fn4 = fn4 + 1
+                    false_negatives_4[k] = v
+                if v not in profile_combined_neg:
+                    tn4 = tn4 + len(profile_combined_neg)
+
+                profile_jacc_pos = []
+                profile_jacc_neg = []
+                for p in person["profiles"]:
+                    if not p.has_key("jaccard"):
+                        p["jaccard"] = 0.0
                 person["profiles"] = sorted(person["profiles"], key=itemgetter("jaccard"), reverse=True)
                 profile_jacc = person["profiles"][0]["profile"]
-                if profile_facebook == v:
-                    tp1 = tp1 + 1
-                elif profile_facebook:
-                    fp1 = fp1 + 1
-                    #print "Did not match1:", profile_facebook
-                    false_positives[person["person"]] = profile_facebook
-                for fb1 in person["profiles"][1:]:
-                    if fb1["profile"] == v:
-                        fn1 = fn1 + 1
-                        false_negatives[person["person"]] = v
-                        break
-                if profile_social == v:
-                    tp2 = tp2 + 1
-                elif profile_social:
-                    fp2 = fp2 + 1
-                    #print "Did not match2:", profile_social
-                    false_positives[person["person"]] = profile_social
-                for fb1 in person["profiles"][1:]:
-                    if fb1["profile"] == v:
-                        fn2 = fn2 + 1
-                        false_negatives[person["person"]] = v
-                        break
-                if profile_gt == v:
-                    tp3 = tp3 + 1
-                elif profile_gt:
-                    fp3 = fp3 + 1
-                    #print "Did not match3:", profile_gt
-                    false_positives[person["person"]] = profile_gt
-                for fb1 in person["profiles"][1:]:
-                    if fb1["profile"] == v:
-                        fn3 = fn3 + 1
-                        false_negatives[person["person"]] = v
-                        break
-                if profile_combined == v:
-                    tp4 = tp4 + 1
-                elif profile_combined:
-                    fp4 = fp4 + 1
-                    #print "Did not match4:", profile_combined
-                    false_positives[person["person"]] = profile_combined
-                for fb1 in person["profiles"][1:]:
-                    if fb1["profile"] == v:
-                        fn4 = fn4 + 1
-                        false_negatives[person["person"]] = v
-                        break
-                if profile_jacc == v:
+                profile_jacc_pos.append(profile_jacc)
+                for p in person["profiles"]:
+                    if p["profile"] != profile_jacc:
+                        profile_jacc_neg.append(p["profile"])
+                if profile_jacc and profile_jacc == v:
                     tp5 = tp5 + 1
-                elif profile_jacc:
+                if profile_jacc and profile_jacc != v:
                     fp5 = fp5 + 1
-                    #print "Did not match5:", profile_jacc
-                    false_positives[person["person"]] = profile_jacc
-                for fb1 in person["profiles"][1:]:
-                    if fb1["profile"] == v:
-                        fn5 = fn5 + 1
-                        false_negatives[person["person"]] = v
-                        break
-        count = count + 1
+                    false_positives_5[k] = profile_jacc
+                if v in profile_jacc_neg:
+                    fn5 = fn5 + 1
+                    false_negatives_5[k] = v
+                if v not in profile_jacc_neg:
+                    tn5 = tn5 + len(profile_jacc_neg)
 
     precision1 = tp1 / (tp1 + fp1)
     precision2 = tp2 / (tp2 + fp2)
@@ -1470,11 +1513,25 @@ def facebooksix(request):
     f1["f1_5"] = 2*precision5*recall5/(precision5+recall5)
 
     f2 = {}
-    f2["f2_1"] = 5*tp1/(5*tp1 + 4*fn1 + fp1)
-    f2["f2_2"] = 5*tp2/(5*tp2 + 4*fn2 + fp2)
-    f2["f2_3"] = 5*tp3/(5*tp3 + 4*fn3 + fp3)
-    f2["f2_4"] = 5*tp4/(5*tp4 + 4*fn4 + fp4)
-    f2["f2_5"] = 5*tp5/(5*tp5 + 4*fn5 + fp5)
+    f2["f2_1"] = 5.0*tp1/(5.0*tp1 + 4.0*fn1 + fp1)
+    f2["f2_2"] = 5.0*tp2/(5.0*tp2 + 4.0*fn2 + fp2)
+    f2["f2_3"] = 5.0*tp3/(5.0*tp3 + 4.0*fn3 + fp3)
+    f2["f2_4"] = 5.0*tp4/(5.0*tp4 + 4.0*fn4 + fp4)
+    f2["f2_5"] = 5.0*tp5/(5.0*tp5 + 4.0*fn5 + fp5)
+
+    accuracy = {}
+    accuracy["accuracy1"] = (tp1 + tn1) / (tp1 + tn1 + fp1 + fn1)
+    accuracy["accuracy2"] = (tp2 + tn2) / (tp2 + tn2 + fp2 + fn2)
+    accuracy["accuracy3"] = (tp3 + tn3) / (tp3 + tn3 + fp3 + fn3)
+    accuracy["accuracy4"] = (tp4 + tn4) / (tp4 + tn4 + fp4 + fn4)
+    accuracy["accuracy5"] = (tp5 + tn5) / (tp5 + tn5 + fp5 + fn5)
+
+    tnr = {}
+    tnr["tnr1"] = tn1 / (tn1 + fp1)
+    tnr["tnr2"] = tn2 / (tn2 + fp2)
+    tnr["tnr3"] = tn3 / (tn3 + fp3)
+    tnr["tnr4"] = tn4 / (tn4 + fp4)
+    tnr["tnr5"] = tn5 / (tn5 + fp5)
 
     true_positives = {}
     true_positives["tp1"] = tp1
@@ -1497,15 +1554,41 @@ def facebooksix(request):
     false_negatives["fn4"] = fn4
     false_negatives["fn5"] = fn5
 
+    true_negatives = {}
+    true_negatives["tn1"] = tn1
+    true_negatives["tn2"] = tn2
+    true_negatives["tn3"] = tn3
+    true_negatives["tn4"] = tn4
+    true_negatives["tn5"] = tn5
+
+    false_positives_dict = {}
+    false_positives_dict["false_positives_1"] = false_positives_1
+    false_positives_dict["false_positives_2"] = false_positives_2
+    false_positives_dict["false_positives_3"] = false_positives_3
+    false_positives_dict["false_positives_4"] = false_positives_4
+    false_positives_dict["false_positives_5"] = false_positives_5
+
+    false_negatives_dict = {}
+    false_negatives_dict["false_negatives_1"] = false_negatives_1
+    false_negatives_dict["false_negatives_2"] = false_negatives_2
+    false_negatives_dict["false_negatives_3"] = false_negatives_3
+    false_negatives_dict["false_negatives_4"] = false_negatives_4
+    false_negatives_dict["false_negatives_5"] = false_negatives_5
+
     metadata["positives"] = positives
     metadata["non_positives"] = non_positives
     metadata["precision"] = precision
     metadata["recall"] = recall
+    metadata["accuracy"] = accuracy
+    metadata["tnr"] = tnr
     metadata["f1"] = f1
     metadata["f2"] = f2
     metadata["true_positives"] = true_positives
     metadata["false_positives"] = false_positives
     metadata["false_negatives"] = false_negatives
+    metadata["true_negatives"] = true_negatives
+    metadata["false_positives_dict"] = false_positives_dict
+    metadata["false_negatives_dict"] = false_negatives_dict
 
     context = {
         "entries1": results,

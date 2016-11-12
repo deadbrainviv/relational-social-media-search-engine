@@ -16672,3 +16672,42 @@ Traceback (most recent call last):
   File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 1473, in facebooksix
     true_negatives["tn1"] = tn1
 NameError: global name 'tn1' is not defined
+ERROR:django.request:Internal Server Error: /testApp/verifiednonverified/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 1480, in facebooksix
+    accuracy["accuracy1"] = (tp1 + tn1) / (tp1 + tn1 + fp1 + fn1)
+NameError: global name 'tn1' is not defined
+ERROR:django.request:Internal Server Error: /testApp/verifiednonverified/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 1480, in facebooksix
+    recall["recall3"] = recall3
+NameError: global name 'tn1' is not defined
+ERROR:django.request:Internal Server Error: /testApp/verifiednonverified/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 1445, in facebooksix
+    person["profiles"] = sorted(person["profiles"], key=itemgetter("jaccard"), reverse=True)
+KeyError: 'jaccard'
