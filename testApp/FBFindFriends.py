@@ -51,11 +51,11 @@ for person in cursor:
                     profile["friends"] = friends
                     print "Updating with new data:", profile["friends"]
                     break
-    if flag:
-        db_client.facebook_db.buet3.update(
-        {"_id": person["_id"]},
-        {
-            "person": person["person"],
-            "profiles": person["profiles"]
-        }
-        )
+    # if flag:
+    #     db_client.facebook_db.buet3.update(
+    #     {"_id": person["_id"]},
+    #     {
+    #         "person": person["person"],
+    #         "profiles": person["profiles"]
+    #     }
+    #     )

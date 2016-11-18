@@ -27,12 +27,12 @@ for person in cursor:
         person["profiles"].append(visited_profile)
         for profile in person["profiles"]:
             print profile["profile"]
-        db_client.facebook_db.buet3.update(
-            {"_id": person["_id"]},
-            {
-                "person": person["person"],
-                "profiles": person["profiles"]
-            }
-        )
+        # db_client.facebook_db.buet3.update(
+        #     {"_id": person["_id"]},
+        #     {
+        #         "person": person["person"],
+        #         "profiles": person["profiles"]
+        #     }
+        # )
 
 
