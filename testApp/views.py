@@ -1194,6 +1194,67 @@ def facebookthree(request):
     }
     return render(request, 'testApp/searchGrad.html', context)
 
+def facebookthreeand(request):
+    print "Method facebookthree called!"
+    jaccard_cutoff_html = request.POST.get("jaccard_cutoff_html")
+    jaccard_cutoff = jaccard_cutoff_html
+    if jaccard_cutoff_html:
+        print jaccard_cutoff_html
+        jaccard_cutoff_html = "profile_jaccard_0_dot_" + str(jaccard_cutoff_html).split(".")[1]
+    print jaccard_cutoff_html
+    results = get_facebook_entries("combined")
+    counter_empty = 0
+    counter_one = 0
+    counter_some = 0
+    counter_total = 0
+    for person in results:
+        counter_total = counter_total + 1
+        if len(person["profiles"]) == 0:
+            counter_empty = counter_empty + 1
+        if len(person["profiles"]) == 1:
+            counter_one = counter_one + 1
+        if len(person["profiles"]) > 0:
+            counter_some = counter_some + 1
+    metadata = {}
+    metadata["empty"] = counter_empty
+    metadata["one"] = counter_one
+    metadata["some"] = counter_some
+    metadata["total"] = counter_total
+    score = 0
+    score1 = 0
+    score2 = 0
+    jacc = 0
+    for person in results:
+        if person["showscore"]:
+            score = score + 1
+        if person["showscore1"]:
+            score1 = score1 + 1
+        if person["showscore2"]:
+            score2 = score2 + 1
+        if person["showjacc"]:
+            jacc = jacc + 1
+    metadata["score"] = score
+    metadata["score1"] = score1
+    metadata["score2"] = score2
+    metadata["jacc"] = jacc
+    results1 = []
+    for result in results:
+        if result.has_key(jaccard_cutoff_html):
+            guy = {}
+            guy["person"] = result["person"]
+            guy["profiles"] = []
+            guy["profiles"].append(result[jaccard_cutoff_html])
+            results1.append(guy)
+    print "Len of results1:", len(results1)
+    context = {
+        "entries1": results1,
+        "metadata": metadata,
+        "type": "facebookthreeand",
+        "number_of_jaccard_people": str(len(results1)),
+        "jaccard_cutoff": jaccard_cutoff
+    }
+    return render(request, 'testApp/searchGrad.html', context)
+
 def facebookfour(request):
     print "Method facebookfour called!"
     results = get_facebook_entries("watson")
@@ -1640,7 +1701,8 @@ def markProfile(request):
                 }
             )
 
-    for person in results:
+    cursor = db_client.facebook_db.buet3.find()
+    for person in cursor:
         for profile in person["profiles"]:
             if profile["profile"] in facebook_profiles1:
                 print person["person"], " ==> ", profile["profile"]
@@ -1705,9 +1767,309 @@ def markProfile(request):
 
     results = get_facebook_entries("default")
 
+    counter_empty = 0
+    counter_one = 0
+    counter_some = 0
+    counter_total = 0
+    for person in results:
+        counter_total = counter_total + 1
+        if len(person["profiles"]) == 0:
+            counter_empty = counter_empty + 1
+        if len(person["profiles"]) == 1:
+            counter_one = counter_one + 1
+        if len(person["profiles"]) > 0:
+            counter_some = counter_some + 1
+    metadata = {}
+    metadata["empty"] = counter_empty
+    metadata["one"] = counter_one
+    metadata["some"] = counter_some
+    metadata["total"] = counter_total
+    score = 0
+    score1 = 0
+    score2 = 0
+    jacc = 0
+    watson = 0
+    for person in results:
+        if person["showscore"] == True:
+            score = score + 1
+        if person["showscore1"] == True:
+            score1 = score1 + 1
+        if person["showscore2"] == True:
+            score2 = score2 + 1
+        if person["showjacc"] == True:
+            jacc = jacc + 1
+        if person["watson"] == True:
+            watson = watson + 1
+    metadata["score"] = score
+    metadata["score1"] = score1
+    metadata["score2"] = score2
+    metadata["jacc"] = jacc
+    metadata["watson"] = watson
+
+    positives = 0
+    non_positives = 0
+    no_profile = 0
+    ground_truth = {}
+    for person in results:
+        for profile in person["profiles"]:
+            if profile.has_key("actual") and profile["actual"] == "yes":
+                positives = positives + 1
+                ground_truth[person["person"]] = profile["profile"]
+            if profile.has_key("actual") and profile["actual"] != "yes":
+                non_positives = non_positives + 1
+        if len(person["profiles"]) == 0:
+            no_profile = no_profile + 1
+
+    tp1 = 0.0
+    tn1 = 0.0
+    fp1 = 0.0
+    fn1 = 0.0
+    tp2 = 0.0
+    tn2 = 0.0
+    fp2 = 0.0
+    fn2 = 0.0
+    tp3 = 0.0
+    tn3 = 0.0
+    fp3 = 0.0
+    fn3 = 0.0
+    tp4 = 0.0
+    tn4 = 0.0
+    fp4 = 0.0
+    fn4 = 0.0
+    tp5 = 0.0
+    tn5 = 0.0
+    fp5 = 0.0
+    fn5 = 0.0
+
+    false_positives_1 = {}
+    false_negatives_1 = {}
+    false_positives_2 = {}
+    false_negatives_2 = {}
+    false_positives_3 = {}
+    false_negatives_3 = {}
+    false_positives_4 = {}
+    false_negatives_4 = {}
+    false_positives_5 = {}
+    false_negatives_5 = {}
+
+    for k, v in ground_truth.iteritems():
+
+        for person in results:
+
+            if person["person"] == k:
+
+                profile_facebook_pos = []
+                profile_facebook_neg = []
+                profile_facebook = person["profiles"][0]["profile"]
+                profile_facebook_pos.append(profile_facebook)
+                for p in person["profiles"]:
+                    if p["profile"] != profile_facebook:
+                        profile_facebook_neg.append(p["profile"])
+                if profile_facebook and profile_facebook == v:
+                    tp1 = tp1 + 1
+                if profile_facebook and profile_facebook != v:
+                    fp1 = fp1 + 1
+                    false_positives_1[k] = profile_facebook
+                if v in profile_facebook_neg:
+                    fn1 = fn1 + 1
+                    false_negatives_1[k] = v
+                if v not in profile_facebook_neg:
+                    tn1 = tn1 + len(profile_facebook_neg)
+
+                profile_social_pos = []
+                profile_social_neg = []
+                person["profiles"] = sorted(person["profiles"], key=itemgetter("score"), reverse=True)
+                profile_social = person["profiles"][0]["profile"]
+                profile_social_pos.append(profile_social)
+                for p in person["profiles"]:
+                    if p["profile"] != profile_social:
+                        profile_social_neg.append(p["profile"])
+                if profile_social and profile_social == v:
+                    tp2 = tp2 + 1
+                if profile_social and profile_social != v:
+                    fp2 = fp2 + 1
+                    false_positives_2[k] = profile_social
+                if v in profile_social_neg:
+                    fn2 = fn2 + 1
+                    false_negatives_2[k] = v
+                if v not in profile_social_neg:
+                    tn2 = tn2 + len(profile_social_neg)
+
+                profile_gt_pos = []
+                profile_gt_neg = []
+                person["profiles"] = sorted(person["profiles"], key=itemgetter("score1"), reverse=True)
+                profile_gt = person["profiles"][0]["profile"]
+                profile_gt_pos.append(profile_gt)
+                for p in person["profiles"]:
+                    if p["profile"] != profile_gt:
+                        profile_gt_neg.append(p["profile"])
+                if profile_gt and profile_gt == v:
+                    tp3 = tp3 + 1
+                if profile_gt and profile_gt != v:
+                    fp3 = fp3 + 1
+                    false_positives_3[k] = profile_gt
+                if v in profile_gt_neg:
+                    fn3 = fn3 + 1
+                    false_negatives_3[k] = v
+                if v not in profile_gt_neg:
+                    tn3 = tn3 + len(profile_gt_neg)
+
+                profile_combined_pos = []
+                profile_combined_neg = []
+                person["profiles"] = sorted(person["profiles"], key=itemgetter("score2"), reverse=True)
+                profile_combined = person["profiles"][0]["profile"]
+                profile_combined_pos.append(profile_combined)
+                for p in person["profiles"]:
+                    if p["profile"] != profile_combined:
+                        profile_combined_neg.append(p["profile"])
+                if profile_combined and profile_combined == v:
+                    tp4 = tp4 + 1
+                if profile_combined and profile_combined != v:
+                    fp4 = fp4 + 1
+                    false_positives_4[k] = profile_combined
+                if v in profile_combined_neg:
+                    fn4 = fn4 + 1
+                    false_negatives_4[k] = v
+                if v not in profile_combined_neg:
+                    tn4 = tn4 + len(profile_combined_neg)
+
+                profile_jacc_pos = []
+                profile_jacc_neg = []
+                for p in person["profiles"]:
+                    if not p.has_key("jaccard"):
+                        p["jaccard"] = 0.0
+                person["profiles"] = sorted(person["profiles"], key=itemgetter("jaccard"), reverse=True)
+                profile_jacc = person["profiles"][0]["profile"]
+                profile_jacc_pos.append(profile_jacc)
+                for p in person["profiles"]:
+                    if p["profile"] != profile_jacc:
+                        profile_jacc_neg.append(p["profile"])
+                if profile_jacc and profile_jacc == v:
+                    tp5 = tp5 + 1
+                if profile_jacc and profile_jacc != v:
+                    fp5 = fp5 + 1
+                    false_positives_5[k] = profile_jacc
+                if v in profile_jacc_neg:
+                    fn5 = fn5 + 1
+                    false_negatives_5[k] = v
+                if v not in profile_jacc_neg:
+                    tn5 = tn5 + len(profile_jacc_neg)
+
+    precision1 = tp1 / (tp1 + fp1)
+    precision2 = tp2 / (tp2 + fp2)
+    precision3 = tp3 / (tp3 + fp3)
+    precision4 = tp4 / (tp4 + fp4)
+    precision5 = tp5 / (tp5 + fp5)
+    precision = {}
+    precision["precision1"] = precision1
+    precision["precision2"] = precision2
+    precision["precision3"] = precision3
+    precision["precision4"] = precision4
+    precision["precision5"] = precision5
+
+    recall1 = tp1 / (tp1 + fn1)
+    recall2 = tp2 / (tp2 + fn2)
+    recall3 = tp3 / (tp3 + fn3)
+    recall4 = tp4 / (tp4 + fn4)
+    recall5 = tp5 / (tp5 + fn5)
+    recall = {}
+    recall["recall1"] = recall1
+    recall["recall2"] = recall2
+    recall["recall3"] = recall3
+    recall["recall4"] = recall4
+    recall["recall5"] = recall5
+
+    f1 = {}
+    f1["f1_1"] = 2 * precision1 * recall1 / (precision1 + recall1)
+    f1["f1_2"] = 2 * precision2 * recall2 / (precision2 + recall2)
+    f1["f1_3"] = 2 * precision3 * recall3 / (precision3 + recall3)
+    f1["f1_4"] = 2 * precision4 * recall4 / (precision4 + recall4)
+    f1["f1_5"] = 2 * precision5 * recall5 / (precision5 + recall5)
+
+    f2 = {}
+    f2["f2_1"] = 5.0 * tp1 / (5.0 * tp1 + 4.0 * fn1 + fp1)
+    f2["f2_2"] = 5.0 * tp2 / (5.0 * tp2 + 4.0 * fn2 + fp2)
+    f2["f2_3"] = 5.0 * tp3 / (5.0 * tp3 + 4.0 * fn3 + fp3)
+    f2["f2_4"] = 5.0 * tp4 / (5.0 * tp4 + 4.0 * fn4 + fp4)
+    f2["f2_5"] = 5.0 * tp5 / (5.0 * tp5 + 4.0 * fn5 + fp5)
+
+    accuracy = {}
+    accuracy["accuracy1"] = (tp1 + tn1) / (tp1 + tn1 + fp1 + fn1)
+    accuracy["accuracy2"] = (tp2 + tn2) / (tp2 + tn2 + fp2 + fn2)
+    accuracy["accuracy3"] = (tp3 + tn3) / (tp3 + tn3 + fp3 + fn3)
+    accuracy["accuracy4"] = (tp4 + tn4) / (tp4 + tn4 + fp4 + fn4)
+    accuracy["accuracy5"] = (tp5 + tn5) / (tp5 + tn5 + fp5 + fn5)
+
+    tnr = {}
+    tnr["tnr1"] = tn1 / (tn1 + fp1)
+    tnr["tnr2"] = tn2 / (tn2 + fp2)
+    tnr["tnr3"] = tn3 / (tn3 + fp3)
+    tnr["tnr4"] = tn4 / (tn4 + fp4)
+    tnr["tnr5"] = tn5 / (tn5 + fp5)
+
+    true_positives = {}
+    true_positives["tp1"] = tp1
+    true_positives["tp2"] = tp2
+    true_positives["tp3"] = tp3
+    true_positives["tp4"] = tp4
+    true_positives["tp5"] = tp5
+
+    false_positives = {}
+    false_positives["fp1"] = fp1
+    false_positives["fp2"] = fp2
+    false_positives["fp3"] = fp3
+    false_positives["fp4"] = fp4
+    false_positives["fp5"] = fp5
+
+    false_negatives = {}
+    false_negatives["fn1"] = fn1
+    false_negatives["fn2"] = fn2
+    false_negatives["fn3"] = fn3
+    false_negatives["fn4"] = fn4
+    false_negatives["fn5"] = fn5
+
+    true_negatives = {}
+    true_negatives["tn1"] = tn1
+    true_negatives["tn2"] = tn2
+    true_negatives["tn3"] = tn3
+    true_negatives["tn4"] = tn4
+    true_negatives["tn5"] = tn5
+
+    false_positives_dict = {}
+    false_positives_dict["false_positives_1"] = false_positives_1
+    false_positives_dict["false_positives_2"] = false_positives_2
+    false_positives_dict["false_positives_3"] = false_positives_3
+    false_positives_dict["false_positives_4"] = false_positives_4
+    false_positives_dict["false_positives_5"] = false_positives_5
+
+    false_negatives_dict = {}
+    false_negatives_dict["false_negatives_1"] = false_negatives_1
+    false_negatives_dict["false_negatives_2"] = false_negatives_2
+    false_negatives_dict["false_negatives_3"] = false_negatives_3
+    false_negatives_dict["false_negatives_4"] = false_negatives_4
+    false_negatives_dict["false_negatives_5"] = false_negatives_5
+
+    metadata["positives"] = positives
+    metadata["non_positives"] = non_positives
+    metadata["precision"] = precision
+    metadata["recall"] = recall
+    metadata["accuracy"] = accuracy
+    metadata["tnr"] = tnr
+    metadata["f1"] = f1
+    metadata["f2"] = f2
+    metadata["true_positives"] = true_positives
+    metadata["false_positives"] = false_positives
+    metadata["false_negatives"] = false_negatives
+    metadata["true_negatives"] = true_negatives
+    metadata["false_positives_dict"] = false_positives_dict
+    metadata["false_negatives_dict"] = false_negatives_dict
+
     context = {
-        'entries1': results
+        "entries1": results,
+        "metadata": metadata,
+        "type": "facebooksix"
     }
+
     return render(request, 'testApp/searchGrad.html', context)
 
 def sortView(request):

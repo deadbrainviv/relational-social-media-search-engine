@@ -28,6 +28,7 @@ urlpatterns = [
 	url(r'^socialgraph/$', views.facebookone, name='facebookone'),
 	url(r'^groundtruth/$', views.facebooktwo, name='facebooktwo'),
 	url(r'^combined/$', views.facebookthree, name='facebookthree'),
+	url(r'^combinedexc/$', views.facebookthreeand, name='facebookthreeand'),
 	url(r'^watson/$', views.facebookfour, name='facebookfour'),
 	url(r'^listing/$', views.facebookfive, name='facebookfive'),
 	url(r'^verifiednonverified/$', views.facebooksix, name='facebooksix'),

@@ -14,9 +14,58 @@
 {%	load staticfiles %}
 </head>
 <body>
+	{% if type == "facebookthreeand"%}
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<form action="/testApp/combinedexc/" method="post">
+		{% csrf_token %}
+		<font size="3" color="red"><b>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		Select Jaccard cutoff: 
+		<select name="jaccard_cutoff_html">
+		  <option value="0.2">0.2</option>
+		  <option value="0.225" selected="selected">0.225</option>
+		  <option value="0.25">0.25</option>
+		  <option value="0.275">0.275</option>
+		  <option value="0.3">0.3</option>
+		  <option value="0.325">0.325</option>
+		  <option value="0.35">0.35</option>
+		  <option value="0.375">0.375</option>
+		  <option value="0.4">0.4</option>
+		  <option value="0.425">0.425</option>
+		  <option value="0.45">0.45</option>
+		  <option value="0.475">0.475</option>
+		  <option value="0.5">0.5</option>
+		  <option value="0.525">0.525</option>
+		</select>
+		</b></font>
+		&nbsp;&nbsp;&nbsp;
+		<button type="submit" style="height:25px;width:100px" value="text">Go</button>
+		</form>
+		<p>
+	{% endif %}
 	<form action="/testApp/markProfile/" method="post">
 	{% csrf_token %}
 	<br>
+	{% if number_of_jaccard_people %}
+	<table id="table_one" border="0" style="table-layout: fixed;width:1600px;margin-left:2cm;">
+		<tr style="width:1600px">
+			<td colspan="3" style="width:1600px">
+				<b><font color="red" size="3">Number of people clearing the Jaccard cutoff of {{jaccard_cutoff}} &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{number_of_jaccard_people}}</font></b><br/>
+			</td>
+		</tr>
+		</tr>
+	</table>
+	<br>
+	<br>
+	<br>
+	{% endif %}
 	{% if metadata%}
 	<table id="table_one" border="0" style="table-layout: fixed;width:1600px;margin-left:2cm;">
 		<tr style="width:1600px">
@@ -367,7 +416,7 @@
 	<br>
 	<br>
 	<br>
-	{% if type == "facebook" or type == "facebookone" or type == "facebooktwo" or type == "facebookthree" or type == "facebookfour" %}
+	{% if type == "facebook" or type == "facebookone" or type == "facebooktwo" or type == "facebookthree" or type == "facebookthreeand" or type == "facebookfour" %}
 	<div class="l-content"> 
     <div id="selections_list" class="pricing-tables pure-g">
 	<table id="table_one" border="3" style="table-layout: fixed;width:1600px;margin-left:2cm;">
@@ -555,7 +604,7 @@
 								&nbsp&nbsp&nbsp<b>Searched for '{{e1.person}}'</b>
 							</td>
 						</tr>
-						{% if e1.profiles|length == 0 %}
+						{% if e1.profiles|length == 0 and type != "facebookthreeand" %}
 							<tr style="width:1500px;border-style:solid;"></tr>
 							<tr style="width:1500px;border-style:solid;">
 								<td colspan="1" style="width:150px" >
@@ -603,6 +652,8 @@
 												<b>Combined:&nbsp;&nbsp;{{profile.score2}}</b><br/>
 												{% if profile.jaccard %}
 													<b>Seed Friends Ground Truth:&nbsp;&nbsp;{{profile.jaccard}}</b><br/>
+												{% else %}
+													<b>Seed Friends Ground Truth:&nbsp;&nbsp;NA</b><br/>
 												{% endif %}
 												{% if profile.watson %}
 													<font color="red"><br/>
@@ -760,8 +811,63 @@
 											</tr>
 										{% endif %}
 									{% endif %}
+									{% if type == "facebookthreeand" %}
+										<tr style="width:1500px;border-style:solid;"></tr>
+										<tr style="width:1500px;border-style:solid;">
+											<td colspan="1" style="width:150px">
+												<img src="{{profile.pic}}"><br/>
+												<font color="red"><b>Seed Friends Ground Truth:&nbsp;&nbsp;{{profile.jaccard}}</b><br/></font>
+											</td>
+											<td colspan="1" style="width:150px" >
+												{{profile.name}}
+											</td>
+											<td colspan="1" style="width:150px" >
+												<a href="{{profile.profile}}">Facebook Profile</a>
+											</td>
+											<td colspan="1" style="width:150px" >
+												{{profile.education}}
+											</td>
+											<td colspan="1" style="width:150px" >
+												{{profile.work}}
+											</td>
+											<td colspan="1" style="width:150px" >
+												{{profile.location}}
+											</td>
+											<td colspan="1" style="width:150px" >
+												{{profile.work}}
+											</td>
+											<td colspan="1" style="width:150px" >
+												Friend list hidden.
+												<!--<table style="width:150px">
+												{% for fr in profile.friends %}
+													<tr style="width:150px">
+														<td style="width:150px">
+															<a href="{{fr}}">{{fr}}</a>
+														</td>
+													</tr>
+												{% endfor %}
+												</table>-->
+											</td>
+											<td colspan="1" style="width:150px" >
+												NA
+											</td>
+											<td colspan="1" style="width:150px" >
+												{% if profile.actual == "na" %}
+													Please indicate ground truth:<br/>
+													Yes:&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="yes__{{profile.profile}}" /><br/>
+													No:&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="no__{{profile.profile}}" /><br/>
+												{% endif %}
+												{% if profile.actual == "yes" %}
+													TRUE(+):&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="yes__{{profile.profile}}" checked disabled /><br/>
+												{% endif %}
+												{% if profile.actual == "no" %}
+													FALSE(-):&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="no__{{profile.profile}}" disabled /><br/>
+												{% endif %}
+											</td>
+										</tr>
+									{% endif %}
 									{% if type == "facebookthree"%}
-										{% if profile.score2 > 0 or profile.jaccard %}
+										{% if profile.score2 or profile.jaccard %}
 											<tr style="width:1500px;border-style:solid;"></tr>
 											<tr style="width:1500px;border-style:solid;">
 												<td colspan="1" style="width:150px">
@@ -771,6 +877,8 @@
 													{% endif %}
 													{% if profile.jaccard %}
 														<font color="red"><b>Seed Friends Ground Truth:&nbsp;&nbsp;{{profile.jaccard}}</b><br/></font>
+													{% else %}
+														<font color="red"><b>Seed Friends Ground Truth:&nbsp;&nbsp;NA</b><br/></font>
 													{% endif %}
 												</td>
 												<td colspan="1" style="width:150px" >

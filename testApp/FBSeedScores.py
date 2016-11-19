@@ -15,6 +15,19 @@ list_exceptions = []
 list_exceptions.append("md")
 list_exceptions.append("mohammad")
 list_exceptions.append("mohammed")
+list_exceptions.append("khan")
+list_exceptions.append("ahmed")
+list_exceptions.append("ahmad")
+
+jacc_cutoff = 0.525
+
+# while True:
+#     if jacc_cutoff > 0.8:
+#         break
+#
+#     jacc_cutoff = jacc_cutoff + 0.1
+
+
 
 # prepare seeds information
 for file in os.listdir(os.getcwd() + "\\seeds\\"):
@@ -35,12 +48,15 @@ for file in os.listdir(os.getcwd() + "\\seeds\\"):
             data[link] = tokens
     dict[file] = data
 
+#print dict
+
 similarities = {}
 cursor = db_client.facebook_db.buet3.find()
 for person in cursor:
     name = person["person"]
     profiles = person["profiles"]
-    if len(profiles) == 0:
+    if len(person["profiles"]) == 0:
+    # if len(person["profiles"]) == 1 and person["profiles"][0].has_key("jaccard") and person["profiles"][0]["jaccard"] >= 0.0:
         name = name.lower()
         name = name.replace(".","")
         tokens_name = name.split()
@@ -63,7 +79,7 @@ for person in cursor:
                 temp = set(temp)
                 den = len(temp)
                 jacc = num / den
-                if jacc > 0.5:
+                if jacc >= jacc_cutoff:
                     if similarities.has_key(name):
                         similarity = similarities[name]
                         if similarity.has_key(file):
@@ -80,6 +96,8 @@ for person in cursor:
                         similarity[file] = similarity_file
                         similarities[person["person"]] = similarity
 
+#print similarities
+
 final_dict = {}
 for person, similarity in similarities.iteritems():
     answers = []
@@ -93,30 +111,54 @@ for person, similarity in similarities.iteritems():
         output = link + " : " + str(min)
         output = output.strip()
         answers.append(output)
-    #print person, answers[0]
     final_dict[person] = answers[0]
+
+count = 0
+for k, v in final_dict.iteritems():
+    print k, v
+    count = count + 1
+print count
 
 fbexecute = FBExecute()
 browser = fbexecute.login_into_facebook(creds_file="logins.txt")
 cursor = db_client.facebook_db.buet3.find()
 for person in cursor:
-    if len(person["profiles"]) == 1 and person["profiles"][0].has_key("jaccard"):
-        print person
-    # for k, v in final_dict.iteritems():
-    #     if k == person["person"]:
-    #         print "---------------------------------------------------------------------"
-    #         print person
-    #         profile = fbexecute.visit_profile(browser, person["person"], v.split(" : ")[0])
-    #         profile["jaccard"] = round(float(v.split(" : ")[1].strip()), 3)
-    #         person["profiles"].append(profile)
-    #         print person
-    # db_client.facebook_db.buet3.update(
-    # {"_id": person["_id"]},
-    # {
-    #     "person": person["person"],
-    #     "profiles": person["profiles"]
-    # }
-    # )
+    if person["person"] in final_dict.keys():
+        k = person["person"]
+        v = final_dict[k]
+        print "---------------------------------------------------------------------"
+        print "Person name:", person["person"]
+        predicted_profile = v.split(" : ")[0]
+        predicted_profile_score = round(float(v.split(" : ")[1].strip()), 3)
+        # Building profile starting
+        profile = fbexecute.visit_profile(browser, person["person"], predicted_profile)
+        profile["jaccard"] = predicted_profile_score
+        print profile
+        # Building profile done
+        person["profile_jaccard_0_dot_525"] = profile
+        # db_client.facebook_db.buet3.update(
+        # {"_id": person["_id"]},
+        # {
+        #     "person": person["person"],
+        #     "profiles": person["profiles"],
+        #     "profile_jaccard_0_dot_2": person["profile_jaccard_0_dot_2"],
+        #     "profile_jaccard_0_dot_225": person["profile_jaccard_0_dot_225"],
+        #     "profile_jaccard_0_dot_25": person["profile_jaccard_0_dot_25"],
+        #     "profile_jaccard_0_dot_275": person["profile_jaccard_0_dot_275"],
+        #     "profile_jaccard_0_dot_3": person["profile_jaccard_0_dot_3"],
+        #     "profile_jaccard_0_dot_325": person["profile_jaccard_0_dot_325"],
+        #     "profile_jaccard_0_dot_35": person["profile_jaccard_0_dot_35"],
+        #     "profile_jaccard_0_dot_375": person["profile_jaccard_0_dot_375"],
+        #     "profile_jaccard_0_dot_4": person["profile_jaccard_0_dot_4"],
+        #     "profile_jaccard_0_dot_425": person["profile_jaccard_0_dot_425"],
+        #     "profile_jaccard_0_dot_45": person["profile_jaccard_0_dot_45"],
+        #     "profile_jaccard_0_dot_475": person["profile_jaccard_0_dot_475"],
+        #     "profile_jaccard_0_dot_5": person["profile_jaccard_0_dot_5"],
+        #     "profile_jaccard_0_dot_525": person["profile_jaccard_0_dot_525"]
+        #
+        #
+        # }
+        # )
 
 
 
@@ -131,28 +173,6 @@ for person in cursor:
 
 
 
-
-
-
-
-
-
-
-# writing all facebook profiles to disk
-# cursor = db_client.facebook_db.buet3.find()
-# counter = 0
-# for person in cursor:
-#     for profile in person["profiles"]:
-#         print profile
-#         counter = counter + 1
-#     # db_client.facebook_db.buet3.update(
-#     # {"_id": person["_id"]},
-#     # {
-#     #     "person": person["person"],
-#     #     "profiles": person["profiles"]
-#     # }
-#     # )
-# print "Total number of Facebook profiles:", counter
 
 
 
