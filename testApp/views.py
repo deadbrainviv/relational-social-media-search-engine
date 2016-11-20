@@ -1197,11 +1197,10 @@ def facebookthree(request):
 def facebookthreeand(request):
     print "Method facebookthree called!"
     jaccard_cutoff_html = request.POST.get("jaccard_cutoff_html")
-    jaccard_cutoff = jaccard_cutoff_html
-    if jaccard_cutoff_html:
-        print jaccard_cutoff_html
-        jaccard_cutoff_html = "profile_jaccard_0_dot_" + str(jaccard_cutoff_html).split(".")[1]
-    print jaccard_cutoff_html
+    if not jaccard_cutoff_html:
+        jaccard_cutoff_html = 0.01
+    jaccard_cutoff_html = float(jaccard_cutoff_html)
+    print "jaccard_cutoff_html:", jaccard_cutoff_html
     results = get_facebook_entries("combined")
     counter_empty = 0
     counter_one = 0
@@ -1237,21 +1236,33 @@ def facebookthreeand(request):
     metadata["score1"] = score1
     metadata["score2"] = score2
     metadata["jacc"] = jacc
-    results1 = []
+    people_having_profiles = 0
+    people_having_profiles1 = 0
+    outputs = []
     for result in results:
-        if result.has_key(jaccard_cutoff_html):
-            guy = {}
-            guy["person"] = result["person"]
-            guy["profiles"] = []
-            guy["profiles"].append(result[jaccard_cutoff_html])
-            results1.append(guy)
-    print "Len of results1:", len(results1)
+        flag = False
+        for profile in result["profiles"]:
+            if profile.has_key("score_jaccard_sim"):
+                flag = True
+        if flag:
+            output = {}
+            output["person"] = result["person"]
+            output["profiles"] = []
+            for profile in result["profiles"]:
+                if profile["score_jaccard_sim"] >= jaccard_cutoff_html:
+                    output["profiles"].append(profile)
+            outputs.append(output)
+            if len(output["profiles"]) > 0:
+                people_having_profiles = people_having_profiles + 1
+            people_having_profiles1 = people_having_profiles1 + 1
+    if jaccard_cutoff_html == 0.01:
+        people_having_profiles = people_having_profiles1
     context = {
-        "entries1": results1,
+        "entries1": outputs,
         "metadata": metadata,
         "type": "facebookthreeand",
-        "number_of_jaccard_people": str(len(results1)),
-        "jaccard_cutoff": jaccard_cutoff
+        "selectedvalue": jaccard_cutoff_html,
+        "people_having_profiles": people_having_profiles
     }
     return render(request, 'testApp/searchGrad.html', context)
 
@@ -1680,8 +1691,10 @@ def markProfile(request):
                     "profiles": person["profiles"]
                 }
             )
+
     elif submit == "Submit changes!":
         facebook_profiles = request.POST.getlist("facebook_profile")
+        #print facebook_profiles
         for facebook_profile in facebook_profiles:
             if facebook_profile.startswith("yes__"):
                 facebook_profiles1.append(facebook_profile.split("yes__")[1])
@@ -1702,10 +1715,10 @@ def markProfile(request):
             )
 
     cursor = db_client.facebook_db.buet3.find()
-    for person in cursor:
-        for profile in person["profiles"]:
-            if profile["profile"] in facebook_profiles1:
-                print person["person"], " ==> ", profile["profile"]
+    # for person in cursor:
+    #     for profile in person["profiles"]:
+    #         if profile["profile"] in facebook_profiles1:
+    #             print person["person"], " ==> ", profile["profile"]
 
     all_facebook_profiles = []
     cursor = db_client.facebook_db.buet3.find()
@@ -1758,11 +1771,11 @@ def markProfile(request):
         person["profiles"] = sorted(person["profiles"], key=itemgetter("score1", "score2", "score"), reverse=True)
         #print person
         db_client.facebook_db.buet3.update(
-        {"_id": person["_id"]},
-        {
-            "person": person["person"],
-            "profiles": person["profiles"]
-        }
+            {"_id": person["_id"]},
+            {
+                "person": person["person"],
+                "profiles": person["profiles"]
+            }
         )
 
     results = get_facebook_entries("default")

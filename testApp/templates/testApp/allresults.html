@@ -29,24 +29,66 @@
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		Select Jaccard cutoff: 
 		<select name="jaccard_cutoff_html">
-		  <option value="0.2">0.2</option>
-		  <option value="0.225" selected="selected">0.225</option>
+		  <option value="0.01" selected="selected">0.01</option>
+		  <option value="0.02">0.02</option>
+		  <option value="0.03">0.03</option>
+		  <option value="0.04">0.04</option>
+		  <option value="0.05">0.05</option>
+		  <option value="0.06">0.06</option>
+		  <option value="0.07">0.07</option>
+		  <option value="0.08">0.08</option>
+		  <option value="0.09">0.09</option>
+		  <option value="0.10">0.10</option>
+		  <option value="0.11">0.11</option>
+		  <option value="0.12">0.12</option>
+		  <option value="0.13">0.13</option>
+		  <option value="0.14">0.14</option>
+		  <option value="0.15">0.15</option>
+		  <option value="0.16">0.16</option>
+		  <option value="0.17">0.17</option>
+		  <option value="0.18">0.18</option>
+		  <option value="0.19">0.19</option>
+		  <option value="0.20">0.20</option>
+		  <option value="0.21">0.21</option>
+		  <option value="0.22">0.22</option>
+		  <option value="0.23">0.23</option>
+		  <option value="0.24">0.24</option>
 		  <option value="0.25">0.25</option>
-		  <option value="0.275">0.275</option>
-		  <option value="0.3">0.3</option>
-		  <option value="0.325">0.325</option>
+		  <option value="0.26">0.26</option>
+		  <option value="0.27">0.27</option>
+		  <option value="0.28">0.28</option>
+		  <option value="0.29">0.29</option>
+		  <option value="0.30">0.30</option>
+		  <option value="0.31">0.31</option>
+		  <option value="0.32">0.32</option>
+		  <option value="0.33">0.33</option>
+		  <option value="0.34">0.34</option>
 		  <option value="0.35">0.35</option>
-		  <option value="0.375">0.375</option>
-		  <option value="0.4">0.4</option>
-		  <option value="0.425">0.425</option>
+		  <option value="0.36">0.36</option>
+		  <option value="0.37">0.37</option>
+		  <option value="0.38">0.38</option>
+		  <option value="0.39">0.39</option>
+		  <option value="0.40">0.40</option>
+		  <option value="0.41">0.41</option>
+		  <option value="0.42">0.42</option>
+		  <option value="0.43">0.43</option>
+		  <option value="0.44">0.44</option>
 		  <option value="0.45">0.45</option>
-		  <option value="0.475">0.475</option>
-		  <option value="0.5">0.5</option>
-		  <option value="0.525">0.525</option>
+		  <option value="0.46">0.46</option>
+		  <option value="0.47">0.47</option>
+		  <option value="0.48">0.48</option>
+		  <option value="0.49">0.49</option>
+		  <option value="0.50">0.50</option>
+		  <option value="0.51">0.51</option>
 		</select>
 		</b></font>
-		&nbsp;&nbsp;&nbsp;
 		<button type="submit" style="height:25px;width:100px" value="text">Go</button>
+		<br/><br><br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<font size="5" color="green"><b>Selected value: {{selectedvalue}}</b></font>
+		<br/><br><br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<font size="5" color="green"><b>Number of people clearing the jaccard score of {{selectedvalue}} are : ==> {{people_having_profiles}}</b></font>
 		</form>
 		<p>
 	{% endif %}
@@ -598,12 +640,15 @@
 			<tr style="width:1600px">
 				<td colspan="10" style="width:1600px">
 					<table border="1" style="width:1600px">
+						{% if type == "facebookthreeand" and e1.profiles|length == 0 %}
+						{% else %}
 						<br/>
 						<tr style="width:1500px;border-style:hidden;">
 							<td colspan="10" style="width:1500px">
 								&nbsp&nbsp&nbsp<b>Searched for '{{e1.person}}'</b>
 							</td>
 						</tr>
+						{% endif %}
 						{% if e1.profiles|length == 0 and type != "facebookthreeand" %}
 							<tr style="width:1500px;border-style:solid;"></tr>
 							<tr style="width:1500px;border-style:solid;">
@@ -816,7 +861,7 @@
 										<tr style="width:1500px;border-style:solid;">
 											<td colspan="1" style="width:150px">
 												<img src="{{profile.pic}}"><br/>
-												<font color="red"><b>Seed Friends Ground Truth:&nbsp;&nbsp;{{profile.jaccard}}</b><br/></font>
+												<font color="red"><b>Seed Friends Ground Truth:&nbsp;&nbsp;{{profile.score_jaccard_sim}}</b><br/></font>
 											</td>
 											<td colspan="1" style="width:150px" >
 												{{profile.name}}

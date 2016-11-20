@@ -118,6 +118,16 @@ class FBExecute:
                         dict["work"] = dict["work"] + former
         return dict
 
+    def get_profile_name(self, browser, profile):
+        response = browser.open(profile)
+        html = response.read()
+        lines = html.split("\n")
+        for line in lines:
+            if "<title id=\"pageTitle\">" in line:
+                name = line.split("<title id=\"pageTitle\">")[1].split("</title>")[0]
+                return name
+        return None
+
     def login_into_facebook(self, creds_file):
         browser = mechanize.Browser()
         browser.set_handle_robots(False)
