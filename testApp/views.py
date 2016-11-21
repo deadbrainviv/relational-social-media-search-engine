@@ -1702,6 +1702,9 @@ def markProfile(request):
             if facebook_profile.startswith("no__"):
                 facebook_profiles1.append(facebook_profile.split("no__")[1])
                 params_dict[facebook_profile.split("no__")[1]] = "no"
+            if facebook_profile.startswith("ver__"):
+                facebook_profiles1.append(facebook_profile.split("ver__")[1])
+                params_dict[facebook_profile.split("ver__")[1]] = "yes"
         for person in cursor:
             for profile in person["profiles"]:
                 if profile["profile"] in facebook_profiles1:

@@ -14,6 +14,15 @@ import time
 import os
 
 from FBDb import *
+from FBExecute import *
+import random
+from bson import ObjectId
+import urllib2
+from operator import itemgetter
+
+# colleges = []
+# colleges.append("bangladesh%20university%20of%20engineering%20and%20technology")
+# colleges.append("buet")
 
 class FBExecute:
 
@@ -35,15 +44,45 @@ class FBExecute:
                 people.append(newline)
         return people
 
+    def get_top_20_friends(self, browser, profile):
+        print "Friends analyzed for profile:", profile["profile"]
+        response = browser.open(profile["profile"] + "/friends")
+        html = response.read()
+        lines = html.split("\n")
+        for line in lines:
+            if "friends.search" in line:
+                line1 = line.split("https://www.facebook.com/")
+                friends = []
+                for itr in line1:
+                    if not itr.startswith("<div class="):
+                        itr = itr.split("\"")[0]
+                        if "&amp;" in itr:
+                            itr = itr.split("&amp;")[0]
+                        if "?fref=pb" in itr:
+                            itr = itr.split("?fref=pb")[0]
+                        if "?ref=br" in itr:
+                            itr = itr.split("?ref=br")[0]
+                        if itr.endswith("/"):
+                            itr = itr[:-1]
+                        itr = "https://www.facebook.com/" + itr.strip()
+                        itr = itr.lower()
+                        if not itr.startswith(
+                                "https://www.facebook.com/pages") and not "university" in itr and not "-" in itr:
+                            friends.append(itr)
+                friends = list(set(friends))
+                return friends
+
     def visit_profile(self, browser, name, profile):
         response = browser.open(profile)
         html = response.read()
         lines = html.split("\n")
         dict = {}
-        dict["name"] = name
         dict["profile"] = profile
         dict["actual"] = "na"
+        dict["friends"] = self.get_top_20_friends(browser, profile)
         for line in lines:
+            if "<title id=\"pageTitle\">" in line:
+                dict["name"] = line.split("<title id=\"pageTitle\">")[1].split("</title>")[0]
             if "Profile Photo" in line:
                 line1 = line.split("Profile Photo\" src=\"")[1]
                 line1 = line1.split("\" /></a></div>")[0]
@@ -118,16 +157,6 @@ class FBExecute:
                         dict["work"] = dict["work"] + former
         return dict
 
-    def get_profile_name(self, browser, profile):
-        response = browser.open(profile)
-        html = response.read()
-        lines = html.split("\n")
-        for line in lines:
-            if "<title id=\"pageTitle\">" in line:
-                name = line.split("<title id=\"pageTitle\">")[1].split("</title>")[0]
-                return name
-        return None
-
     def login_into_facebook(self, creds_file):
         browser = mechanize.Browser()
         browser.set_handle_robots(False)
@@ -151,6 +180,34 @@ class FBExecute:
                 browser.form["email"] = line[0].split("*")[1]
                 browser.form["pass"] = line[1]
                 break
+        browser.submit()
+        return browser
+
+    def shuffle_login_into_facebook(self, creds_file):
+        browser = mechanize.Browser()
+        browser.set_handle_robots(False)
+        cookie_jar = cookielib.LWPCookieJar()
+        browser.set_cookiejar(cookie_jar)
+        browser.set_handle_equiv(True)
+        browser.set_handle_redirect(True)
+        browser.set_handle_referer(True)
+        browser.set_handle_robots(False)
+        browser.set_handle_refresh(mechanize._http.HTTPRefreshProcessor(), max_time=1)
+        browser.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/534.7 (KHTML, like Gecko) Chrome/7.0.517.41 Safari/534.7')]
+        browser.open("https://www.facebook.com/")
+        browser.select_form(nr=0)
+        filepath = os.path.join(os.path.dirname(__file__), creds_file)
+        f = open(filepath, "r")
+        data = f.readlines()
+        list = []
+        for line in data:
+            if line:
+                line = line.strip()
+                list.append(line.split(" ")[0] + " " + line.split(" ")[1])
+        random_line = random.choice(list)
+        browser.form["email"] = random_line.split(" ")[0]
+        browser.form["pass"] = random_line.split(" ")[1]
+        print "Auth with:", browser.form["email"], browser.form["pass"]
         browser.submit()
         return browser
 

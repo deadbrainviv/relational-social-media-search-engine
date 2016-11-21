@@ -908,6 +908,12 @@
 												{% if profile.actual == "no" %}
 													FALSE(-):&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="no__{{profile.profile}}" disabled /><br/>
 												{% endif %}
+												Send to verified list:<br/>
+												{% if profile.actual == "yes" %}
+													&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="yes__{{profile.profile}}" checked disabled /><br/>
+												{% else %}
+													&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="yes__{{profile.profile}}" /><br/>
+												{% endif %}
 											</td>
 										</tr>
 									{% endif %}
