@@ -312,7 +312,7 @@
 				<b><font color="black" size="3">{{metadata.true_positives.tp5}}</font></b><br/>
 			</td>
 		</tr>
-		<tr style="width:1000px">
+		<!--<tr style="width:1000px">
 			<td colspan="1" style="width:100px">
 				<b><font color="black" size="3"># of false +ve examples</font></b><br/>
 			</td>
@@ -431,7 +431,7 @@
 				<br/>
 				<br/>
 			</td>
-		</tr>
+		</tr>-->
 		<tr style="width:1000px">
 			<td colspan="1" style="width:100px">
 				<b><font color="black" size="3"># of true -ve examples</font></b><br/>
@@ -1467,7 +1467,7 @@
 	<table id="table_one" border="3" style="table-layout: fixed;width:1600px;margin-left:2cm;">
 		<thead style="width:1600px">
 			<tr style="width:1600px">
-				<th bgcolor="#FD6D4F" colspan="10" style="width:150px;word-wrap:break-word"><font size="3">VERIFIED PROFILES {{metadata.positives}}</font></th>
+				<th bgcolor="#FD6D4F" colspan="10" style="width:150px;word-wrap:break-word"><font size="3">VERIFIED PROFILES {{e1profilescount}}</font></th>
 			</tr>
 		</thead>
 		<thead style="width:1600px">
@@ -1491,14 +1491,13 @@
 				<td colspan="10" style="width:1600px">
 					<table border="1" style="width:1600px">
 						<br/>
-						{% for e1 in entries1 %}
-						{% for profile in e1.profiles %}
+						{% for profile in e1profiles %}
 						{% if profile.actual == "yes" %}
-						<tr style="width:1500px;border-style:hidden;">
+						<!--<tr style="width:1500px;border-style:hidden;">
 							<td colspan="10" style="width:1500px">
 								&nbsp&nbsp&nbsp<b>Searched for '{{e1.person}}'</b>
 							</td>
-						</tr>
+						</tr>-->
 						<tr style="width:1500px;border-style:solid;"></tr>
 						<tr style="width:1500px;border-style:solid;">
 							<td colspan="1" style="width:150px">
@@ -1534,7 +1533,6 @@
 						</tr>
 						<tr style="width:1500px;border-style:solid;"></tr>
 						{% endif %}
-						{% endfor %}
 						{% endfor %}
 					</table>
 				</td>

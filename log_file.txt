@@ -17016,3 +17016,5 @@ Traceback (most recent call last):
   File "C:\Users\IndervirSingh\Documents\GitHub\profiling\testApp\views.py", line 1254, in facebookthreeand
     if len(outputs["profiles"]) > 0:
 TypeError: list indices must be integers, not str
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
