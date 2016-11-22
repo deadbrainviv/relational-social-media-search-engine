@@ -1662,21 +1662,24 @@ def facebooksix(request):
     metadata["false_positives_dict"] = false_positives_dict
     metadata["false_negatives_dict"] = false_negatives_dict
 
-    e1profiles = []
+    e1profiles = {}
 
-    e1profilescount = 0
     for person in results:
         for profile in person["profiles"]:
             if profile["actual"] == "yes":
-                e1profilescount = e1profilescount + 1
-                e1profiles.append(profile)
+                e1profiles[profile["profile"]] = profile
+
+    e1profiles_list = []
+
+    for k,v in e1profiles.iteritems():
+        e1profiles_list.append(v)
 
     context = {
         "entries1": results,
         "metadata": metadata,
         "type": "facebooksix",
-        "e1profiles": e1profiles,
-        "e1profilescount": e1profilescount
+        "e1profiles": e1profiles_list,
+        "e1profilescount": len(e1profiles_list)
     }
     return render(request, 'testApp/searchGrad.html', context)
 
