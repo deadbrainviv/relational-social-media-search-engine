@@ -127,8 +127,6 @@
 		</tr>
 		</tr>
 	</table>
-	{% if metadata.precision or metadata.recall %}
-	{% endif %}
 	{% endif %}
 	<br>
 	<br>
@@ -1139,31 +1137,30 @@
 		</tbody>
 	</table>
 	{% elif type == "facebooksix" %}
-	<table id="table_one" border="3" style="table-layout: fixed;width:1600px;margin-left:2cm;">
+	<table border="3" style="table-layout: fixed;width:1600px;margin-left:2cm;">
 		<thead style="width:1600px">
 			<tr style="width:1600px">
-				<th bgcolor="#FD6D4F" colspan="10" style="width:150px;word-wrap:break-word"><font size="3">VERIFIED PROFILES {{e1profilescount}}</font></th>
+				<th bgcolor="#FD6D4F" colspan="7" style="width:1600px;word-wrap:break-word"><font size="3">VERIFIED PROFILES {{e1profilescount}}</font></th>
 			</tr>
 		</thead>
 		<thead style="width:1600px">
 			<tr style="width:1600px">
-				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Image</th>
-				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Name</th>
-				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Profile</th>
-				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">University</th>
-				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Industry</th>
-				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Location</th>
-				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Work Info</th>
-				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Connections</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word">Image</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word">Name</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word">Profile</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word">University</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word">Industry</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word">Location</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word">Work Info</th>
+				<!--<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Connections</th>
 				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Multiple</th>
-				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Select</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Select</th>-->
 			</tr>
 		</thead>
 		<br>
 		<tbody style="width:1600px">
-			
 			<tr style="width:1600px">
-				<td colspan="10" style="width:1600px">
+				<td colspan="7" style="width:1600px">
 					<table border="1" style="width:1600px">
 						<br/>
 						{% for profile in e1profiles %}
@@ -1173,29 +1170,30 @@
 								&nbsp&nbsp&nbsp<b>Searched for '{{e1.person}}'</b>
 							</td>
 						</tr>-->
-						<tr style="width:1500px;border-style:solid;"></tr>
-						<tr style="width:1500px;border-style:solid;">
-							<td colspan="1" style="width:150px">
+						<tr style="width:1600px;border-style:solid;"></tr>
+						<tr style="width:1600px;border-style:solid;">
+							<td colspan="1" style="width:227px">
 								<img src="{{profile.pic}}"><br/>
 							</td>
-							<td colspan="1" style="width:150px" >
+							<td colspan="1" style="width:227px" >
 								{{profile.name}}
 							</td>
-							<td colspan="1" style="width:150px" >
+							<td colspan="1" style="width:227px" >
 								<a href="{{profile.profile}}">Facebook Profile</a>
 							</td>
-							<td colspan="1" style="width:150px" >
+							<td colspan="1" style="width:227px" >
 								{{profile.education}}
 							</td>
-							<td colspan="1" style="width:150px" >
+							<td colspan="1" style="width:227px" >
 								{{profile.work}}
 							</td>
-							<td colspan="1" style="width:150px" >
+							<td colspan="1" style="width:227px" >
 								{{profile.location}}
 							</td>
-							<td colspan="1" style="width:150px" >
+							<td colspan="1" style="width:227px" >
 								{{profile.work}}
 							</td>
+							<!--
 							<td colspan="1" style="width:150px" >
 								Friend list hidden.
 							</td>
@@ -1205,14 +1203,14 @@
 							<td colspan="1" style="width:150px" >
 								TRUE(+):&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="yes__{{profile.profile}}" checked disabled /><br/>
 							</td>
+							-->
 						</tr>
-						<tr style="width:1500px;border-style:solid;"></tr>
+						<tr style="width:1600px;border-style:solid;"></tr>
 						{% endif %}
 						{% endfor %}
 					</table>
 				</td>
 			</tr>
-			
 		</tbody>
 	</table>
 	<br/><br/><br/>
@@ -1378,6 +1376,333 @@
 		If you don't see any output, then probably 
 		the email and university combination was not accurate, check your details.
 	</p>
+		{% if metadata.precision or metadata.recall %}
+	<br>
+	<table id="table_one" border="3" style="table-layout: fixed;width:1600px;margin-left:2cm;">
+		<tr style="width:1000px">
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">data</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">FACEBOOK</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">FACEBOOK + SOCIAL</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">FACEBOOK + GROUND TRUTH</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">FACEBOOK + COMBINED (SOCIAL + GROUND TRUTH)</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">FACEBOOK + SEEDS FRIENDS GROUND TRUTH</font></b><br/>
+			</td>
+		</tr>
+		<tr style="width:1000px">
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">precision</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.precision.precision1}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.precision.precision2}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.precision.precision3}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.precision.precision4}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.precision.precision5}}</font></b><br/>
+			</td>
+		</tr>
+		<tr style="width:1000px">
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">recall</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.recall.recall1}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.recall.recall2}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.recall.recall3}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.recall.recall4}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.recall.recall5}}</font></b><br/>
+			</td>
+		</tr>
+		<tr style="width:1000px">
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">accuracy</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.accuracy.accuracy1}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.accuracy.accuracy2}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.accuracy.accuracy3}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.accuracy.accuracy4}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.accuracy.accuracy5}}</font></b><br/>
+			</td>
+		</tr>
+		<tr style="width:1000px">
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">true negative rate</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.tnr.tnr1}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.tnr.tnr2}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.tnr.tnr3}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.tnr.tnr4}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.tnr.tnr5}}</font></b><br/>
+			</td>
+		</tr>
+		<tr style="width:1000px">
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">f1</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.f1.f1_1}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.f1.f1_2}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.f1.f1_3}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.f1.f1_4}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.f1.f1_5}}</font></b><br/>
+			</td>
+		</tr>
+		<tr style="width:1000px">
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">f2</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.f2.f2_1}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.f2.f2_2}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.f2.f2_3}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.f2.f2_4}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.f2.f2_5}}</font></b><br/>
+			</td>
+		</tr>
+		<tr style="width:1000px">
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3"># of total verified</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.positives}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.positives}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.positives}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.positives}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.positives}}</font></b><br/>
+			</td>
+		</tr>
+		<tr style="width:1000px">
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3"># of true +ve examples</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.true_positives.tp1}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.true_positives.tp2}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.true_positives.tp3}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.true_positives.tp4}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.true_positives.tp5}}</font></b><br/>
+			</td>
+		</tr>
+		<!--<tr style="width:1000px">
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3"># of false +ve examples</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.false_positives.fp1}}</font></b><br/>
+				{% for k,v in metadata.false_positives_dict.false_positives_1.items %}
+				<br/>
+				<br/>
+				<font color="blue" size="2">{{k}}</font><br/>
+				<font color="blue" size="2">{{v}}</font><br/>
+				{% endfor %}
+				<br/>
+				<br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.false_positives.fp2}}</font></b><br/>
+				{% for k,v in metadata.false_positives_dict.false_positives_2.items %}
+				<br/>
+				<br/>
+				<font color="blue" size="2">{{k}}</font><br/>
+				<font color="blue" size="2">{{v}}</font><br/>
+				{% endfor %}
+				<br/>
+				<br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.false_positives.fp3}}</font></b><br/>
+				{% for k,v in metadata.false_positives_dict.false_positives_3.items %}
+				<br/>
+				<br/>
+				<font color="blue" size="2">{{k}}</font><br/>
+				<font color="blue" size="2">{{v}}</font><br/>
+				{% endfor %}
+				<br/>
+				<br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.false_positives.fp4}}</font></b><br/>
+				{% for k,v in metadata.false_positives_dict.false_positives_4.items %}
+				<br/>
+				<br/>
+				<font color="blue" size="2">{{k}}</font><br/>
+				<font color="blue" size="2">{{v}}</font><br/>
+				{% endfor %}
+				<br/>
+				<br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.false_positives.fp5}}</font></b><br/>
+				{% for k,v in metadata.false_positives_dict.false_positives_5.items %}
+				<br/>
+				<br/>
+				<font color="blue" size="2">{{k}}</font><br/>
+				<font color="blue" size="2">{{v}}</font><br/>
+				{% endfor %}
+				<br/>
+				<br/>
+			</td>
+		</tr>
+		<tr style="width:1000px">
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3"># of false -ve examples</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.false_negatives.fp1}}</font></b><br/>
+				{% for k,v in metadata.false_negatives_dict.false_negatives_1.items %}
+				<br/>
+				<br/>
+				<font color="blue" size="2">{{k}}</font><br/>
+				<font color="blue" size="2">{{v}}</font><br/>
+				{% endfor %}
+				<br/>
+				<br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.false_negatives.fp2}}</font></b><br/>
+				{% for k,v in metadata.false_negatives_dict.false_negatives_2.items %}
+				<br/>
+				<br/>
+				<font color="blue" size="2">{{k}}</font><br/>
+				<font color="blue" size="2">{{v}}</font><br/>
+				{% endfor %}
+				<br/>
+				<br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.false_negatives.fp3}}</font></b><br/>
+				{% for k,v in metadata.false_negatives_dict.false_negatives_3.items %}
+				<br/>
+				<br/>
+				<font color="blue" size="2">{{k}}</font><br/>
+				<font color="blue" size="2">{{v}}</font><br/>
+				{% endfor %}
+				<br/>
+				<br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.false_negatives.fp4}}</font></b><br/>
+				{% for k,v in metadata.false_negatives_dict.false_negatives_4.items %}
+				<br/>
+				<br/>
+				<font color="blue" size="2">{{k}}</font><br/>
+				<font color="blue" size="2">{{v}}</font><br/>
+				{% endfor %}
+				<br/>
+				<br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.false_negatives.fp5}}</font></b><br/>
+				{% for k,v in metadata.false_negatives_dict.false_negatives_5.items %}
+				<br/>
+				<br/>
+				<font color="blue" size="2">{{k}}</font><br/>
+				<font color="blue" size="2">{{v}}</font><br/>
+				{% endfor %}
+				<br/>
+				<br/>
+			</td>
+		</tr>-->
+		<tr style="width:1000px">
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3"># of true -ve examples</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.true_negatives.tn1}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.true_negatives.tn2}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.true_negatives.tn3}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.true_negatives.tn4}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.true_negatives.tn5}}</font></b><br/>
+			</td>
+		</tr>
+	</table>
+	<br>
+	<br>
+	{% endif %}
 	</form>
 </body>
 	<script src="{% static "/static/testApp/js/jquery-3.0.0.min.js" %}"></script>
