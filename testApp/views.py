@@ -1674,6 +1674,8 @@ def facebooksix(request):
     for k,v in e1profiles.iteritems():
         e1profiles_list.append(v)
 
+    e1profiles_list = sorted(e1profiles_list, key=itemgetter("name"))
+
     context = {
         "entries1": results,
         "metadata": metadata,
