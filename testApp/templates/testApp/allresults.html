@@ -1117,18 +1117,18 @@
 	<table border="3" style="table-layout: fixed;width:1600px;margin-left:2cm;">
 		<thead style="width:1600px">
 			<tr style="width:1600px">
-				<th bgcolor="#FD6D4F" colspan="7" style="width:1600px;word-wrap:break-word"><font size="3">VERIFIED PROFILES {{e1profilescount}}</font></th>
+				<th bgcolor="#FD6D4F" colspan="7" style="width:1600px;word-wrap:break-word"><font size="4"><b>VERIFIED PROFILES {{e1profilescount}}</b></font></th>
 			</tr>
 		</thead>
 		<thead style="width:1600px">
 			<tr style="width:1600px">
-				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word">Image</th>
-				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word">Name</th>
-				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word">Profile</th>
-				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word">University</th>
-				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word">Industry</th>
-				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word">Location</th>
-				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word">Work Info</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word"><font size="4">IMAGE</font></th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word"><font size="4">NAME</font></th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word"><font size="4">PROFILE</font></th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word"><font size="4">UNIVERSITY</font></th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word"><font size="4">INDUSTRY</font></th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word"><font size="4">LOCATION</font></th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word"><font size="4">WORK INFO</font></th>
 				<!--<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Connections</th>
 				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Multiple</th>
 				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Select</th>-->
@@ -1138,7 +1138,7 @@
 		<tbody style="width:1600px">
 			<tr style="width:1600px">
 				<td colspan="7" style="width:1600px">
-					<table border="1" style="width:1600px">
+					<table border="1" style="table-layout: fixed;width:1600px">
 						<br/>
 						{% for profile in e1profiles %}
 						{% if profile.actual == "yes" %}
@@ -1149,40 +1149,40 @@
 						</tr>-->
 						<!--<tr style="width:1600px;border-style:solid;"></tr>-->
 						<tr style="width:1600px;border-style:solid;">
-							<td colspan="1" style="height:200px;width:228px;word-wrap:break-word;text-align:center;white-space:normal">
+							<td colspan="1" style="height:200px;width:227px;word-wrap:break-word;text-align:center;white-space:normal">
 								<img src="{{profile.pic}}" style="width:225px;height:210px;"><br/>
 							</td>
-							<td colspan="1" style="height:200px;width:228px;word-wrap:break-word;text-align:center;white-space:normal" >
+							<td colspan="1" style="height:200px;width:227px;word-wrap:break-word;text-align:center;white-space:normal" >
 								<font size="4"><b>{{profile.name}}</b></font>
 							</td>
-							<td colspan="1" style="height:200px;width:228px;word-wrap:break-word;text-align:center;white-space:normal" >
+							<td colspan="1" style="height:200px;width:227px;word-wrap:break-word;text-align:center;white-space:normal" >
 								<font size="3"><a href="{{profile.profile}}">Facebook Profile</a></font>
 							</td>
-							<td colspan="1" style="height:200px;width:228px;word-wrap:break-word;text-align:center;white-space:normal" >
+							<td colspan="1" style="height:200px;width:227px;word-wrap:break-word;text-align:center;white-space:normal" >
 								<font size="3">{{profile.education}}</font>
 							</td>
-							<td colspan="1" style="height:200px;width:228px;word-wrap:break-word;text-align:center;white-space:normal" >
+							<td colspan="1" style="height:200px;width:227px;word-wrap:break-word;text-align:center;white-space:normal" >
 								<font size="3">{{profile.work}}</font>
 							</td>
-							<td colspan="1" style="height:200px;width:228px;word-wrap:break-word;text-align:center;white-space:normal" >
+							<td colspan="1" style="height:200px;width:227px;word-wrap:break-word;text-align:center;white-space:normal" >
 								<font size="3">{{profile.location}}</font>
 							</td>
-							<td colspan="1" style="height:200px;width:228px;word-wrap:break-word;text-align:center;white-space:normal" >
+							<td colspan="1" style="height:200px;width:227px;word-wrap:break-word;text-align:center;white-space:normal" >
 								<font size="3">{{profile.work}}</font>
 							</td>
 							<!--
-							<td colspan="1" style="width:150px" >
+							<td colspan="1" style="height:200px;width:227px;word-wrap:break-word;text-align:center;white-space:normal" >
 								Friend list hidden.
 							</td>
-							<td colspan="1" style="width:150px" >
+							<td colspan="1" style="height:200px;width:227px;word-wrap:break-word;text-align:center;white-space:normal" >
 								NA
 							</td>
-							<td colspan="1" style="width:150px" >
+							<td colspan="1" style="height:200px;width:227px;word-wrap:break-word;text-align:center;white-space:normal" >
 								TRUE(+):&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="yes__{{profile.profile}}" checked disabled /><br/>
 							</td>
 							-->
 						</tr>
-						<tr style="width:1600px;border-style:solid;"></tr>
+						<!--<tr style="width:1600px;border-style:solid;"></tr>-->
 						{% endif %}
 						{% endfor %}
 					</table>
