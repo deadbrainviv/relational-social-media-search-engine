@@ -108,29 +108,6 @@
 	<br>
 	<br>
 	{% endif %}
-	{% if metadata%}
-	<table id="table_one" border="0" style="table-layout: fixed;width:1600px;margin-left:2cm;">
-		<tr style="width:1600px">
-			<td colspan="3" style="width:1600px">
-				<b><font size="3">STATISTICS</font></b><br/>
-				<b><font size="3">Input people list &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp;  {{metadata.total}}</font></b><br/>
-				<b><font size="3">Facebook profiles FOUND against &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.some}}</font></b><br/>
-				<b><font size="3">People with only ONE Facebook profile &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.one}}</font></b><br/>
-				<b><font size="3">People with NO Facebook profiles &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.empty}}</font></b><br/>
-				<br/><br/>
-				<b><font size="3">'Social Graph' based pruned profiles &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.score}}</font></b><br/>
-				<b><font size="3">'Ground Truth' based pruned profiles &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.score1}}</font></b><br/>
-				<b><font size="3">'Combined Approach' based pruned profiles &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.score2}}</font></b><br/>
-				<b><font size="3">'Seed Friends Ground Truth Approach' based pruned profiles &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.jacc}}</font></b><br/>
-				<b><font size="3">'Watson Info' present for profiles &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.watson}}</font></b><br/>
-			</td>
-		</tr>
-		</tr>
-	</table>
-	{% endif %}
-	<br>
-	<br>
-	<br>
 	{% if type == "facebook" or type == "facebookone" or type == "facebooktwo" or type == "facebookthree" or type == "facebookthreeand" or type == "facebookfour" %}
 	<div class="l-content"> 
     <div id="selections_list" class="pricing-tables pure-g">
@@ -1170,28 +1147,28 @@
 								&nbsp&nbsp&nbsp<b>Searched for '{{e1.person}}'</b>
 							</td>
 						</tr>-->
-						<tr style="width:1600px;border-style:solid;"></tr>
+						<!--<tr style="width:1600px;border-style:solid;"></tr>-->
 						<tr style="width:1600px;border-style:solid;">
-							<td colspan="1" style="width:227px;word-wrap: break-word;">
-								<img src="{{profile.pic}}"><br/>
+							<td colspan="1" style="height:200px;width:228px;word-wrap:break-word;text-align:center;white-space:normal">
+								<img src="{{profile.pic}}" style="width:225px;height:210px;"><br/>
 							</td>
-							<td colspan="1" style="width:227px;word-wrap: break-word;" >
-								{{profile.name}}
+							<td colspan="1" style="height:200px;width:228px;word-wrap:break-word;text-align:center;white-space:normal" >
+								<font size="4"><b>{{profile.name}}</b></font>
 							</td>
-							<td colspan="1" style="width:227px;word-wrap: break-word;" >
-								<a href="{{profile.profile}}">Facebook Profile</a>
+							<td colspan="1" style="height:200px;width:228px;word-wrap:break-word;text-align:center;white-space:normal" >
+								<font size="3"><a href="{{profile.profile}}">Facebook Profile</a></font>
 							</td>
-							<td colspan="1" style="width:227px;word-wrap: break-word;" >
-								{{profile.education}}
+							<td colspan="1" style="height:200px;width:228px;word-wrap:break-word;text-align:center;white-space:normal" >
+								<font size="3">{{profile.education}}</font>
 							</td>
-							<td colspan="1" style="width:227px;word-wrap: break-word;" >
-								{{profile.work}}
+							<td colspan="1" style="height:200px;width:228px;word-wrap:break-word;text-align:center;white-space:normal" >
+								<font size="3">{{profile.work}}</font>
 							</td>
-							<td colspan="1" style="width:227px;word-wrap: break-word;" >
-								{{profile.location}}
+							<td colspan="1" style="height:200px;width:228px;word-wrap:break-word;text-align:center;white-space:normal" >
+								<font size="3">{{profile.location}}</font>
 							</td>
-							<td colspan="1" style="width:227px;word-wrap: break-word;" >
-								{{profile.work}}
+							<td colspan="1" style="height:200px;width:228px;word-wrap:break-word;text-align:center;white-space:normal" >
+								<font size="3">{{profile.work}}</font>
 							</td>
 							<!--
 							<td colspan="1" style="width:150px" >
@@ -1703,6 +1680,29 @@
 	<br>
 	<br>
 	{% endif %}
+	{% if metadata%}
+	<table id="table_one" border="0" style="table-layout: fixed;width:1600px;margin-left:2cm;">
+		<tr style="width:1600px">
+			<td colspan="3" style="width:1600px">
+				<b><font size="3">STATISTICS</font></b><br/>
+				<b><font size="3">Input people list &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp;  {{metadata.total}}</font></b><br/>
+				<b><font size="3">Facebook profiles FOUND against &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.some}}</font></b><br/>
+				<b><font size="3">People with only ONE Facebook profile &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.one}}</font></b><br/>
+				<b><font size="3">People with NO Facebook profiles &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.empty}}</font></b><br/>
+				<br/><br/>
+				<b><font size="3">'Social Graph' based pruned profiles &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.score}}</font></b><br/>
+				<b><font size="3">'Ground Truth' based pruned profiles &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.score1}}</font></b><br/>
+				<b><font size="3">'Combined Approach' based pruned profiles &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.score2}}</font></b><br/>
+				<b><font size="3">'Seed Friends Ground Truth Approach' based pruned profiles &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.jacc}}</font></b><br/>
+				<b><font size="3">'Watson Info' present for profiles &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.watson}}</font></b><br/>
+			</td>
+		</tr>
+		</tr>
+	</table>
+	{% endif %}
+	<br>
+	<br>
+	<br>
 	</form>
 </body>
 	<script src="{% static "/static/testApp/js/jquery-3.0.0.min.js" %}"></script>

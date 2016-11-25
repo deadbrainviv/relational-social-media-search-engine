@@ -14,8 +14,10 @@ cursor = db_client.facebook_db.buet3.find()
 list_images = []
 for person in cursor:
     for profile in person["profiles"]:
-        if profile.has_key("pic"):
+        if profile.has_key("pic") and profile["actual"] == "yes":
             list_images.append(profile["pic"])
+
+list_images = list(set(list_images))
 
 count = 0
 for image in list_images:
