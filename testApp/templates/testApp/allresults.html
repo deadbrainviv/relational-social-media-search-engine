@@ -1117,7 +1117,7 @@
 	<table border="3" style="table-layout: fixed;width:1600px;margin-left:2cm;">
 		<thead style="width:1600px">
 			<tr style="width:1600px">
-				<th bgcolor="#FD6D4F" colspan="7" style="width:1600px;word-wrap:break-word"><font size="4"><b>VERIFIED PROFILES {{e1profilescount}}</b></font></th>
+				<th bgcolor="#FD6D4F" colspan="7" style="width:1600px;word-wrap:break-word"><font size="4"><b>VERIFIED PROFILES #{{e1profilescount}}</b></font></th>
 			</tr>
 		</thead>
 		<thead style="width:1600px">
@@ -1191,53 +1191,53 @@
 		</tbody>
 	</table>
 	<br/><br/><br/>
-	<table id="table_one" border="3" style="table-layout: fixed;width:1600px;margin-left:2cm;">
+	<table id="table_one" border="3" style="table-layout: fixed;width:2275px;margin-left:2cm;">
 		<thead style="width:1600px">
 			<tr style="width:1600px">
-				<th bgcolor="#FD6D4F" colspan="10" style="width:150px;word-wrap:break-word"><font size="3">NON VERIFIED PROFILES {{metadata.non_positives}}</font></th>
+				<th bgcolor="#FD6D4F" colspan="10" style="width:2275px;word-wrap:break-word"><font size="4">NON VERIFIED PROFILES #{{metadata.non_positives}}</font></th>
 			</tr>
 		</thead>
-		<thead style="width:1600px">
-			<tr style="width:1600px">
-				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Image</th>
-				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Name</th>
-				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Profile</th>
-				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">University</th>
-				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Industry</th>
-				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Location</th>
-				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Work Info</th>
-				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Connections</th>
-				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Multiple</th>
-				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Select</th>
+		<thead style="width:2275px">
+			<tr style="width:2275px">
+				<th bgcolor="#FD6D4F" colspan="1" style="width:160px;word-wrap:break-word"><font size="4">IMAGE</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:160px;word-wrap:break-word"><font size="4">NAME</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:160px;word-wrap:break-word"><font size="4">PROFILE</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:160px;word-wrap:break-word"><font size="4">UNIVERSITY</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:160px;word-wrap:break-word"><font size="4">INDUSTRY</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:160px;word-wrap:break-word"><font size="4">LOCATION</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:160px;word-wrap:break-word"><font size="4">WORK INFO</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:160px;word-wrap:break-word"><font size="4">CONNECTIONS</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:160px;word-wrap:break-word"><font size="4">MULTIPLE</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:160px;word-wrap:break-word"><font size="4">SELECT</th>
 			</tr>
 		</thead>
 		<br>
-		<tbody style="width:1600px">
-			
-			<tr style="width:1600px">
-				<td colspan="10" style="width:1600px">
-					<table border="1" style="width:1600px">
-						<br/>
+		<tbody style="width:2275px">
+			<tr style="width:2275px">
+				<td colspan="10" style="width:2275px">
+					<table border="1" style="table-layout: fixed;width:2275px">
 						{% for e1 in entries1 %}
 						{% for profile in e1.profiles %}
 						{% if profile.actual != "yes" %}
-						<tr style="width:1500px;border-style:hidden;">
-							<td colspan="10" style="width:1500px">
-								&nbsp&nbsp&nbsp<b>Searched for '{{e1.person}}'</b>
+						<tr style="width:2275px;border-style:hidden;">
+							<td colspan="10" style="width:2275px;text-align:center">
+								<br />
+									<font size="4"><b>&nbsp&nbsp&nbsp<b>Search: '{{e1.person}}'</b></font>
+								<br />
 							</td>
 						</tr>
 						<tr style="width:1500px;border-style:solid;"><td colspan="10" style="width:1500px"></td></tr>
-						<tr style="width:1500px;border-style:solid;">
-							<td colspan="1" style="width:150px">
-								<img src="{{profile.pic}}"><br/>
-								<b>Social Graph:&nbsp;&nbsp;{{profile.score}}</b><br/>
-								<b>Ground Truth:&nbsp;&nbsp;{{profile.score1}}</b><br/>
-								<b>Combined:&nbsp;&nbsp;{{profile.score2}}</b><br/>
+						<tr style="width:2275px;border-style:solid;text-align:center">
+							<td colspan="1" style="width:160px;text-align:center">
+								<img src="{{profile.pic}}"style="width:225px;height:210px;"><br/><br/>
+								<font size="2"><b>Social Graph:&nbsp;&nbsp;{{profile.score}}</b></font><br/>
+								<font size="2"><b>Ground Truth:&nbsp;&nbsp;{{profile.score1}}</b></font><br/>
+								<font size="2"><b>Combined:&nbsp;&nbsp;{{profile.score2}}</b></font><br/>
 								{% if profile.jaccard %}
-									<b>Seed Friends Ground Truth:&nbsp;&nbsp;{{profile.jaccard}}</b><br/>
+									<font size="2"><b>Seed Friends Ground Truth:&nbsp;&nbsp;{{profile.jaccard}}</b></font><br/>
 								{% endif %}
 								{% if profile.watson %}
-									<font color="red"><br/>
+									<font size="2" color="red"><br/>
 									{% for k,v in profile.watson.items %}
 										{% if k == "images" %}
 											{% for vv in v%}
@@ -1251,31 +1251,36 @@
 									</font>
 								{% endif %}
 							</td>
-							<td colspan="1" style="width:150px" >
-								{{profile.name}}
+							<td colspan="1" style="width:160px;text-align:center" >
+								<font size="4"><b>{{profile.name}}</b></font>
 							</td>
-							<td colspan="1" style="width:150px" >
-								<a href="{{profile.profile}}">Facebook Profile</a>
+							<td colspan="1" style="width:160px;text-align:center" >
+								<font size="3"><a href="{{profile.profile}}">Facebook Profile</a></font>
 							</td>
-							<td colspan="1" style="width:150px" >
-								{{profile.education}}
+							<td colspan="1" style="width:160px;text-align:center" >
+								<font size="3">{{profile.education}}</font>
 							</td>
-							<td colspan="1" style="width:150px" >
-								{{profile.work}}
+							<td colspan="1" style="width:160px;text-align:center" >
+								<font size="3">{{profile.work}}</font>
 							</td>
-							<td colspan="1" style="width:150px" >
-								{{profile.location}}
+							<td colspan="1" style="width:160px;text-align:center" >
+								<font size="3">{{profile.location}}</font>
 							</td>
-							<td colspan="1" style="width:150px" >
-								{{profile.work}}
+							<td colspan="1" style="width:160px;text-align:center" >
+								<font size="3">{{profile.work}}</font>
 							</td>
-							<td colspan="1" style="width:150px" >
-								Friend list hidden.
+							<td colspan="1" style="width:160px;text-align:center" >
+								<font size="3">Friend list hidden.</font>
 							</td>
-							<td colspan="1" style="width:150px" >
+							<td colspan="1" style="width:160px;text-align:center" >
+								<font size="3">NA</font>
+							</td>
+							<td colspan="1" style="width:160px;text-align:center" >
+								<font size="3">
 								Please indicate ground truth:<br/>
 								Yes:&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="yes__{{profile.profile}}" /><br/>
 								No:&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="no__{{profile.profile}}" /><br/>
+								</font>
 							</td>
 						</tr>
 						<tr style="width:1500px;border-style:solid;"><td colspan="10" style="width:1500px"></td></tr>
