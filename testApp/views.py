@@ -1249,7 +1249,7 @@ def facebookthreeand(request):
             output["person"] = result["person"]
             output["profiles"] = []
             for profile in result["profiles"]:
-                if profile["score_jaccard_sim"] >= jaccard_cutoff_html:
+                if profile.has_key("score_jaccard_sim") and profile["score_jaccard_sim"] >= jaccard_cutoff_html:
                     output["profiles"].append(profile)
             outputs.append(output)
             if len(output["profiles"]) > 0:

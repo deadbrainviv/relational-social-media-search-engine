@@ -303,11 +303,13 @@ class FBExecute:
                 profiles = []
                 for user in users:
                     time.sleep(2.0)
+                    print user["profile"]
                     profile = self.visit_profile(browser, user["name"], user["profile"])
                     if profile is not None:
                         profiles.append(profile)
                 dict["person"] = person_bkp
                 dict["profiles"] = profiles
                 FBDb.store_profile(db_client, dict)
+            else:
+                print "dict already present:\n", dict
             dicts.append(dict)
-        return dicts
