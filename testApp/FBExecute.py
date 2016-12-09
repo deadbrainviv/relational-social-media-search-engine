@@ -45,8 +45,7 @@ class FBExecute:
         return people
 
     def get_top_20_friends(self, browser, profile):
-        print "Friends analyzed for profile:", profile["profile"]
-        response = browser.open(profile["profile"] + "/friends")
+        response = browser.open(profile + "/friends")
         html = response.read()
         lines = html.split("\n")
         for line in lines:
@@ -72,7 +71,7 @@ class FBExecute:
                 friends = list(set(friends))
                 return friends
 
-    def visit_profile(self, browser, name, profile):
+    def visit_profile(self, browser, profile):
         response = browser.open(profile)
         html = response.read()
         lines = html.split("\n")
@@ -84,7 +83,8 @@ class FBExecute:
             if "<title id=\"pageTitle\">" in line:
                 dict["name"] = line.split("<title id=\"pageTitle\">")[1].split("</title>")[0]
             if "Profile Photo" in line:
-                line1 = line.split("Profile Photo\" src=\"")[1]
+                line1 = ""
+                line1 = line.split("Profile Photo")[1].split("src=\"")[1]
                 line1 = line1.split("\" /></a></div>")[0]
                 if "amp;" in line1:
                     line1 = line1.split("amp;")[0] + line1.split("amp;")[1]
@@ -304,7 +304,7 @@ class FBExecute:
                 for user in users:
                     time.sleep(2.0)
                     print user["profile"]
-                    profile = self.visit_profile(browser, user["name"], user["profile"])
+                    profile = self.visit_profile(browser, user["profile"])
                     if profile is not None:
                         profiles.append(profile)
                 dict["person"] = person_bkp

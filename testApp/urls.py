@@ -32,6 +32,7 @@ urlpatterns = [
 	url(r'^watson/$', views.facebookfour, name='facebookfour'),
 	url(r'^listing/$', views.facebookfive, name='facebookfive'),
 	url(r'^verifiednonverified/$', views.facebooksix, name='facebooksix'),
+	url(r'^seedunverified/$', views.facebookseven, name='facebookseven'),
     url(r'^(?P<question_id>[0-9]+)/vote/$', views.vote, name='vote'),
     url(r'^utdsearch/$', views.utdsearch, name='utdsearch'),
     url(r'^merge_update/$', views.mergedUpdate, name='mergedUpdate_update'),
