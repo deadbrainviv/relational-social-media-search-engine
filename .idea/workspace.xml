@@ -33,8 +33,8 @@
       <file leaf-file-name="FBSeedScores.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/testApp/FBSeedScores.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="131" column="28" selection-start-line="131" selection-start-column="28" selection-end-line="131" selection-end-column="28" />
+            <state relative-caret-position="139">
+              <caret line="102" column="41" selection-start-line="102" selection-start-column="36" selection-end-line="102" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -43,8 +43,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/testApp/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="1739" column="46" selection-start-line="1739" selection-start-column="46" selection-end-line="1739" selection-end-column="46" />
+            <state relative-caret-position="187">
+              <caret line="1823" column="32" selection-start-line="1823" selection-start-column="32" selection-end-line="1823" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -694,16 +694,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/testApp/FBSeedScores.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="131" column="28" selection-start-line="131" selection-start-column="28" selection-end-line="131" selection-end-column="28" />
+        <state relative-caret-position="139">
+          <caret line="102" column="41" selection-start-line="102" selection-start-column="36" selection-end-line="102" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/testApp/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="1739" column="46" selection-start-line="1739" selection-start-column="46" selection-end-line="1739" selection-end-column="46" />
+        <state relative-caret-position="187">
+          <caret line="1823" column="32" selection-start-line="1823" selection-start-column="32" selection-end-line="1823" selection-end-column="32" />
           <folding />
         </state>
       </provider>

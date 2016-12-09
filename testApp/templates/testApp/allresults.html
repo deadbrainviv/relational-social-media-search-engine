@@ -737,7 +737,17 @@
 													NA
 												</td>
 												<td colspan="1" style="width:150px" >
-													NA
+													{% if profile.actual == "na" %}
+														Please indicate ground truth:<br/>
+														Yes:&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="yes__{{profile.profile}}" /><br/>
+														No:&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="no__{{profile.profile}}" /><br/>
+													{% endif %}
+													{% if profile.actual == "yes" %}
+														TRUE(+):&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="yes__{{profile.profile}}" checked disabled /><br/>
+													{% endif %}
+													{% if profile.actual == "no" %}
+														FALSE(-):&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="no__{{profile.profile}}" disabled /><br/>
+													{% endif %}
 												</td>
 											</tr>
 										{% endif %}

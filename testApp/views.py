@@ -1818,13 +1818,14 @@ def markProfile(request):
             for profile in person["profiles"]:
                 if profile.has_key("friends"):
                     friends = profile["friends"]
-                    for friend in friends:
-                        if facebook_profile == friend:
-                            social_graph_score = social_graph_score + 1
-                            social_graph_scores_dict[facebook_profile] = social_graph_score
-                        if facebook_profile == friend and profile["actual"] == "yes":
-                            counter_score1 = counter_score1 + 1
-                            friend_of_verified_person_scores_dict[facebook_profile] = counter_score1
+                    if friends:
+                        for friend in friends:
+                            if facebook_profile == friend:
+                                social_graph_score = social_graph_score + 1
+                                social_graph_scores_dict[facebook_profile] = social_graph_score
+                            if facebook_profile == friend and profile["actual"] == "yes":
+                                counter_score1 = counter_score1 + 1
+                                friend_of_verified_person_scores_dict[facebook_profile] = counter_score1
     for facebook_profile in all_facebook_profiles:
         score = 0
         if facebook_profile in social_graph_scores_dict.keys():
