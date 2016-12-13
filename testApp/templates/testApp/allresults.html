@@ -692,7 +692,7 @@
 										{% endif %}
 									{% endif %}
 									{% if type == "facebookseven"%}
-										{% if profile.newscore %}
+										{% if profile.newscore and profile.actual != "yes" %}
 											<tr style="width:1500px;border-style:solid;"></tr>
 											<tr style="width:1500px;border-style:solid;">
 												<td colspan="1" style="width:150px">
