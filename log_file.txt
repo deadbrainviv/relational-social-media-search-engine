@@ -17260,3 +17260,4 @@ Traceback (most recent call last):
     result["profiles"] = sorted(result["profiles"], key=itemgetter("score1", "score2", "score"), reverse=True)
 KeyError: 'score1'
 WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
