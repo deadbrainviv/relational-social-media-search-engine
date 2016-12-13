@@ -17,14 +17,24 @@ db_client = FBDb.connect(db_host, db_port)
 # fb.get_info_about_people(input_file="input.txt", colleges=colleges, creds_file="logins.txt", db_host=db_host, db_port=db_port, replace=False)
 
 # db_client.facebook_db.buet4.drop()
-newscore = 0
+count = 0
+profiles = []
 cursor = db_client.facebook_db.buet3.find()
 for person in cursor:
     for profile in person["profiles"]:
-        if profile.has_key("newscore"):
-            newscore = newscore + 1
-            break
-print newscore
+        profiles.append(profile["profile"])
+        count = count + 1
+print len(profiles)
+profiles = set(profiles)
+print len(profiles)
+
+    # db_client.facebook_db.buet3.update(
+    #     {"_id": person["_id"]},
+    #     {
+    #         "person": person["person"],
+    #         "profiles": person["profiles"]
+    #     }
+    # )
 # dict = {}
 # dict["score"] = 0
 # dict["score1"] = 0

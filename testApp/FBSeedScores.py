@@ -72,9 +72,9 @@ if os.path.isfile(seeds_info_file):
 
     fb_profiles_dict = {}
     for similarities_name, similarities_data in similarities.iteritems():
-        #print "----------------------------", similarities_name, "------------------------------------"
+        print "----------------------------", similarities_name, "------------------------------------"
         for itr in similarities_data:
-            #print itr
+            print itr
             if fb_profiles_dict.has_key(similarities_name):
                 fb_profiles_dict[similarities_name].append(itr)
             else:
@@ -82,9 +82,9 @@ if os.path.isfile(seeds_info_file):
                 list.append(itr)
                 fb_profiles_dict[similarities_name] = list
 
-    for k,v in fb_profiles_dict.iteritems():
-        print k,":",v
-    print "Size of dict:", len(fb_profiles_dict)
+    # for k,v in fb_profiles_dict.iteritems():
+    #     print k,":",v
+    # print "Size of dict:", len(fb_profiles_dict)
 
     all_fb_profiles = {}
     cursor = db_client.facebook_db.buet3.find()
@@ -96,14 +96,16 @@ if os.path.isfile(seeds_info_file):
     browser = fb.login_into_facebook(creds_file="logins.txt")
     cursor = db_client.facebook_db.buet3.find()
 
+    no_unver = 0
     count = 0
     for person in cursor:
         is_verified = False
         for profile in person["profiles"]:
             if profile["actual"] == "yes":
-                is_verified = False
+                is_verified = True
                 break
         if not is_verified:
+            no_unver = no_unver + 1
             print "-------------------------",person["person"],"-------------------------"
             profile_urls_dict = {}
             print "Total dict size", len(fb_profiles_dict)
@@ -121,15 +123,16 @@ if os.path.isfile(seeds_info_file):
                     all_fb_profiles[profile["profile"]] = profile
                 profile["newscore"] = v
                 person["profiles"].append(profile)
-            db_client.facebook_db.buet3.update(
-                {"_id": person["_id"]},
-                {
-                    "person": person["person"],
-                    "profiles": person["profiles"]
-                }
-            )
+            # db_client.facebook_db.buet3.update(
+            #     {"_id": person["_id"]},
+            #     {
+            #         "person": person["person"],
+            #         "profiles": person["profiles"]
+            #     }
+            # )
         count = count + 1
         print count, "done!"
+    print "no_unvar:", no_unver
 else:
     print "No file present!"
 

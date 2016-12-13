@@ -76,6 +76,9 @@ class FBExecute:
         html = response.read()
         lines = html.split("\n")
         dict = {}
+        dict["score"] = 0
+        dict["score1"] = 0
+        dict["score2"] = 0
         dict["profile"] = profile
         dict["actual"] = "na"
         dict["friends"] = self.get_top_20_friends(browser, profile)
