@@ -1726,6 +1726,17 @@ def facebookseven(request):
     metadata["score2"] = score2
     metadata["jacc"] = jacc
     metadata["watson"] = watson
+    verified_list = []
+    for result in results:
+        for profile in result["profiles"]:
+            if profile["actual"] == "yes":
+                verified_list.append(profile["profile"])
+    for result in results:
+        profiles_new = []
+        for profile in result["profiles"]:
+            if profile["profile"] not in verified_list:
+                profiles_new.append(profile)
+        result["profiles"] = profiles_new
     for result in results:
         has_newscore = False
         for profile in result["profiles"]:
