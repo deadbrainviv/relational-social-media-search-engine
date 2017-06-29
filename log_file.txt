@@ -17261,3 +17261,4 @@ Traceback (most recent call last):
 KeyError: 'score1'
 WARNING:django.request:Not Found: /favicon.ico
 WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico

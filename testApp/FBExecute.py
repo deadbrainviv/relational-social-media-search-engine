@@ -73,7 +73,12 @@ class FBExecute:
 
     def visit_profile(self, browser, profile):
         response = browser.open(profile)
+        if response:
+            print "response exists!"
+        else:
+            print "response is not existing!"
         html = response.read()
+        #print "### read the response"
         lines = html.split("\n")
         dict = {}
         dict["score"] = 0
@@ -164,32 +169,7 @@ class FBExecute:
         browser = mechanize.Browser()
         browser.set_handle_robots(False)
         cookie_jar = cookielib.LWPCookieJar()
-        browser.set_cookiejar(cookie_jar)
-        browser.set_handle_equiv(True)
-        browser.set_handle_redirect(True)
-        browser.set_handle_referer(True)
-        browser.set_handle_robots(False)
-        browser.set_handle_refresh(mechanize._http.HTTPRefreshProcessor(), max_time=1)
-        browser.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/534.7 (KHTML, like Gecko) Chrome/7.0.517.41 Safari/534.7')]
-        browser.open("https://www.facebook.com/")
-        browser.select_form(nr=0)
-        filepath = os.path.join(os.path.dirname(__file__), creds_file)
-        f = open(filepath, "r")
-        data = f.readlines()
-        for line in data:
-            if line.startswith("*"):
-                line = line.strip()
-                line = line.split(" ")
-                browser.form["email"] = line[0].split("*")[1]
-                browser.form["pass"] = line[1]
-                break
-        browser.submit()
-        return browser
-
-    def shuffle_login_into_facebook(self, creds_file):
-        browser = mechanize.Browser()
-        browser.set_handle_robots(False)
-        cookie_jar = cookielib.LWPCookieJar()
+        # browser.set_proxies({"http": "111.11.11.11"})
         browser.set_cookiejar(cookie_jar)
         browser.set_handle_equiv(True)
         browser.set_handle_redirect(True)
@@ -210,7 +190,7 @@ class FBExecute:
         random_line = random.choice(list)
         browser.form["email"] = random_line.split(" ")[0]
         browser.form["pass"] = random_line.split(" ")[1]
-        print "Auth with:", browser.form["email"], browser.form["pass"]
+        print "login: ", browser.form["email"], " :: ", browser.form["pass"]
         browser.submit()
         return browser
 
@@ -305,7 +285,7 @@ class FBExecute:
                 dict = {}
                 profiles = []
                 for user in users:
-                    time.sleep(2.0)
+                    time.sleep(0.8)
                     print user["profile"]
                     profile = self.visit_profile(browser, user["profile"])
                     if profile is not None:

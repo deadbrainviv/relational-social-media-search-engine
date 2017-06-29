@@ -9,3 +9,4 @@ db_host = "localhost"
 db_port = 27017
 db_client = FBDb.connect(db_host, db_port)
 db_client.drop_database("facebook_db")
+#print db_client.database_names()

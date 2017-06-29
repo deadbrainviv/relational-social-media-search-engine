@@ -17,7 +17,12 @@ list_exceptions.append("mohammed")
 list_exceptions.append("khan")
 list_exceptions.append("ahmed")
 list_exceptions.append("ahmad")
-jacc_cutoff = 0.0
+list_exceptions.append("rahman")
+list_exceptions.append("islam")
+list_exceptions.append("chowdhury")
+list_exceptions.append("ali")
+list_exceptions.append("hasan")
+list_exceptions.append("hossain")
 seeds_info_file = "all_seeds.txt"
 
 if os.path.isfile(seeds_info_file):
@@ -72,9 +77,9 @@ if os.path.isfile(seeds_info_file):
 
     fb_profiles_dict = {}
     for similarities_name, similarities_data in similarities.iteritems():
-        print "----------------------------", similarities_name, "------------------------------------"
+        #print "----------------------------", similarities_name, "------------------------------------"
         for itr in similarities_data:
-            print itr
+            #print itr
             if fb_profiles_dict.has_key(similarities_name):
                 fb_profiles_dict[similarities_name].append(itr)
             else:
@@ -82,9 +87,9 @@ if os.path.isfile(seeds_info_file):
                 list.append(itr)
                 fb_profiles_dict[similarities_name] = list
 
-    # for k,v in fb_profiles_dict.iteritems():
-    #     print k,":",v
-    # print "Size of dict:", len(fb_profiles_dict)
+    #for k,v in fb_profiles_dict.iteritems():
+    #    print k,":",v
+    #print "Size of dict:", len(fb_profiles_dict)
 
     all_fb_profiles = {}
     cursor = db_client.facebook_db.buet3.find()
@@ -96,17 +101,21 @@ if os.path.isfile(seeds_info_file):
     browser = fb.login_into_facebook(creds_file="logins.txt")
     cursor = db_client.facebook_db.buet3.find()
 
-    no_unver = 0
+    unver_persons = 0
     count = 0
+    login_count = 0
     for person in cursor:
         is_verified = False
         for profile in person["profiles"]:
             if profile["actual"] == "yes":
                 is_verified = True
                 break
-        if not is_verified:
-            no_unver = no_unver + 1
-            print "-------------------------",person["person"],"-------------------------"
+        is_visited = False
+        if person.has_key("visited") and person["visited"] == True:
+            is_visited = True
+        if not is_verified and not is_visited:
+            unver_persons = unver_persons + 1
+            print "==================================",person["person"],"=================================="
             profile_urls_dict = {}
             print "Total dict size", len(fb_profiles_dict)
             if fb_profiles_dict.has_key(person["person"]):
@@ -114,25 +123,31 @@ if os.path.isfile(seeds_info_file):
                     profile_urls_dict[profile[0]] = profile[1]
             print "How much we need to see", len(profile_urls_dict)
             for k,v in profile_urls_dict.iteritems():
+                #print "-----------------------------------------------------------------------------------------"
                 print k,v
                 profile = {}
                 if all_fb_profiles.has_key(k):
                     profile = all_fb_profiles[k]
                 else:
+                    if login_count%5 == 0:
+                        browser = fb.login_into_facebook(creds_file="logins.txt")
                     profile = fb.visit_profile(browser, k)
+                    login_count = login_count + 1
                     all_fb_profiles[profile["profile"]] = profile
                 profile["newscore"] = v
                 person["profiles"].append(profile)
-            # db_client.facebook_db.buet3.update(
-            #     {"_id": person["_id"]},
-            #     {
-            #         "person": person["person"],
-            #         "profiles": person["profiles"]
-            #     }
-            # )
+                #print "-----------------------------------------------------------------------------------------"
+            db_client.facebook_db.buet3.update(
+                {"_id": person["_id"]},
+                {
+                    "person": person["person"],
+                    "profiles": person["profiles"],
+                    "visited": True
+                }
+            )
         count = count + 1
         print count, "done!"
-    print "no_unvar:", no_unver
+    print "Unverified Persons:", unver_persons
 else:
     print "No file present!"
 
