@@ -5,5 +5,6 @@ Relational Social Media Search Engine
 2) Install MongoDB from:
    https://treehouse.github.io/installation-guides/mac/mongo-mac.html.
    Create /data/db with sudo while installing MongoDB.
-3) 
+3) Start the database in a new terminal using mongod.
+4) Restore database using db_restore.sh 
 
