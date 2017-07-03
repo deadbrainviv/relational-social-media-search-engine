@@ -1,0 +1,9 @@
+{% if employList %}
+    <table>
+    {% for emp in employList %}
+        <tr><td>{{emp.email}}</td><td>{{emp.createdBy}}</td><td>{{emp.updatedBy}}</td></tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}

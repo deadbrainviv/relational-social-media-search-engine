@@ -1,0 +1,1780 @@
+<!-- all search results -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/static/testApp/css/layouts/search.css">
+	<link rel="stylesheet" href="/static/testApp/css/layouts/pure-min.css">
+	<link rel="stylesheet" href="/static/testApp/css/layouts/t1.css">
+	<link rel="stylesheet" href="/static/testApp/css/layouts/grids-responsive-min.css">
+	<link rel="stylesheet" href="/static/testApp/css/layouts/search.css">
+	<link rel="stylesheet" href="/static/testApp/css/layouts/tables.css">
+	<link rel="stylesheet" href="/static/testApp/css/layouts/message.css">
+{%	load staticfiles %}
+</head>
+<body>
+	{% if type == "facebookthreeand"%}
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<form action="/testApp/combinedexc/" method="post">
+		{% csrf_token %}
+		<font size="3" color="red"><b>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		Select Jaccard cutoff: 
+		<select name="jaccard_cutoff_html">
+		  <option value="0.01" selected="selected">0.01</option>
+		  <option value="0.02">0.02</option>
+		  <option value="0.03">0.03</option>
+		  <option value="0.04">0.04</option>
+		  <option value="0.05">0.05</option>
+		  <option value="0.06">0.06</option>
+		  <option value="0.07">0.07</option>
+		  <option value="0.08">0.08</option>
+		  <option value="0.09">0.09</option>
+		  <option value="0.10">0.10</option>
+		  <option value="0.11">0.11</option>
+		  <option value="0.12">0.12</option>
+		  <option value="0.13">0.13</option>
+		  <option value="0.14">0.14</option>
+		  <option value="0.15">0.15</option>
+		  <option value="0.16">0.16</option>
+		  <option value="0.17">0.17</option>
+		  <option value="0.18">0.18</option>
+		  <option value="0.19">0.19</option>
+		  <option value="0.20">0.20</option>
+		  <option value="0.21">0.21</option>
+		  <option value="0.22">0.22</option>
+		  <option value="0.23">0.23</option>
+		  <option value="0.24">0.24</option>
+		  <option value="0.25">0.25</option>
+		  <option value="0.26">0.26</option>
+		  <option value="0.27">0.27</option>
+		  <option value="0.28">0.28</option>
+		  <option value="0.29">0.29</option>
+		  <option value="0.30">0.30</option>
+		  <option value="0.31">0.31</option>
+		  <option value="0.32">0.32</option>
+		  <option value="0.33">0.33</option>
+		  <option value="0.34">0.34</option>
+		  <option value="0.35">0.35</option>
+		  <option value="0.36">0.36</option>
+		  <option value="0.37">0.37</option>
+		  <option value="0.38">0.38</option>
+		  <option value="0.39">0.39</option>
+		  <option value="0.40">0.40</option>
+		  <option value="0.41">0.41</option>
+		  <option value="0.42">0.42</option>
+		  <option value="0.43">0.43</option>
+		  <option value="0.44">0.44</option>
+		  <option value="0.45">0.45</option>
+		  <option value="0.46">0.46</option>
+		  <option value="0.47">0.47</option>
+		  <option value="0.48">0.48</option>
+		  <option value="0.49">0.49</option>
+		  <option value="0.50">0.50</option>
+		  <option value="0.51">0.51</option>
+		</select>
+		</b></font>
+		<button type="submit" style="height:25px;width:100px" value="text">Go</button>
+		<br/><br><br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<font size="5" color="green"><b>Selected value: {{selectedvalue}}</b></font>
+		<br/><br><br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<font size="5" color="green"><b>Number of people clearing the jaccard score of {{selectedvalue}} are : ==> {{people_having_profiles}}</b></font>
+		</form>
+		<p>
+	{% endif %}
+	<form action="/testApp/markProfile/" method="post">
+	{% csrf_token %}
+	<br>
+	{% if number_of_jaccard_people %}
+	<table id="table_one" border="0" style="table-layout: fixed;width:1600px;margin-left:2cm;">
+		<tr style="width:1600px">
+			<td colspan="3" style="width:1600px">
+				<b><font color="red" size="3">Number of people clearing the Jaccard cutoff of {{jaccard_cutoff}} &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{number_of_jaccard_people}}</font></b><br/>
+			</td>
+		</tr>
+		</tr>
+	</table>
+	<br>
+	<br>
+	<br>
+	{% endif %}
+	{% if type == "facebook" or type == "facebookone" or type == "facebooktwo" or type == "facebookthree" or type == "facebookthreeand" or type == "facebookfour" or type == "facebookseven" %}
+	<div class="l-content"> 
+    <div id="selections_list" class="pricing-tables pure-g">
+	<table id="table_one" border="3" style="table-layout: fixed;width:1600px;margin-left:2cm;">
+		<thead style="width:1600px">
+			<tr style="width:1600px">
+				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word"><font size="4">IMAGE</font></th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word"><font size="4">NAME</font></th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word"><font size="4">PROFILE</font></th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word"><font size="4">UNIVERSITY</font></th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word"><font size="4">INDUSTRY</font></th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word"><font size="4">LOCATION</font></th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word"><font size="4">WORK INFO</font></th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word"><font size="4">CONNECTIONS</font></th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word"><font size="4">MULTIPLE</font></th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word"><font size="4">SELECT</font></th>
+			</tr>
+		</thead>
+		<br>
+		<tbody style="width:1600px">
+			<tr style="width:1600px">
+				<td colspan="10" style="width:1600px">
+					{{message}}	
+					{% for e in entries %}
+					{% if not e%}
+					<table border="1" style="table-layout: fixed;width:1600px">
+						<tr style="width:1500px;border-style:hidden;">
+							<td colspan="10" style="width:1500px">
+								&nbsp&nbsp&nbsp<b>Searched for '{{e.personData.firstName}} {{e.personData.lastName}}'</b>
+							</td>
+						</tr>
+						<tr style="width:1500px;border-style:hidden;">
+							<td colspan="10" style="width:1500px" align="left">
+								&nbsp&nbsp&nbsp<b>LinkedIn entries</b>
+							</td>
+						</tr>
+						<tr style="width:1500px;border-style:solid;"></tr>
+						{%	if forloop.counter|divisibleby:2 %}
+						<tr style="width:1500px;border-style:solid;">
+							<td colspan="1" style="width:150px">
+								{% if e.personData.isProfilePic %}
+								<img src={{e.personData.profilePhoto.profilePhoto.media_picture_link_100}}>
+								{% else %}
+								<img src={{e.personData.profilePhoto.profilePhoto.genericGhostImage}}>
+								{% endif %}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{e.personData.firstName}} {{e.personData.lastName}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								<a href="{{ e.personData.link_nprofile_view_3 }}/">LinkedIn Profile</a>
+							</td>
+							<td colspan="1" style="width:150px" >
+								<ul>
+								{% for t in e.education_all %}
+									<li >{{t}}</li>
+									<br>
+								{% endfor %}
+								</ul>
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{e.personData.fmt_industry}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{e.personData.fmt_location}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{e.personData.fmt_headline}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{e.personData.connectionCount}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{% if e.isMultiple %}
+								<a href="{% url 'testApp:updateByID' personId=e.personData.personId %}">
+									Multiple
+								</a>
+								{% endif %}
+							</td>
+							<td colspan="1" style="width:150px" >
+								<input type="checkbox" class="check_class" name="{{e.personData.personId}}" />
+							</td>
+						</tr>
+						{% else %}
+						<tr style="width:1500px;border-style:solid;">
+							<td style="width:150px">
+								{% if e.personData.isProfilePic %}
+								<img src={{e.personData.profilePhoto.profilePhoto.media_picture_link_100}}>
+								{% else %}
+								<img src={{e.personData.profilePhoto.profilePhoto.genericGhostImage}}>
+								{% endif %}
+							</td>
+							<td style="width:150px">{{e.personData.firstName}} {{e.personData.lastName}}</td>
+							<td style="width:150px"><a target="_blank" href="{{ e.personData.link_nprofile_view_3 }}/">LinkedIn Profile</a>
+							</td>
+							<td style="width:150px">
+								{{ e.education_all }}
+							</td>
+							<td style="width:150px">
+							{{e.personData.fmt_industry}}
+							</td>
+							<td style="width:150px">{{e.personData.fmt_location}}</td>
+							<td style="width:150px">{{e.personData.workinfo}}</td>
+							<td style="width:150px">{{e.personData.connectionCount}}</td>
+							<td style="width:150px">
+								{% if e.isMultiple %}
+								<a href="{% url 'testApp:updateByID' personId=e.personData.personId %}">
+									Multiple
+								</a>
+								{% else %}
+								No Multiples
+								{% endif %}
+							</td>
+							<td style="width:150px"><input type="checkbox" class="check_class" name="{{e.personData.personId}}" /></td>
+						</tr>
+						{% endif %}
+						<tr style="width:1500px;border-style:solid;"></tr>
+						<tr style="width:1500px;border-style:hidden;">
+							<td colspan="10" style="width:1500px" align="left">
+								<br>&nbsp&nbsp&nbsp<b>Facebook entries</b>
+							</td>
+						</tr>
+						<tr style="width:1500px;border-style:solid;"></tr>
+						<tr style="width:1500px;border-style:solid;">
+							<td colspan="10" style="width:1500px">
+							<table>
+							{% if e.personData.fbData|length == 0%}
+							<tr style="width:1500px">
+								<td style="width:1500px">
+									0 Facebook entries found
+								</td>
+							</tr>
+							{% else %}
+							{% for f in e.personData.fbData %}
+							{% if not f%}
+							<tr style="width:1500px">
+								<td style="width:150px">
+								{{f.past}}
+								</td>
+								<td style="width:150px">
+								{{f.name}}
+								</td>
+								<td style="width:150px">
+								{{f.home}}
+								</td>
+								<td style="width:150px">
+								{{f.studying}}
+								</td>
+								<td style="width:150px">
+								{{f.studied}}
+								</td>
+								<td style="width:150px">
+								{{f.past_worked}}
+								</td>
+								<td style="width:150px">
+								{{f.current}}
+								</td>
+								<td style="width:150px">
+								{{f.stays}}
+								</td>
+								<td style="width:150px">
+								{{f.went_to}}
+								</td>
+								<td style="width:150px">
+								{{f.id}}
+								</td>
+								<td style="width:150px"><input type="checkbox" class="check_class" name="{{e.personData.personId}}" /></td>
+							</tr>
+							{% endif %}
+							{% endfor %}
+							{% endif %}
+							</table>
+						</tr>
+					</table>
+					{% endif %}
+					{% endfor %}
+				</td>
+			</tr>
+			{% for e1 in entries1 %}
+			<tr style="width:1600px">
+				<td colspan="10" style="width:1600px">
+					<table border="1" style="width:1600px">
+						{% if type == "facebookthreeand" and e1.profiles|length == 0 %}
+						{% else %}
+						<br/>
+						<tr style="width:1500px;border-style:hidden;">
+							<td colspan="10" style="width:1500px">
+								<font size="4"><b>&nbsp&nbsp&nbsp<b>Searched for '{{e1.person}}'</b></font>
+							</td>
+						</tr>
+						{% endif %}
+						{% if e1.profiles|length == 0 and type != "facebookthreeand" %}
+							<tr style="width:1500px;border-style:solid;"></tr>
+							<tr style="width:1500px;border-style:solid;">
+								<td colspan="1" style="width:150px" >
+									No (0) Facebook profiles found.
+								</td>
+							</tr>
+						{% elif type == "facebookone" and e1.showscore == False %}
+							<tr style="width:1500px;border-style:solid;"></tr>
+							<tr style="width:1500px;border-style:solid;">
+								<td colspan="1" style="width:150px" >
+									No (0) Facebook profiles found complying to 'Social Graph Scores Heuristic'.
+								</td>
+							</tr>
+						{% elif type == "facebooktwo" and e1.showscore1 == False %}
+							<tr style="width:1500px;border-style:solid;"></tr>
+							<tr style="width:1500px;border-style:solid;">
+								<td colspan="1" style="width:150px" >
+									No (0) Facebook profiles found complying to 'Ground Truth Scores Heuristic'.
+								</td>
+							</tr>
+						{% elif type == "facebookthree" and e1.showscore2 == False and e1.showjacc == False %}
+							<tr style="width:1500px;border-style:solid;"></tr>
+							<tr style="width:1500px;border-style:solid;">
+								<td colspan="1" style="width:150px" >
+									No (0) Facebook profiles found complying to 'Combined Scores Heuristic' and 'Seed Friends Ground Truth'.
+								</td>
+							</tr>
+						{% elif type == "facebookfour" and e1.watson == False %}
+							<tr style="width:1500px;border-style:solid;"></tr>
+							<tr style="width:1500px;border-style:solid;">
+								<td colspan="1" style="width:150px" >
+									No (0) Facebook profiles have Watson information.
+								</td>
+							</tr>
+						{% else %}
+							{% for profile in e1.profiles %}
+								{% if profile.actual != "no"%}
+									{% if type == "facebook"%}
+										<tr style="width:1500px;border-style:solid;"></tr>
+										<tr style="width:1500px;border-style:solid;">
+											<td colspan="1" style="width:150px">
+												<img src="{{profile.pic}}"><br/>
+												<b>Social Graph:&nbsp;&nbsp;{{profile.score}}</b><br/>
+												<b>Ground Truth:&nbsp;&nbsp;{{profile.score1}}</b><br/>
+												<b>Combined:&nbsp;&nbsp;{{profile.score2}}</b><br/>
+												{% if profile.jaccard %}
+													<b>Seed Friends Ground Truth:&nbsp;&nbsp;{{profile.jaccard}}</b><br/>
+												{% else %}
+													<b>Seed Friends Ground Truth:&nbsp;&nbsp;NA</b><br/>
+												{% endif %}
+												{% if profile.watson %}
+													<font color="red"><br/>
+													{% for k,v in profile.watson.items %}
+														{% if k == "images" %}
+															{% for vv in v%}
+																{% for vvv in vv.faces %}
+																	<b>Gender:&nbsp;&nbsp;{{vvv.gender}}<br/>
+																	Age:&nbsp;&nbsp;{{vvv.age}}<br/><br/></b>
+																{% endfor %}
+															{% endfor %}
+														{% endif %}
+													{% endfor %}</font>
+												{% endif %}
+											</td>
+											<td colspan="1" style="width:150px" >
+												{{profile.name}}
+											</td>
+											<td colspan="1" style="width:150px" >
+												<a href="{{profile.profile}}">Facebook Profile</a>
+											</td>
+											<td colspan="1" style="width:150px" >
+												{{profile.education}}
+											</td>
+											<td colspan="1" style="width:150px" >
+												{{profile.work}}
+											</td>
+											<td colspan="1" style="width:150px" >
+												{{profile.location}}
+											</td>
+											<td colspan="1" style="width:150px" >
+												{{profile.work}}
+											</td>
+											<td colspan="1" style="width:150px" >
+												Friend list hidden.
+												<!--<table style="width:150px">
+												{% for fr in profile.friends %}
+													<tr style="width:150px">
+														<td style="width:150px">
+															<a href="{{fr}}">{{fr}}</a>
+														</td>
+													</tr>
+												{% endfor %}
+												</table>-->
+											</td>
+											<td colspan="1" style="width:150px" >
+												NA
+											</td>
+											<td colspan="1" style="width:150px" >
+												{% if profile.actual == "na" %}
+													Please indicate ground truth:<br/>
+													Yes:&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="yes__{{profile.profile}}" /><br/>
+													No:&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="no__{{profile.profile}}" /><br/>
+												{% endif %}
+												{% if profile.actual == "yes" %}
+													TRUE(+):&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="yes__{{profile.profile}}" checked disabled /><br/>
+												{% endif %}
+												{% if profile.actual == "no" %}
+													FALSE(-):&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="no__{{profile.profile}}" disabled /><br/>
+												{% endif %}
+											</td>
+										</tr>	
+									{% endif %}
+									{% if type == "facebookone"%}
+										{% if profile.score > 0%}
+											<tr style="width:1500px;border-style:solid;"></tr>
+											<tr style="width:1500px;border-style:solid;">
+												<td colspan="1" style="width:150px">
+													<img src="{{profile.pic}}"><br/>
+													<b>Social Graph:&nbsp;&nbsp;{{profile.score}}</b><br/>
+												</td>
+												<td colspan="1" style="width:150px" >
+													{{profile.name}}
+												</td>
+												<td colspan="1" style="width:150px" >
+													<a href="{{profile.profile}}">Facebook Profile</a>
+												</td>
+												<td colspan="1" style="width:150px" >
+													{{profile.education}}
+												</td>
+												<td colspan="1" style="width:150px" >
+													{{profile.work}}
+												</td>
+												<td colspan="1" style="width:150px" >
+													{{profile.location}}
+												</td>
+												<td colspan="1" style="width:150px" >
+													{{profile.work}}
+												</td>
+												<td colspan="1" style="width:150px" >
+													Friend list hidden.
+													<!--<table style="width:150px">
+													{% for fr in profile.friends %}
+														<tr style="width:150px">
+															<td style="width:150px">
+																<a href="{{fr}}">{{fr}}</a>
+															</td>
+														</tr>
+													{% endfor %}
+													</table>-->
+												</td>
+												<td colspan="1" style="width:150px" >
+													NA
+												</td>
+												<td colspan="1" style="width:150px" >
+													NA
+												</td>
+											</tr>
+										{% endif %}
+									{% endif %}
+									{% if type == "facebooktwo"%}
+										{% if profile.score1 > 0%}
+											<tr style="width:1500px;border-style:solid;"></tr>
+											<tr style="width:1500px;border-style:solid;">
+												<td colspan="1" style="width:150px">
+													<img src="{{profile.pic}}"><br/>
+													<b>Ground Truth:&nbsp;&nbsp;{{profile.score1}}</b><br/>
+												</td>
+												<td colspan="1" style="width:150px" >
+													{{profile.name}}
+												</td>
+												<td colspan="1" style="width:150px" >
+													<a href="{{profile.profile}}">Facebook Profile</a>
+												</td>
+												<td colspan="1" style="width:150px" >
+													{{profile.education}}
+												</td>
+												<td colspan="1" style="width:150px" >
+													{{profile.work}}
+												</td>
+												<td colspan="1" style="width:150px" >
+													{{profile.location}}
+												</td>
+												<td colspan="1" style="width:150px" >
+													{{profile.work}}
+												</td>
+												<td colspan="1" style="width:150px" >
+													Friend list hidden.
+													<!--<table style="width:150px">
+													{% for fr in profile.friends %}
+														<tr style="width:150px">
+															<td style="width:150px">
+																<a href="{{fr}}">{{fr}}</a>
+															</td>
+														</tr>
+													{% endfor %}
+													</table>-->
+												</td>
+												<td colspan="1" style="width:150px" >
+													NA
+												</td>
+												<td colspan="1" style="width:150px" >
+													NA
+												</td>
+											</tr>
+										{% endif %}
+									{% endif %}
+									{% if type == "facebookthreeand" %}
+										<tr style="width:1600px;border-style:solid;"></tr>
+										<tr style="width:1600px;border-style:solid;">
+											<td colspan="1" style="height:200px;width:160px;word-wrap:break-word;text-align:center;white-space:normal">
+												<img src="{{profile.pic}}" style="width:225px;height:210px;"><br/>
+												<font size="4" color="red"><b>Seed Friends Ground Truth:&nbsp;&nbsp;{{profile.score_jaccard_sim}}</b><br/></font>
+											</td>
+											<td colspan="1" style="height:200px;width:160px;word-wrap:break-word;text-align:center;white-space:normal">
+												<font size="4"><b>{{profile.name}}</b></font>
+											</td>
+											<td colspan="1" style="height:200px;width:160px;word-wrap:break-word;text-align:center;white-space:normal">
+												<font size="3"><a href="{{profile.profile}}">Facebook Profile</a></font>
+											</td>
+											<td colspan="1" style="height:200px;width:160px;word-wrap:break-word;text-align:center;white-space:normal">
+												<font size="3">{{profile.education}}</font>
+											</td>
+											<<td colspan="1" style="height:200px;width:160px;word-wrap:break-word;text-align:center;white-space:normal">
+												<font size="3">{{profile.work}}</font>
+											</td>
+											<td colspan="1" style="height:200px;width:160px;word-wrap:break-word;text-align:center;white-space:normal">
+												<font size="3">{{profile.location}}</font>
+											</td>
+											<td colspan="1" style="height:200px;width:160px;word-wrap:break-word;text-align:center;white-space:normal">
+												<font size="3">{{profile.work}}</font>
+											</td>
+											<td colspan="1" style="height:200px;width:160px;word-wrap:break-word;text-align:center;white-space:normal">
+												<font size="3">Friend list hidden.
+												<!--<table style="width:150px">
+												{% for fr in profile.friends %}
+													<tr style="width:150px">
+														<td style="width:150px">
+															<a href="{{fr}}">{{fr}}</a>
+														</td>
+													</tr>
+												{% endfor %}
+												</table>-->
+												</font>
+											</td>
+											<td colspan="1" style="height:200px;width:160px;word-wrap:break-word;text-align:center;white-space:normal">
+												<font size="3">NA</font>
+											</td>
+											<td colspan="1" style="height:200px;width:160px;word-wrap:break-word;text-align:center;white-space:normal">
+												<font size="3">
+												{% if profile.actual == "na" %}
+													Please indicate ground truth:<br/>
+													Yes:&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="yes__{{profile.profile}}" /><br/>
+													No:&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="no__{{profile.profile}}" /><br/>
+												{% endif %}
+												{% if profile.actual == "yes" %}
+													TRUE(+):&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="yes__{{profile.profile}}" checked disabled /><br/>
+												{% endif %}
+												{% if profile.actual == "no" %}
+													FALSE(-):&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="no__{{profile.profile}}" disabled /><br/>
+												{% endif %}
+												Send to verified list:<br/>
+												{% if profile.actual == "yes" %}
+													&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="yes__{{profile.profile}}" checked disabled /><br/>
+												{% else %}
+													&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="yes__{{profile.profile}}" /><br/>
+												{% endif %}
+												</font>
+											</td>
+										</tr>
+									{% endif %}
+									{% if type == "facebookthree"%}
+										{% if profile.score2 or profile.jaccard %}
+											<tr style="width:1500px;border-style:solid;"></tr>
+											<tr style="width:1500px;border-style:solid;">
+												<td colspan="1" style="width:150px">
+													<img src="{{profile.pic}}"><br/>
+													{% if profile.score2 > 0 %}
+														<b>Combined:&nbsp;&nbsp;{{profile.score2}}</b><br/>
+													{% endif %}
+													{% if profile.jaccard %}
+														<font color="red"><b>Seed Friends Ground Truth:&nbsp;&nbsp;{{profile.jaccard}}</b><br/></font>
+													{% else %}
+														<font color="red"><b>Seed Friends Ground Truth:&nbsp;&nbsp;NA</b><br/></font>
+													{% endif %}
+												</td>
+												<td colspan="1" style="width:150px" >
+													{{profile.name}}
+												</td>
+												<td colspan="1" style="width:150px" >
+													<a href="{{profile.profile}}">Facebook Profile</a>
+												</td>
+												<td colspan="1" style="width:150px" >
+													{{profile.education}}
+												</td>
+												<td colspan="1" style="width:150px" >
+													{{profile.work}}
+												</td>
+												<td colspan="1" style="width:150px" >
+													{{profile.location}}
+												</td>
+												<td colspan="1" style="width:150px" >
+													{{profile.work}}
+												</td>
+												<td colspan="1" style="width:150px" >
+													Friend list hidden.
+													<!--<table style="width:150px">
+													{% for fr in profile.friends %}
+														<tr style="width:150px">
+															<td style="width:150px">
+																<a href="{{fr}}">{{fr}}</a>
+															</td>
+														</tr>
+													{% endfor %}
+													</table>-->
+												</td>
+												<td colspan="1" style="width:150px" >
+													NA
+												</td>
+												<td colspan="1" style="width:150px" >
+													{% if profile.actual == "na" %}
+														Please indicate ground truth:<br/>
+														Yes:&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="yes__{{profile.profile}}" /><br/>
+														No:&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="no__{{profile.profile}}" /><br/>
+													{% endif %}
+													{% if profile.actual == "yes" %}
+														TRUE(+):&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="yes__{{profile.profile}}" checked disabled /><br/>
+													{% endif %}
+													{% if profile.actual == "no" %}
+														FALSE(-):&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="no__{{profile.profile}}" disabled /><br/>
+													{% endif %}
+												</td>
+											</tr>
+										{% endif %}
+									{% endif %}
+									{% if type == "facebookfour"%}
+										{% if profile.watson %}
+											<tr style="width:1500px;border-style:solid;"></tr>
+											<tr style="width:1500px;border-style:solid;">
+												<td colspan="1" style="width:150px">
+													<img src="{{profile.pic}}"><br/>
+													<font color="red"><br/>
+													{% for k,v in profile.watson.items %}
+														{% if k == "images" %}
+															{% for vv in v%}
+																{% for vvv in vv.faces %}
+																	<b>Gender:&nbsp;&nbsp;{{vvv.gender}}<br/>
+																	Age:&nbsp;&nbsp;{{vvv.age}}<br/><br/></b>
+																{% endfor %}
+															{% endfor %}
+														{% endif %}
+													{% endfor %}</font>
+												</td>
+												<td colspan="1" style="width:150px" >
+													{{profile.name}}
+												</td>
+												<td colspan="1" style="width:150px" >
+													<a href="{{profile.profile}}">Facebook Profile</a>
+												</td>
+												<td colspan="1" style="width:150px" >
+													{{profile.education}}
+												</td>
+												<td colspan="1" style="width:150px" >
+													{{profile.work}}
+												</td>
+												<td colspan="1" style="width:150px" >
+													{{profile.location}}
+												</td>
+												<td colspan="1" style="width:150px" >
+													{{profile.work}}
+												</td>
+												<td colspan="1" style="width:150px" >
+													Friend list hidden.
+													<!--<table style="width:150px">
+													{% for fr in profile.friends %}
+														<tr style="width:150px">
+															<td style="width:150px">
+																<a href="{{fr}}">{{fr}}</a>
+															</td>
+														</tr>
+													{% endfor %}
+													</table>-->
+												</td>
+												<td colspan="1" style="width:150px" >
+													NA
+												</td>
+												<td colspan="1" style="width:150px" >
+													NA
+												</td>
+											</tr>
+										{% endif %}
+									{% endif %}
+									{% if type == "facebookseven"%}
+										{% if profile.newscore and profile.actual != "yes" %}
+											<tr style="width:1500px;border-style:solid;"></tr>
+											<tr style="width:1500px;border-style:solid;">
+												<td colspan="1" style="width:150px">
+													<img src="{{profile.pic}}"><br/>
+													<font color="red"><br/>
+													{% if profile.newscore > 0 %}
+														<b>Jaccard:&nbsp;&nbsp;{{profile.newscore}}</b><br/>
+													{% endif %}
+													</font>
+												</td>
+												<td colspan="1" style="width:150px" >
+													{{profile.name}}
+												</td>
+												<td colspan="1" style="width:150px" >
+													<a href="{{profile.profile}}">Facebook Profile</a>
+												</td>
+												<td colspan="1" style="width:150px" >
+													{{profile.education}}
+												</td>
+												<td colspan="1" style="width:150px" >
+													{{profile.work}}
+												</td>
+												<td colspan="1" style="width:150px" >
+													{{profile.location}}
+												</td>
+												<td colspan="1" style="width:150px" >
+													{{profile.work}}
+												</td>
+												<td colspan="1" style="width:150px" >
+													Friend list hidden.
+													<!--<table style="width:150px">
+													{% for fr in profile.friends %}
+														<tr style="width:150px">
+															<td style="width:150px">
+																<a href="{{fr}}">{{fr}}</a>
+															</td>
+														</tr>
+													{% endfor %}
+													</table>-->
+												</td>
+												<td colspan="1" style="width:150px" >
+													NA
+												</td>
+												<td colspan="1" style="width:150px" >
+													{% if profile.actual == "na" %}
+														Please indicate ground truth:<br/>
+														Yes:&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="yes__{{profile.profile}}" /><br/>
+														No:&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="no__{{profile.profile}}" /><br/>
+													{% endif %}
+													{% if profile.actual == "yes" %}
+														TRUE(+):&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="yes__{{profile.profile}}" checked disabled /><br/>
+													{% endif %}
+													{% if profile.actual == "no" %}
+														FALSE(-):&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="no__{{profile.profile}}" disabled /><br/>
+													{% endif %}
+												</td>
+											</tr>
+										{% endif %}
+									{% endif %}
+								{% endif %}
+							{% endfor %}
+						{% endif %}
+					</table>
+				</td>
+			</tr>
+			{% endfor %}
+			<tr style="width:1600px">
+				<td colspan="5" style="width:800px">
+					<br/>
+						<b><div align="center"><input name="facebook_form_submit" type="submit" value="Submit changes!"></div></b>
+					<br/>
+				</td>
+				{% if type == "facebook"%}
+				<td colspan="5" style="width:800px">
+					<br/>
+						<b><div align="center"><input name="facebook_form_submit" type="submit" value="Reset Ground Truth!"></div></b>
+					<br/>
+				</td>
+				{% else %}
+				<td colspan="5" style="width:800px">
+					<br/>
+						<b>NA</b>
+					<br/>
+				</td>
+				{% endif %}
+			</tr>
+		</tbody>
+	</table>
+	{% elif type == "facebookfive" %}
+	<table id="table_one" border="3" style="table-layout: fixed;width:1600px;margin-left:2cm;">
+		<thead style="width:1600px">
+			<tr style="width:1600px">
+				<th bgcolor="#FD6D4F" colspan="10" style="width:150px;word-wrap:break-word"><font size="3">SOCIAL GRAPH APPROACH</font></th>
+			</tr>
+		</thead>
+		<thead style="width:1600px">
+			<tr style="width:1600px">
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Image</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Name</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Profile</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">University</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Industry</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Location</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Work Info</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Connections</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Multiple</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Select</th>
+			</tr>
+		</thead>
+		<br>
+		<tbody style="width:1600px">
+			{% for e1 in entries1 %}
+			<tr style="width:1600px">
+				<td colspan="10" style="width:1600px">
+					<table border="1" style="width:1600px">
+						<br/>
+						<tr style="width:1500px;border-style:hidden;">
+							<td colspan="10" style="width:1500px">
+								&nbsp&nbsp&nbsp<b>Searched for '{{e1.person}}'</b>
+							</td>
+						</tr>
+						{% for profile in e1.profiles %}
+						{% if profile.actual != "no" and profile.score > 0 %}
+						<tr style="width:1500px;border-style:solid;"></tr>
+						<tr style="width:1500px;border-style:solid;">
+							<td colspan="1" style="width:150px">
+								<img src="{{profile.pic}}"><br/>
+								<b>Social Graph score:&nbsp;&nbsp;{{profile.score}}</b><br/>
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.name}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								<a href="{{profile.profile}}">Facebook Profile</a>
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.education}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.work}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.location}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.work}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								Friend list hidden.
+							</td>
+							<td colspan="1" style="width:150px" >
+								NA
+							</td>
+							<td colspan="1" style="width:150px" >
+								NA
+							</td>
+						</tr>
+					{% endif %}
+					{% endfor %}
+					</table>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<br/><br/><br/>
+	<table id="table_one" border="3" style="table-layout: fixed;width:1600px;margin-left:2cm;">
+		<thead style="width:1600px">
+			<tr style="width:1600px">
+				<th bgcolor="#FD6D4F" colspan="10" style="width:150px;word-wrap:break-word"><font size="3">GROUND TRUTH APPROACH</font></th>
+			</tr>
+		</thead>
+		<thead style="width:1600px">
+			<tr style="width:1600px">
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Image</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Name</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Profile</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">University</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Industry</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Location</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Work Info</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Connections</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Multiple</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Select</th>
+			</tr>
+		</thead>
+		<br>
+		<tbody style="width:1600px">
+			{% for e1 in entries1 %}
+			<tr style="width:1600px">
+				<td colspan="10" style="width:1600px">
+					<table border="1" style="width:1600px">
+						<br/>
+						<tr style="width:1500px;border-style:hidden;">
+							<td colspan="10" style="width:1500px">
+								&nbsp&nbsp&nbsp<b>Searched for '{{e1.person}}'</b>
+							</td>
+						</tr>
+						{% for profile in e1.profiles %}
+						{% if profile.actual != "no" and profile.score1 > 0 %}
+						<tr style="width:1500px;border-style:solid;"></tr>
+						<tr style="width:1500px;border-style:solid;">
+							<td colspan="1" style="width:150px">
+								<img src="{{profile.pic}}"><br/>
+								<b>Ground Truth Graph score:&nbsp;&nbsp;{{profile.score1}}</b><br/>
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.name}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								<a href="{{profile.profile}}">Facebook Profile</a>
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.education}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.work}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.location}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.work}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								Friend list hidden.
+							</td>
+							<td colspan="1" style="width:150px" >
+								NA
+							</td>
+							<td colspan="1" style="width:150px" >
+								NA
+							</td>
+						</tr>
+					{% endif %}
+					{% endfor %}
+					</table>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<br/><br/><br/>
+	<table id="table_one" border="3" style="table-layout: fixed;width:1600px;margin-left:2cm;">
+		<thead style="width:1600px">
+			<tr style="width:1600px">
+				<th bgcolor="#FD6D4F" colspan="10" style="width:150px;word-wrap:break-word"><font size="3">COMBINED (S + GT) APPROACH</font></th>
+			</tr>
+		</thead>
+		<thead style="width:1600px">
+			<tr style="width:1600px">
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Image</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Name</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Profile</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">University</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Industry</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Location</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Work Info</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Connections</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Multiple</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Select</th>
+			</tr>
+		</thead>
+		<br>
+		<tbody style="width:1600px">
+			{% for e1 in entries1 %}
+			<tr style="width:1600px">
+				<td colspan="10" style="width:1600px">
+					<table border="1" style="width:1600px">
+						<br/>
+						<tr style="width:1500px;border-style:hidden;">
+							<td colspan="10" style="width:1500px">
+								&nbsp&nbsp&nbsp<b>Searched for '{{e1.person}}'</b>
+							</td>
+						</tr>
+						{% for profile in e1.profiles %}
+						{% if profile.actual != "no" and profile.score2 > 0 %}
+						<tr style="width:1500px;border-style:solid;"></tr>
+						<tr style="width:1500px;border-style:solid;">
+							<td colspan="1" style="width:150px">
+								<img src="{{profile.pic}}"><br/>
+								<b>Combined (S + GT) Graph score:&nbsp;&nbsp;{{profile.score2}}</b><br/>
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.name}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								<a href="{{profile.profile}}">Facebook Profile</a>
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.education}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.work}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.location}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.work}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								Friend list hidden.
+							</td>
+							<td colspan="1" style="width:150px" >
+								NA
+							</td>
+							<td colspan="1" style="width:150px" >
+								NA
+							</td>
+						</tr>
+					{% endif %}
+					{% endfor %}
+					</table>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<br/><br/><br/>
+	<table id="table_one" border="3" style="table-layout: fixed;width:1600px;margin-left:2cm;">
+		<thead style="width:1600px">
+			<tr style="width:1600px">
+				<th bgcolor="#FD6D4F" colspan="10" style="width:150px;word-wrap:break-word"><font size="3">SEED FRIENDS LIST APPROACH</font></th>
+			</tr>
+		</thead>
+		<thead style="width:1600px">
+			<tr style="width:1600px">
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Image</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Name</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Profile</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">University</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Industry</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Location</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Work Info</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Connections</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Multiple</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Select</th>
+			</tr>
+		</thead>
+		<br>
+		<tbody style="width:1600px">
+			{% for e1 in entries1 %}
+			<tr style="width:1600px">
+				<td colspan="10" style="width:1600px">
+					<table border="1" style="width:1600px">
+						<br/>
+						<tr style="width:1500px;border-style:hidden;">
+							<td colspan="10" style="width:1500px">
+								&nbsp&nbsp&nbsp<b>Searched for '{{e1.person}}'</b>
+							</td>
+						</tr>
+						{% for profile in e1.profiles %}
+						{% if profile.actual != "no" and profile.jaccard %}
+						<tr style="width:1500px;border-style:solid;"></tr>
+						<tr style="width:1500px;border-style:solid;">
+							<td colspan="1" style="width:150px">
+								<img src="{{profile.pic}}"><br/>
+								<b>Seed Friends Graph score:&nbsp;&nbsp;{{profile.jaccard}}</b><br/>
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.name}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								<a href="{{profile.profile}}">Facebook Profile</a>
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.education}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.work}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.location}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.work}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								Friend list hidden.
+							</td>
+							<td colspan="1" style="width:150px" >
+								NA
+							</td>
+							<td colspan="1" style="width:150px" >
+								NA
+							</td>
+						</tr>
+					{% endif %}
+					{% endfor %}
+					</table>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<br/><br/><br/>
+	<table id="table_one" border="3" style="table-layout: fixed;width:1600px;margin-left:2cm;">
+		<thead style="width:1600px">
+			<tr style="width:1600px">
+				<th bgcolor="#FD6D4F" colspan="10" style="width:150px;word-wrap:break-word"><font size="3">WATSON APPROACH</font></th>
+			</tr>
+		</thead>
+		<thead style="width:1600px">
+			<tr style="width:1600px">
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Image</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Name</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Profile</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">University</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Industry</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Location</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Work Info</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Connections</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Multiple</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Select</th>
+			</tr>
+		</thead>
+		<br>
+		<tbody style="width:1600px">
+			{% for e1 in entries1 %}
+			<tr style="width:1600px">
+				<td colspan="10" style="width:1600px">
+					<table border="1" style="width:1600px">
+						<br/>
+						<tr style="width:1500px;border-style:hidden;">
+							<td colspan="10" style="width:1500px">
+								&nbsp&nbsp&nbsp<b>Searched for '{{e1.person}}'</b>
+							</td>
+						</tr>
+						{% for profile in e1.profiles %}
+						{% if profile.actual != "no" and profile.watson %}
+						<tr style="width:1500px;border-style:solid;"></tr>
+						<tr style="width:1500px;border-style:solid;">
+							<td colspan="1" style="width:150px">
+								<img src="{{profile.pic}}"><br/>
+								<font color="red"><br/>
+									{% for k,v in profile.watson.items %}
+										{% if k == "images" %}
+											{% for vv in v%}
+												{% for vvv in vv.faces %}
+													<b>Gender:&nbsp;&nbsp;{{vvv.gender}}<br/>
+													Age:&nbsp;&nbsp;{{vvv.age}}<br/><br/></b>
+												{% endfor %}
+											{% endfor %}
+										{% endif %}
+									{% endfor %}
+								</font>
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.name}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								<a href="{{profile.profile}}">Facebook Profile</a>
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.education}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.work}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.location}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								{{profile.work}}
+							</td>
+							<td colspan="1" style="width:150px" >
+								Friend list hidden.
+							</td>
+							<td colspan="1" style="width:150px" >
+								NA
+							</td>
+							<td colspan="1" style="width:150px" >
+								NA
+							</td>
+						</tr>
+					{% endif %}
+					{% endfor %}
+					</table>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% elif type == "facebooksix" %}
+	<table border="3" style="table-layout: fixed;width:1600px;margin-left:2cm;">
+		<thead style="width:1600px">
+			<tr style="width:1600px">
+				<th bgcolor="#FD6D4F" colspan="7" style="width:1600px;word-wrap:break-word"><font size="4"><b>VERIFIED PROFILES #{{e1profilescount}}</b></font></th>
+			</tr>
+		</thead>
+		<thead style="width:1600px">
+			<tr style="width:1600px">
+				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word"><font size="4">IMAGE</font></th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word"><font size="4">NAME</font></th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word"><font size="4">PROFILE</font></th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word"><font size="4">UNIVERSITY</font></th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word"><font size="4">INDUSTRY</font></th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word"><font size="4">LOCATION</font></th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:227px;word-wrap:break-word"><font size="4">WORK INFO</font></th>
+				<!--<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Connections</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Multiple</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Select</th>-->
+			</tr>
+		</thead>
+		<br>
+		<tbody style="width:1600px">
+			<tr style="width:1600px">
+				<td colspan="7" style="width:1600px">
+					<table border="1" style="table-layout: fixed;width:1600px">
+						<br/>
+						{% for profile in e1profiles %}
+						{% if profile.actual == "yes" %}
+						<!--<tr style="width:1500px;border-style:hidden;">
+							<td colspan="10" style="width:1500px">
+								&nbsp&nbsp&nbsp<b>Searched for '{{e1.person}}'</b>
+							</td>
+						</tr>-->
+						<!--<tr style="width:1600px;border-style:solid;"></tr>-->
+						<tr style="width:1600px;border-style:solid;">
+							<td colspan="1" style="height:200px;width:227px;word-wrap:break-word;text-align:center;white-space:normal">
+								<img src="{{profile.pic}}" style="width:225px;height:210px;"><br/>
+							</td>
+							<td colspan="1" style="height:200px;width:227px;word-wrap:break-word;text-align:center;white-space:normal" >
+								<font size="4"><b>{{profile.name}}</b></font>
+							</td>
+							<td colspan="1" style="height:200px;width:227px;word-wrap:break-word;text-align:center;white-space:normal" >
+								<font size="3"><a href="{{profile.profile}}">Facebook Profile</a></font>
+							</td>
+							<td colspan="1" style="height:200px;width:227px;word-wrap:break-word;text-align:center;white-space:normal" >
+								<font size="3">{{profile.education}}</font>
+							</td>
+							<td colspan="1" style="height:200px;width:227px;word-wrap:break-word;text-align:center;white-space:normal" >
+								<font size="3">{{profile.work}}</font>
+							</td>
+							<td colspan="1" style="height:200px;width:227px;word-wrap:break-word;text-align:center;white-space:normal" >
+								<font size="3">{{profile.location}}</font>
+							</td>
+							<td colspan="1" style="height:200px;width:227px;word-wrap:break-word;text-align:center;white-space:normal" >
+								<font size="3">{{profile.work}}</font>
+							</td>
+							<!--
+							<td colspan="1" style="height:200px;width:227px;word-wrap:break-word;text-align:center;white-space:normal" >
+								Friend list hidden.
+							</td>
+							<td colspan="1" style="height:200px;width:227px;word-wrap:break-word;text-align:center;white-space:normal" >
+								NA
+							</td>
+							<td colspan="1" style="height:200px;width:227px;word-wrap:break-word;text-align:center;white-space:normal" >
+								TRUE(+):&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="yes__{{profile.profile}}" checked disabled /><br/>
+							</td>
+							-->
+						</tr>
+						<!--<tr style="width:1600px;border-style:solid;"></tr>-->
+						{% endif %}
+						{% endfor %}
+					</table>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<br/><br/><br/>
+	<table id="table_one" border="3" style="table-layout: fixed;width:2275px;margin-left:2cm;">
+		<thead style="width:1600px">
+			<tr style="width:1600px">
+				<th bgcolor="#FD6D4F" colspan="10" style="width:2275px;word-wrap:break-word"><font size="4">NON VERIFIED PROFILES #{{metadata.non_positives}}</font></th>
+			</tr>
+		</thead>
+		<thead style="width:2275px">
+			<tr style="width:2275px">
+				<th bgcolor="#FD6D4F" colspan="1" style="width:160px;word-wrap:break-word"><font size="4">IMAGE</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:160px;word-wrap:break-word"><font size="4">NAME</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:160px;word-wrap:break-word"><font size="4">PROFILE</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:160px;word-wrap:break-word"><font size="4">UNIVERSITY</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:160px;word-wrap:break-word"><font size="4">INDUSTRY</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:160px;word-wrap:break-word"><font size="4">LOCATION</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:160px;word-wrap:break-word"><font size="4">WORK INFO</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:160px;word-wrap:break-word"><font size="4">CONNECTIONS</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:160px;word-wrap:break-word"><font size="4">MULTIPLE</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:160px;word-wrap:break-word"><font size="4">SELECT</th>
+			</tr>
+		</thead>
+		<br>
+		<tbody style="width:2275px">
+			<tr style="width:2275px">
+				<td colspan="10" style="width:2275px">
+					<table border="1" style="table-layout: fixed;width:2275px">
+						{% for e1 in entries1 %}
+						{% for profile in e1.profiles %}
+						{% if profile.actual != "yes" %}
+						<tr style="width:2275px;border-style:hidden;">
+							<td colspan="10" style="width:2275px;text-align:center">
+								<br />
+									<font size="4"><b>&nbsp&nbsp&nbsp<b>Search: '{{e1.person}}'</b></font>
+								<br />
+							</td>
+						</tr>
+						<tr style="width:1500px;border-style:solid;"><td colspan="10" style="width:1500px"></td></tr>
+						<tr style="width:2275px;border-style:solid;text-align:center">
+							<td colspan="1" style="width:160px;text-align:center">
+								<img src="{{profile.pic}}"style="width:225px;height:210px;"><br/><br/>
+								<font size="2"><b>Social Graph:&nbsp;&nbsp;{{profile.score}}</b></font><br/>
+								<font size="2"><b>Ground Truth:&nbsp;&nbsp;{{profile.score1}}</b></font><br/>
+								<font size="2"><b>Combined:&nbsp;&nbsp;{{profile.score2}}</b></font><br/>
+								{% if profile.jaccard %}
+									<font size="2"><b>Seed Friends Ground Truth:&nbsp;&nbsp;{{profile.jaccard}}</b></font><br/>
+								{% endif %}
+								{% if profile.watson %}
+									<font size="2" color="red"><br/>
+									{% for k,v in profile.watson.items %}
+										{% if k == "images" %}
+											{% for vv in v%}
+												{% for vvv in vv.faces %}
+													<b>Gender:&nbsp;&nbsp;{{vvv.gender}}<br/>
+													Age:&nbsp;&nbsp;{{vvv.age}}<br/><br/></b>
+												{% endfor %}
+											{% endfor %}
+										{% endif %}
+									{% endfor %}
+									</font>
+								{% endif %}
+							</td>
+							<td colspan="1" style="width:160px;text-align:center" >
+								<font size="4"><b>{{profile.name}}</b></font>
+							</td>
+							<td colspan="1" style="width:160px;text-align:center" >
+								<font size="3"><a href="{{profile.profile}}">Facebook Profile</a></font>
+							</td>
+							<td colspan="1" style="width:160px;text-align:center" >
+								<font size="3">{{profile.education}}</font>
+							</td>
+							<td colspan="1" style="width:160px;text-align:center" >
+								<font size="3">{{profile.work}}</font>
+							</td>
+							<td colspan="1" style="width:160px;text-align:center" >
+								<font size="3">{{profile.location}}</font>
+							</td>
+							<td colspan="1" style="width:160px;text-align:center" >
+								<font size="3">{{profile.work}}</font>
+							</td>
+							<td colspan="1" style="width:160px;text-align:center" >
+								<font size="3">Friend list hidden.</font>
+							</td>
+							<td colspan="1" style="width:160px;text-align:center" >
+								<font size="3">NA</font>
+							</td>
+							<td colspan="1" style="width:160px;text-align:center" >
+								<font size="3">
+								Please indicate ground truth:<br/>
+								Yes:&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="yes__{{profile.profile}}" /><br/>
+								No:&nbsp;&nbsp;<input type="checkbox" class="check_class" name="facebook_profile" value="no__{{profile.profile}}" /><br/>
+								</font>
+							</td>
+						</tr>
+						<tr style="width:1500px;border-style:solid;"><td colspan="10" style="width:1500px"></td></tr>
+						{% endif %}
+						{% endfor %}
+						{% endfor %}
+					</table>
+				</td>
+			</tr>
+			
+		</tbody>
+	</table>
+	<br/><br/><br/>
+	<table id="table_one" border="3" style="table-layout: fixed;width:1600px;margin-left:2cm;">
+		<thead style="width:1600px">
+			<tr style="width:1600px">
+				<th bgcolor="#FD6D4F" colspan="10" style="width:150px;word-wrap:break-word"><font size="3">USERS WITH NO FACEBOOK PROFILE FOUND {{metadata.no_profile}}</font></th>
+			</tr>
+		</thead>
+		<thead style="width:1600px">
+			<tr style="width:1600px">
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Image</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Name</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Profile</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">University</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Industry</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Location</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Work Info</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Connections</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Multiple</th>
+				<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word">Select</th>
+			</tr>
+		</thead>
+		<br>
+		<tbody style="width:1600px">
+			
+			<tr style="width:1600px">
+				<td colspan="10" style="width:1600px">
+					<table border="1" style="width:1600px">
+						<br/>
+						{% for e1 in entries1 %}
+						{% if e1.profiles|length == 0 %}
+						<tr style="width:1500px;border-style:solid;"></tr>
+						<tr style="width:1500px;border-style:hidden;">
+							<td colspan="10" style="width:1500px">
+								&nbsp&nbsp&nbsp<b>No Facebook profile found for '{{e1.person}}'</b>
+							</td>
+						</tr>
+						<tr style="width:1500px;border-style:solid;"></tr>
+						{% endif %}
+						{% endfor %}
+					</table>
+				</td>
+			</tr>
+			
+		</tbody>
+	</table>
+	
+	<table id="table_one" border="3" style="table-layout: fixed;width:1600px;margin-left:2cm;">
+		<tr style="width:1600px">
+			<td colspan="5" style="width:800px">
+				<br/>
+					<b><div align="center"><input name="facebook_form_submit" type="submit" value="Submit changes!"></div></b>
+				<br/>
+			</td>
+			<td colspan="5" style="width:800px">
+				<br/>
+					<b><div align="center"><input name="facebook_form_submit" type="submit" value="Reset Ground Truth!"></div></b>
+				<br/>
+			</td>
+		</tr>
+	</table>
+	{% endif %}
+	<p>
+		If you don't see any output, then probably 
+		the email and university combination was not accurate, check your details.
+	</p>
+		{% if metadata.precision or metadata.recall %}
+	<br>
+	<table id="table_one" border="3" style="table-layout: fixed;width:1600px;margin-left:2cm;">
+		<tr style="width:1000px">
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">data</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">FACEBOOK</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">FACEBOOK + SOCIAL</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">FACEBOOK + GROUND TRUTH</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">FACEBOOK + COMBINED (SOCIAL + GROUND TRUTH)</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">FACEBOOK + SEEDS FRIENDS GROUND TRUTH</font></b><br/>
+			</td>
+		</tr>
+		<tr style="width:1000px">
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">precision</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.precision.precision1}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.precision.precision2}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.precision.precision3}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.precision.precision4}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.precision.precision5}}</font></b><br/>
+			</td>
+		</tr>
+		<tr style="width:1000px">
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">recall</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.recall.recall1}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.recall.recall2}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.recall.recall3}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.recall.recall4}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.recall.recall5}}</font></b><br/>
+			</td>
+		</tr>
+		<tr style="width:1000px">
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">accuracy</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.accuracy.accuracy1}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.accuracy.accuracy2}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.accuracy.accuracy3}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.accuracy.accuracy4}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.accuracy.accuracy5}}</font></b><br/>
+			</td>
+		</tr>
+		<tr style="width:1000px">
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">true negative rate</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.tnr.tnr1}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.tnr.tnr2}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.tnr.tnr3}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.tnr.tnr4}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.tnr.tnr5}}</font></b><br/>
+			</td>
+		</tr>
+		<tr style="width:1000px">
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">f1</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.f1.f1_1}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.f1.f1_2}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.f1.f1_3}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.f1.f1_4}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.f1.f1_5}}</font></b><br/>
+			</td>
+		</tr>
+		<tr style="width:1000px">
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">f2</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.f2.f2_1}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.f2.f2_2}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.f2.f2_3}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.f2.f2_4}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="red" size="3">{{metadata.f2.f2_5}}</font></b><br/>
+			</td>
+		</tr>
+		<tr style="width:1000px">
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3"># of total verified</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.positives}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.positives}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.positives}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.positives}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.positives}}</font></b><br/>
+			</td>
+		</tr>
+		<tr style="width:1000px">
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3"># of true +ve examples</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.true_positives.tp1}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.true_positives.tp2}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.true_positives.tp3}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.true_positives.tp4}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.true_positives.tp5}}</font></b><br/>
+			</td>
+		</tr>
+		<!--<tr style="width:1000px">
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3"># of false +ve examples</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.false_positives.fp1}}</font></b><br/>
+				{% for k,v in metadata.false_positives_dict.false_positives_1.items %}
+				<br/>
+				<br/>
+				<font color="blue" size="2">{{k}}</font><br/>
+				<font color="blue" size="2">{{v}}</font><br/>
+				{% endfor %}
+				<br/>
+				<br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.false_positives.fp2}}</font></b><br/>
+				{% for k,v in metadata.false_positives_dict.false_positives_2.items %}
+				<br/>
+				<br/>
+				<font color="blue" size="2">{{k}}</font><br/>
+				<font color="blue" size="2">{{v}}</font><br/>
+				{% endfor %}
+				<br/>
+				<br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.false_positives.fp3}}</font></b><br/>
+				{% for k,v in metadata.false_positives_dict.false_positives_3.items %}
+				<br/>
+				<br/>
+				<font color="blue" size="2">{{k}}</font><br/>
+				<font color="blue" size="2">{{v}}</font><br/>
+				{% endfor %}
+				<br/>
+				<br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.false_positives.fp4}}</font></b><br/>
+				{% for k,v in metadata.false_positives_dict.false_positives_4.items %}
+				<br/>
+				<br/>
+				<font color="blue" size="2">{{k}}</font><br/>
+				<font color="blue" size="2">{{v}}</font><br/>
+				{% endfor %}
+				<br/>
+				<br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.false_positives.fp5}}</font></b><br/>
+				{% for k,v in metadata.false_positives_dict.false_positives_5.items %}
+				<br/>
+				<br/>
+				<font color="blue" size="2">{{k}}</font><br/>
+				<font color="blue" size="2">{{v}}</font><br/>
+				{% endfor %}
+				<br/>
+				<br/>
+			</td>
+		</tr>
+		<tr style="width:1000px">
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3"># of false -ve examples</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.false_negatives.fp1}}</font></b><br/>
+				{% for k,v in metadata.false_negatives_dict.false_negatives_1.items %}
+				<br/>
+				<br/>
+				<font color="blue" size="2">{{k}}</font><br/>
+				<font color="blue" size="2">{{v}}</font><br/>
+				{% endfor %}
+				<br/>
+				<br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.false_negatives.fp2}}</font></b><br/>
+				{% for k,v in metadata.false_negatives_dict.false_negatives_2.items %}
+				<br/>
+				<br/>
+				<font color="blue" size="2">{{k}}</font><br/>
+				<font color="blue" size="2">{{v}}</font><br/>
+				{% endfor %}
+				<br/>
+				<br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.false_negatives.fp3}}</font></b><br/>
+				{% for k,v in metadata.false_negatives_dict.false_negatives_3.items %}
+				<br/>
+				<br/>
+				<font color="blue" size="2">{{k}}</font><br/>
+				<font color="blue" size="2">{{v}}</font><br/>
+				{% endfor %}
+				<br/>
+				<br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.false_negatives.fp4}}</font></b><br/>
+				{% for k,v in metadata.false_negatives_dict.false_negatives_4.items %}
+				<br/>
+				<br/>
+				<font color="blue" size="2">{{k}}</font><br/>
+				<font color="blue" size="2">{{v}}</font><br/>
+				{% endfor %}
+				<br/>
+				<br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.false_negatives.fp5}}</font></b><br/>
+				{% for k,v in metadata.false_negatives_dict.false_negatives_5.items %}
+				<br/>
+				<br/>
+				<font color="blue" size="2">{{k}}</font><br/>
+				<font color="blue" size="2">{{v}}</font><br/>
+				{% endfor %}
+				<br/>
+				<br/>
+			</td>
+		</tr>-->
+		<tr style="width:1000px">
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3"># of true -ve examples</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.true_negatives.tn1}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.true_negatives.tn2}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.true_negatives.tn3}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.true_negatives.tn4}}</font></b><br/>
+			</td>
+			<td colspan="1" style="width:100px">
+				<b><font color="black" size="3">{{metadata.true_negatives.tn5}}</font></b><br/>
+			</td>
+		</tr>
+	</table>
+	<br>
+	<br>
+	{% endif %}
+	{% if metadata%}
+	<table id="table_one" border="0" style="table-layout: fixed;width:1600px;margin-left:2cm;">
+		<tr style="width:1600px">
+			<td colspan="3" style="width:1600px">
+				<b><font size="3">STATISTICS</font></b><br/>
+				<b><font size="3">Input people list &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp;  {{metadata.total}}</font></b><br/>
+				<b><font size="3">Facebook profiles FOUND against &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.some}}</font></b><br/>
+				<b><font size="3">People with only ONE Facebook profile &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.one}}</font></b><br/>
+				<b><font size="3">People with NO Facebook profiles &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.empty}}</font></b><br/>
+				<br/><br/>
+				<b><font size="3">'Social Graph' based pruned profiles &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.score}}</font></b><br/>
+				<b><font size="3">'Ground Truth' based pruned profiles &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.score1}}</font></b><br/>
+				<b><font size="3">'Combined Approach' based pruned profiles &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.score2}}</font></b><br/>
+				<b><font size="3">'Seed Friends Ground Truth Approach' based pruned profiles &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.jacc}}</font></b><br/>
+				<b><font size="3">'Watson Info' present for profiles &nbsp;&nbsp;&nbsp;==>&nbsp;&nbsp;&nbsp; {{metadata.watson}}</font></b><br/>
+			</td>
+		</tr>
+		</tr>
+	</table>
+	{% endif %}
+	<br>
+	<br>
+	<br>
+	</form>
+</body>
+	<script src="{% static "/static/testApp/js/jquery-3.0.0.min.js" %}"></script>
+	<script src="{% static "/static/testApp/js/rango-ajax.js" %}"></script>
+	<script src="{% static "/static/testApp/js/json2.js" %}"></script>
+</html>
