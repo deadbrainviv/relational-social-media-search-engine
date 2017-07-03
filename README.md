@@ -6,5 +6,5 @@ Relational Social Media Search Engine
    https://treehouse.github.io/installation-guides/mac/mongo-mac.html.
    Create /data/db with sudo while installing MongoDB. 
 3) Go through db_restore.sh and restore db (first get the mongodb dump at a destined location) using ./db_restore.sh. 
-4) Start the database in a new terminal using ./mongod.sh.
+4) Start the database in a new terminal using ./mongo.sh.
 
