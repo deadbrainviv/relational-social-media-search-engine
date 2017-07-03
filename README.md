@@ -19,5 +19,6 @@ Relational Social Media Search Engine
    sudo pip install pyexcel.
    sudo pip install facebook.
    sudo pip install mechanize.
+6) Start ./server.sh
    
 
