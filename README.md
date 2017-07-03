@@ -12,5 +12,13 @@ Relational Social Media Search Engine
    curl -O https://bootstrap.pypa.io/get-pip.py.
    sudo python get-pip.py.
    sudo pip install Django.
+   sudo pip install mongoengine.
+   sudo pip install bs4.
+   sudo pip install requests.
+   sudo pip install xlrd.
+   sudo pip install pyexcel.
+   sudo pip install facebook.
+   sudo pip install mechanize.
+6) Start ./server.sh
    
 
