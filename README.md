@@ -20,5 +20,7 @@ Relational Social Media Search Engine
    sudo pip install facebook.
    sudo pip install mechanize.
 6) Start ./server.sh
+7) Visit http://localhost:8000/testApp/combined/
+8) Deploy on some cloud service like AWS and use a URl like http://xx.xxx.xx.xxx:8000/testApp/combined/.
    
 
