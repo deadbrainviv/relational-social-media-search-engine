@@ -20,5 +20,7 @@ Relational Social Media Search Engine
    sudo pip install facebook.
    sudo pip install mechanize.
 6) Start ./server.sh
+7) While running the program you might encounter problems in py module six which can be rectified by
+   sudo pip install --ignore-installed six
    
 
