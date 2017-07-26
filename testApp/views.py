@@ -944,23 +944,10 @@ def get_facebook_entries(sort_param):
     db_port = 27017
     db_client = FBDb.connect(db_host, db_port)
     db = db_client.facebook_db
-    colleges = []
-    colleges.append("bangladesh%20university%20of%20engineering%20and%20technology")
-    colleges.append("buet")
-    #fbexecute = FBExecute(db_host, db_port)
-    #fbexecute.get_info_about_people("input.txt", colleges, "logins.txt")
     cursor = db.buet3.find()
     for result in cursor:
         if sort_param == "social":
-            result["showscore"] = False
-            result["showscore1"] = False
-            result["showscore2"] = False
-            result["showjacc"] = False
-            result["watson"] = False
             result["profiles"] = sorted(result["profiles"], key=itemgetter("score"), reverse=True)
-            for profile in result["profiles"]:
-                if profile["score"] > 0:
-                    result["showscore"] = True
         elif sort_param == "ground":
             result["showscore"] = False
             result["showscore1"] = False
@@ -1062,8 +1049,8 @@ def facebook(request):
     }
     return render(request, 'testApp/searchGrad.html', context)
 
-def facebookone(request):
-    print "Method facebookone called!"
+def fetchSocialScores(request):
+    print "views.py: fetchSocialScores Start"
     results = get_facebook_entries("social")
     counter_empty = 0
     counter_one = 0
@@ -1082,29 +1069,12 @@ def facebookone(request):
     metadata["one"] = counter_one
     metadata["some"] = counter_some
     metadata["total"] = counter_total
-    score = 0
-    score1 = 0
-    score2 = 0
-    jacc = 0
-    for person in results:
-        if person["showscore"]:
-            score = score + 1
-        if person["showscore1"]:
-            score1 = score1 + 1
-        if person["showscore2"]:
-            score2 = score2 + 1
-        if person["showjacc"]:
-            jacc = jacc + 1
-    metadata["score"] = score
-    metadata["score1"] = score1
-    metadata["score2"] = score2
-    metadata["jacc"] = jacc
     context = {
-        "entries1": results,
+        "entries": results,
         "metadata": metadata,
-        "type": "facebookone"
     }
-    return render(request, 'testApp/searchGrad.html', context)
+    print "views.py: fetchSocialScores End"
+    return render(request, 'testApp/social_graph.html', context)
 
 def facebooktwo(request):
     print "Method facebooktwo called!"

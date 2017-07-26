@@ -1,0 +1,134 @@
+<!-- all search results -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/static/testApp/css/layouts/search.css">
+	<link rel="stylesheet" href="/static/testApp/css/layouts/pure-min.css">
+	<link rel="stylesheet" href="/static/testApp/css/layouts/t1.css">
+	<link rel="stylesheet" href="/static/testApp/css/layouts/grids-responsive-min.css">
+	<link rel="stylesheet" href="/static/testApp/css/layouts/search.css">
+	<link rel="stylesheet" href="/static/testApp/css/layouts/tables.css">
+	<link rel="stylesheet" href="/static/testApp/css/layouts/message.css">
+{%	load staticfiles %}
+</head>
+<body>
+	<form action="/testApp/markProfile/" method="post">
+		{% csrf_token %}
+		<br>
+		{% if metadata%}
+			<table id="table_one" border="0" style="table-layout: fixed;width:1600px;margin-left:2cm;">
+				<tr style="width:1600px">
+					<td colspan="3" style="width:1600px">
+						<b><font size="3">Input people list &nbsp;&nbsp;&nbsp; {{metadata.total}}</font></b><br/>
+						<b><font size="3">Profiles with non zero score  &nbsp;&nbsp;&nbsp;  {{metadata.some}}</font></b><br/>
+						<b><font size="3">Profiles with 1 score  &nbsp;&nbsp;&nbsp;  {{metadata.one}}</font></b><br/>
+						<b><font size="3">Profiles with 0 score  &nbsp;&nbsp;&nbsp;  {{metadata.empty}}</font></b><br/>
+						<br/><br/>
+					</td>
+				</tr>
+				</tr>
+			</table>
+		{% endif %}
+		<div class="l-content">
+			<div id="selections_list" class="pricing-tables pure-g">
+				<table id="table_one" border="3" style="table-layout: fixed;width:1600px;margin-left:2cm;">
+					<thead style="width:1600px">
+						<tr style="width:1600px">
+							<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word"><font size="4">IMAGE</font></th>
+							<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word"><font size="4">NAME</font></th>
+							<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word"><font size="4">PROFILE</font></th>
+							<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word"><font size="4">UNIVERSITY</font></th>
+							<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word"><font size="4">INDUSTRY</font></th>
+							<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word"><font size="4">LOCATION</font></th>
+							<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word"><font size="4">WORK INFO</font></th>
+							<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word"><font size="4">CONNECTIONS</font></th>
+							<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word"><font size="4">MULTIPLE</font></th>
+							<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word"><font size="4">SELECT</font></th>
+						</tr>
+					</thead>
+					<br>
+					<tbody style="width:1600px">
+						{% for entry in entries %}
+							<tr style="width:1600px">
+								<td colspan="10" style="width:1600px;word-wrap:break-word">
+									<table border="1" style="width:1600px">
+										<br/>
+										<tr style="width:1500px;border-style:hidden;">
+											<td colspan="10" style="width:1500px;word-wrap:break-word">
+												<font size="4"><b>&nbsp&nbsp&nbsp<b>Searched for '{{entry.person}}'</b></font>
+											</td>
+										</tr>
+										{% if entry.profiles|length == 0 %}
+											<tr style="width:1500px;border-style:solid;">
+												<td colspan="10" style="width:1500px;word-wrap:break-word" >
+													No (0) Facebook profiles found.
+												</td>
+											</tr>
+										{% else %}
+											{% for profile in entry.profiles %}
+												{% if profile.actual != "no"%}
+													{% if profile.score > 0 %}
+														<tr style="width:1500px;border-style:solid;"><td colspan="10" style="width:1500px;word-wrap:break-word"></td></tr>
+														<tr style="width:1500px;border-style:solid;">
+															<td colspan="1" style="width:150px;word-wrap:break-word">
+																<img src="{{profile.pic}}"><br/>
+																<b>Social Graph:&nbsp;&nbsp;{{profile.score}}</b><br/>
+															</td>
+															<td colspan="1" style="width:150px;word-wrap:break-word" >
+																{{profile.name}}
+															</td>
+															<td colspan="1" style="width:150px;word-wrap:break-word" >
+																<a href="{{profile.profile}}">Facebook Profile</a>
+															</td>
+															<td colspan="1" style="width:150px;word-wrap:break-word" >
+																{{profile.education}}
+															</td>
+															<td colspan="1" style="width:150px;word-wrap:break-word" >
+																{{profile.work}}
+															</td>
+															<td colspan="1" style="width:150px;word-wrap:break-word" >
+																{{profile.location}}
+															</td>
+															<td colspan="1" style="width:150px;word-wrap:break-word" >
+																{{profile.work}}
+															</td>
+															<td colspan="1" style="width:150px;word-wrap:break-word" >
+																Friend list hidden.
+															</td>
+															<td colspan="1" style="width:150px;word-wrap:break-word" >
+																NA
+															</td>
+															<td colspan="1" style="width:150px;word-wrap:break-word" >
+																NA
+															</td>
+														</tr>
+													{% endif %}
+											  {% endif %}
+											{% endfor %}
+										{% endif %}
+									</table>
+								</td>
+							</tr>
+				    {% endfor %}
+					<tr style="width:1600px">
+						<td colspan="5" style="width:800px">
+							<br/>
+								<b><div align="center"><input name="facebook_form_submit" type="submit" value="Submit changes!"></div></b>
+							<br/>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<br>
+	<br>
+	<br>
+	</form>
+	</body>
+	<script src="{% static "/static/testApp/js/jquery-3.0.0.min.js" %}"></script>
+	<script src="{% static "/static/testApp/js/rango-ajax.js" %}"></script>
+	<script src="{% static "/static/testApp/js/json2.js" %}"></script>
+	</html>
