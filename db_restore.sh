@@ -1,1 +1,1 @@
-mongorestore /Users/indervir/Documents/mongo/18_with_more_seeds_and_their_feedback/dump
+mongorestore /Users/indervir/Documents/dump

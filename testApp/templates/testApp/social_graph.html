@@ -15,18 +15,28 @@
 	</head>
 	<body>
 		<div class="pure-menu-heading pure-menu-horizontal " >
-		    <ul class="pure-menu-list">
-				<li class="pure-menu-item pure-menu-selected"><a href="/testApp/watson/" class="pure-menu-link">facial-recognition</a></li>
-				<li class="pure-menu-item pure-menu-selected"><a href="/testApp/socialgraph/" class="pure-menu-link">social-scores</a></li>
-				<li class="pure-menu-item pure-menu-selected"><a href="/testApp/seedunverified/" class="pure-menu-link">seed-scores</a></li>
+
+
+
+
 				<li class="pure-menu-item pure-menu-selected"><a href="/testApp/combined/" class="pure-menu-link">social-plus-seed-scores</a></li>
 				<li class="pure-menu-item pure-menu-selected"><a href="/testApp/combinedexc/" class="pure-menu-link">seeds-friends-scores</a></li>
 				<li class="pure-menu-item pure-menu-selected"><a href="/testApp/groundtruth/" class="pure-menu-link">INPUT GROUND TRUTH</a></li>
 				<li class="pure-menu-item pure-menu-selected"><a href="/testApp/verifiednonverified/" class="pure-menu-link">RESULTS</a></li>
 		    </ul>
 		</div>
-			{% include "testApp/searchbox.html" %}
-			{% include "testApp/filters.html" %}
+		<table id="table_one" border="0" style="table-layout: fixed;width:1600px;margin-left:2cm;">
+			<tr style="width:1600px">
+				<td colspan="3" style="width:1600px">
+					<b><font size="3"><ul class="pure-menu-list"></font></b><br/>
+					<b><font size="3"><li class="pure-menu-item pure-menu-selected;border: 1px solid black;"><a href="/testApp/watson/" class="pure-menu-link">facial-recognition</a></li></font></b><br/>
+					<b><font size="3"><li class="pure-menu-item pure-menu-selected"><a href="/testApp/socialgraph/" class="pure-menu-link">social-scores</a></li></font></b><br/>
+					<b><font size="3"><li class="pure-menu-item pure-menu-selected"><a href="/testApp/seedunverified/" class="pure-menu-link">seed-scores</a></li></font></b><br/>
+					<br/><br/>
+				</td>
+			</tr>
+			</tr>
+		</table>
 			<br/>
 			{% include "testApp/social_graph_detail.html" %}
 		</div>
