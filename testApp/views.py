@@ -1049,8 +1049,8 @@ def facebook(request):
     }
     return render(request, 'testApp/searchGrad.html', context)
 
-def fetchSocialScores(request):
-    print "views.py: fetchSocialScores Start"
+def socialgraph(request):
+    print "views.py: socialgraph Start"
     results = get_facebook_entries("social")
     counter_empty = 0
     counter_one = 0
@@ -1073,7 +1073,7 @@ def fetchSocialScores(request):
         "entries": results,
         "metadata": metadata,
     }
-    print "views.py: fetchSocialScores End"
+    print "views.py: socialgraph End"
     return render(request, 'testApp/social_graph.html', context)
 
 def facebooktwo(request):
@@ -1236,8 +1236,8 @@ def facebookthreeand(request):
     }
     return render(request, 'testApp/searchGrad.html', context)
 
-def facebookfour(request):
-    print "Method facebookfour called!"
+def facialrecognition(request):
+    print "views.py: facialrecognition Start"
     results = get_facebook_entries("watson")
     counter_empty = 0
     counter_one = 0
@@ -1282,6 +1282,7 @@ def facebookfour(request):
         "metadata": metadata,
         "type": "facebookfour"
     }
+    print "views.py: facialrecognition End"
     return render(request, 'testApp/searchGrad.html', context)
 
 def facebookfive(request):

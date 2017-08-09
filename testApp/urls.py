@@ -8,9 +8,7 @@ urlpatterns = [
 	url(r'^upload/', views.upload, name='upload'),
 	url(r'^searchNow/', views.formSearch, name='searchNow'),
 	url(r'^batchSearch/', views.batchSearch, name='batchSearch'),
-	#url(r'^searchgrad/', views.searchUnderGrad, name='searchGrad'),
 	url(r'^searchgradaction/',views.searchUnderGrad, name='searchgradaction'),
-	# url(r'^sortviewaction/(?P<sort_type>[a-z]+)/$', views.sortView, name='sortviewaction'),
 	url(r'^sortviewaction/$', views.sortView, name='sortviewaction'),
 	url(r'^searchgrad/', views.searchgrad2, name='searchgrad'),
 	url(r'^employ/', views.employ, name='employ'),
@@ -23,18 +21,24 @@ urlpatterns = [
 	url(r'^updateByID/(?P<personId>[0-9]+)/$', views.updateByID, name='updateByID'),
 	url(r'^(?P<question_id>[0-9]+)/$', views.detail, name='detail'),
     url(r'^results/$', views.results, name='results'),
-    url(r'^allresults/$', views.allresults, name='allresults'), 
-	url(r'^facebook/$', views.facebook, name='facebook'),
-	url(r'^fetchSocialScores/$', views.fetchSocialScores, name='fetchSocialScores'),
+	url(r'^(?P<question_id>[0-9]+)/vote/$', views.vote, name='vote'),
+    url(r'^utdsearch/$', views.utdsearch, name='utdsearch'),
+    url(r'^merge_update/$', views.mergedUpdate, name='mergedUpdate_update'),
+	## Facebook starts
+	url(r'^facialrecognition/$', views.facialrecognition, name='facialrecognition'),
+	url(r'^socialgraph/$', views.socialgraph, name='socialgraph'),
 	url(r'^groundtruth/$', views.facebooktwo, name='facebooktwo'),
 	url(r'^combined/$', views.facebookthree, name='facebookthree'),
+    url(r'^allresults/$', views.allresults, name='allresults'),
+
+	url(r'^facebook/$', views.facebook, name='facebook'),
+
+
 	url(r'^combinedexc/$', views.facebookthreeand, name='facebookthreeand'),
-	url(r'^watson/$', views.facebookfour, name='facebookfour'),
 	url(r'^listing/$', views.facebookfive, name='facebookfive'),
 	url(r'^verifiednonverified/$', views.facebooksix, name='facebooksix'),
 	url(r'^seedunverified/$', views.facebookseven, name='facebookseven'),
-    url(r'^(?P<question_id>[0-9]+)/vote/$', views.vote, name='vote'),
-    url(r'^utdsearch/$', views.utdsearch, name='utdsearch'),
-    url(r'^merge_update/$', views.mergedUpdate, name='mergedUpdate_update'),
+
 	url(r'^markProfile/$', views.markProfile, name='markProfile')
+	## Facebook ends
 	]
