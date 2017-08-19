@@ -23,6 +23,7 @@ list_exceptions.append("chowdhury")
 list_exceptions.append("ali")
 list_exceptions.append("hasan")
 list_exceptions.append("hossain")
+
 seeds_info_file = "all_seeds.txt"
 
 if os.path.isfile(seeds_info_file):
