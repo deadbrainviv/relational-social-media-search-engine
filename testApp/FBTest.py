@@ -9,49 +9,19 @@ db_host = "localhost"
 db_port = 27017
 db_client = FBDb.connect(db_host, db_port)
 
-list_allprofiles = []
-dict_profiles_freqs = {}
-count_profiles_more_than_1_freq = 0
-
+profiles = 0
+profiles_watson = 0
 cursor = db_client.facebook_db.buet3.find()
 for person in cursor:
     for profile in person["profiles"]:
-        list_allprofiles.append(profile)
-        if dict_profiles_freqs.has_key(profile["profile"]):
-            dict_profiles_freqs[profile["profile"]] = dict_profiles_freqs[profile["profile"]] + 1
-        else:
-            dict_profiles_freqs[profile["profile"]] = 1
+        profiles = profiles + 1
+        if "watson" in profile.keys():
+            profiles_watson = profiles_watson + 1
+            profile["visualrecog"] = profile["watson"]
 
-cursor = db_client.facebook_db.buet3.find()
-for person in cursor:
-    #print "#############################################################################"
-    #print person["person"]
-    for profile in person["profiles"]:
-        if dict_profiles_freqs[profile["profile"]] > 1:
-            count_profiles_more_than_1_freq = count_profiles_more_than_1_freq + 1
-            # print profile["profile"] + " ---> " + str(profile)
 
-no_people_visited = 0
-cursor = db_client.facebook_db.buet3.find()
-for person in cursor:
-    if person.has_key("visited") and person["visited"]:
-        no_people_visited = no_people_visited + 1
-        print "--------------------------------", person["person"], "--------------------------------"
-
-# cursor = db_client.facebook_db.buet3.find()
-# for person in cursor:
-#     for profile in person["profiles"]:
-#         is_score_in_key = False
-#         for key in profile.keys():
-#             if "score" in key:
-#                 is_score_in_key = True
-#         if is_score_in_key:
-#             print profile.keys()
-
-#print "list_allprofiles:", len(list_allprofiles)
-#print "dict_profiles_freqs", len(dict_profiles_freqs)
-#print "count_profiles_more_than_1_freq", count_profiles_more_than_1_freq
-print "no_people_visited", no_people_visited
+print(profiles)
+print(profiles_watson)
 
 # db_client.facebook_db.buet3.update(
 #     {"_id": person["_id"]},

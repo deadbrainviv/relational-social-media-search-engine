@@ -25,8 +25,8 @@ urlpatterns = [
     url(r'^utdsearch/$', views.utdsearch, name='utdsearch'),
     url(r'^merge_update/$', views.mergedUpdate, name='mergedUpdate_update'),
 	## Facebook starts
-	url(r'^facialrecognition/$', views.facialrecognition, name='facialrecognition'),
-	url(r'^socialgraph/$', views.socialgraph, name='socialgraph'),
+    url(r'^fetchSocialScores/$', views.fetchSocialScores, name='fetchSocialScores'),
+	url(r'^fetchVisualRecogResults/$', views.fetchVisualRecogResults, name='fetchVisualRecogResults'),
 	url(r'^groundtruth/$', views.facebooktwo, name='facebooktwo'),
 	url(r'^combined/$', views.facebookthree, name='facebookthree'),
     url(r'^allresults/$', views.allresults, name='allresults'),

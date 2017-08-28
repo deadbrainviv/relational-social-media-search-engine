@@ -946,9 +946,7 @@ def get_facebook_entries(sort_param):
     db = db_client.facebook_db
     cursor = db.buet3.find()
     for result in cursor:
-        if sort_param == "social":
-            result["profiles"] = sorted(result["profiles"], key=itemgetter("score"), reverse=True)
-        elif sort_param == "ground":
+        if sort_param == "ground":
             result["showscore"] = False
             result["showscore1"] = False
             result["showscore2"] = False
@@ -970,16 +968,6 @@ def get_facebook_entries(sort_param):
                     result["showscore2"] = True
                 if profile.has_key("jaccard") and profile["jaccard"] > 0.0:
                     result["showjacc"] = True
-        elif sort_param == "watson":
-            result["showscore"] = False
-            result["showscore1"] = False
-            result["showscore2"] = False
-            result["showjacc"] = False
-            result["watson"] = False
-            result["profiles"] = sorted(result["profiles"], key=itemgetter("score2"), reverse=True)
-            for profile in result["profiles"]:
-                if profile.has_key("watson") and profile["watson"]:
-                    result["watson"] = True
         else:
             result["showscore"] = False
             result["showscore1"] = False
@@ -1049,9 +1037,17 @@ def facebook(request):
     }
     return render(request, 'testApp/searchGrad.html', context)
 
-def socialgraph(request):
-    print "views.py: socialgraph Start"
-    results = get_facebook_entries("social")
+def fetchSocialScores(request):
+    print "views.py: fetchSocialScores Start"
+    results = []
+    db_host = "localhost"
+    db_port = 27017
+    db_client = FBDb.connect(db_host, db_port)
+    db = db_client.facebook_db
+    cursor = db.buet3.find()
+    for result in cursor:
+        result["profiles"] = sorted(result["profiles"], key=itemgetter("score"), reverse=True)
+        results.append(result)
     counter_empty = 0
     counter_one = 0
     counter_some = 0
@@ -1073,7 +1069,7 @@ def socialgraph(request):
         "entries": results,
         "metadata": metadata,
     }
-    print "views.py: socialgraph End"
+    print "views.py: fetchSocialScores End"
     return render(request, 'testApp/social_graph.html', context)
 
 def facebooktwo(request):
@@ -1236,9 +1232,20 @@ def facebookthreeand(request):
     }
     return render(request, 'testApp/searchGrad.html', context)
 
-def facialrecognition(request):
-    print "views.py: facialrecognition Start"
-    results = get_facebook_entries("watson")
+def fetchVisualRecogResults(request):
+    print "views.py: fetchVisualRecogResults Start"
+    results = []
+    db_host = "localhost"
+    db_port = 27017
+    db_client = FBDb.connect(db_host, db_port)
+    db = db_client.facebook_db
+    cursor = db.buet3.find()
+    for result in cursor:
+        result["watson"] = False
+        result["profiles"] = sorted(result["profiles"], key=itemgetter("score2"), reverse=True)
+    for profile in result["profiles"]:
+        if profile.has_key("watson") and profile["watson"]:
+            result["watson"] = True
     counter_empty = 0
     counter_one = 0
     counter_some = 0
@@ -1282,7 +1289,7 @@ def facialrecognition(request):
         "metadata": metadata,
         "type": "facebookfour"
     }
-    print "views.py: facialrecognition End"
+    print "views.py: fetchVisualRecogResults End"
     return render(request, 'testApp/searchGrad.html', context)
 
 def facebookfive(request):
