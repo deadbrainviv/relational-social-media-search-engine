@@ -1,21 +1,10 @@
 from FBDb import *
-import props
 
-db_client = FBDb.connect(props.db_host, props.db_port)
-
+db_client = FBDb.connect()
 cursor = FBDb.get_cursor(db_client, "buet3")
 for person in cursor:
     for profile in person["profiles"]:
         profile
-
-
-
-
-
-
-
-
-
 
 # db_client.facebook_db.buet3.update(
 #     {"_id": person["_id"]},

@@ -277,10 +277,10 @@ class FBExecute:
                     new_users.append(user)
             users = new_users
             print person_bkp, " ==> ", users
-            dict = FBDb.find_dict(db_client, person_bkp)
+            dict = FBDb.find_dict(db_client, "buet3", person_bkp)
             if replace:
                 dict = None
-                FBDb.remove_dict(db_client, person_bkp)
+                FBDb.remove_dict(db_client, "buet3", person_bkp)
             if dict is None:
                 dict = {}
                 profiles = []
@@ -292,7 +292,7 @@ class FBExecute:
                         profiles.append(profile)
                 dict["person"] = person_bkp
                 dict["profiles"] = profiles
-                FBDb.store_profile(db_client, dict)
+                FBDb.store_profile(db_client, "buet3", dict)
             else:
                 print "dict already present:\n", dict
             dicts.append(dict)

@@ -1,1 +1,1 @@
-mongorestore /Users/indervir/Documents/dump
+mongorestore /Users/indervir/mongo/dump

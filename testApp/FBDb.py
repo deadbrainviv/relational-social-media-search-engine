@@ -1,10 +1,15 @@
 import pymongo
 
-
 class FBDb:
 
     @staticmethod
-    def connect(db_host, db_port):
+    def connect():
+        db_host = "localhost"
+        db_port = 27017
+        return FBDb.connectTo(db_host, db_port)
+
+    @staticmethod
+    def connectTo(db_host, db_port):
         try:
             db_client = pymongo.MongoClient(db_host, db_port)
             return db_client
