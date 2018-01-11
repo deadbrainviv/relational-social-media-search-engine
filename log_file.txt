@@ -1,3 +1,42 @@
 WARNING:django.request:Not Found: /favicon.ico
 WARNING:django.request:Not Found: /testApp/demo.html
 WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /testApp/socialgraph/
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /testApp/fetchSocialScores
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /testApp/fetchSocialScores
+WARNING:django.request:Not Found: /testApp/fetchSocialScores
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /testApp/fetchSocialScores
+WARNING:django.request:Not Found: /testApp/socialgraph/
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /
+WARNING:django.request:Not Found: /
+WARNING:django.request:Not Found: /testApp/socialgraph/
+WARNING:django.request:Not Found: /testApp/socialgraph/
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /testApp/socialgraph/
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /testApp/socialgraph/
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /testApp/socialgraph/allresults
+ERROR:django.request:Internal Server Error: /testApp/verifiednonverified/
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/Library/Python/2.7/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "/Library/Python/2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Library/Python/2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/indervir/GitHub/relational-social-media-search-engine/testApp/views.py", line 1345, in facebooksix
+    results = get_facebook_entries("default")
+  File "/Users/indervir/GitHub/relational-social-media-search-engine/testApp/views.py", line 945, in get_facebook_entries
+    db_client = FBDb.connect(db_host, db_port)
+TypeError: connect() takes no arguments (2 given)
