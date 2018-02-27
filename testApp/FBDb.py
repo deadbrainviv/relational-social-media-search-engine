@@ -14,7 +14,7 @@ class FBDb:
             db_client = pymongo.MongoClient(db_host, db_port)
             return db_client
         except pymongo.errors.ServerSelectionTimeoutError as err:
-            raise Exception("FBdb: Problem connecting to database!")
+            raise Exception("FBDb.py: Problem connecting to database!")
             return None
 
     @staticmethod

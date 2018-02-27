@@ -13,7 +13,12 @@
 		<link rel="stylesheet" href="/static/testApp/css/layouts/message.css">
 		{%	load staticfiles %}
 	</head>
-	<body>
+	<script>
+		function onLoad() {
+		    document.getElementById("fetchSocialScores").style.backgroundColor="#82e0aa";
+		}
+	</script>
+	<body onload="onLoad()">
 		<div class="pure-menu-heading pure-menu-horizontal"></div>
 		<table id="table_one" border="0" style="table-layout: fixed;width:1600px;margin-left:2cm;">
 			<tr style="width:1600px">
@@ -21,10 +26,10 @@
 					<b><font size="3"><ul class="pure-menu-list"></font></b><br/>
 				</td>
 				<td colspan="3" style="width:160px">
-					<b><font size="3"><a href="/testApp/facialrecognition/" class="pure-menu-link">facial-recognition</a></font></b><br/>
+					<b><font size="3"><a href="/testApp/fetchSocialScores/" class="pure-menu-link" id="fetchSocialScores">social-graph</a></font></b><br/>
 				</td>
 				<td colspan="3" style="width:160px">
-					<b><font size="3"><a href="/testApp/fetchSocialScores/" class="pure-menu-link">social-graph</a></font></b><br/>
+					<b><font size="3"><a href="/testApp/facialrecognition/" class="pure-menu-link">facial-recognition</a></font></b><br/>
 				</td>
 				<td colspan="3" style="width:160px">
 					<b><font size="3"><a href="/testApp/inputgroundtruth/" class="pure-menu-link">input-ground-truth</a></font></b><br/>

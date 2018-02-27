@@ -1,27 +1,21 @@
-from django.shortcuts import render, render_to_response
-from django.http import HttpResponse, HttpResponseRedirect
-from models import Employee, Record, CSPerson, DBRecord, Person, PersonWrapper
-from django.template import loader, RequestContext
-from django.core.urlresolvers import reverse
-from SignAndSearch import Authenticate
-from People import People
-from django import forms
-from pymongo import MongoClient
-from .forms import UploadFileForm
-from bs4 import BeautifulSoup
-from bs4 import Comment
-import re
-import csv
-import json
 import logging
-import xlrd
-import pyexcel as pe
-from bson import Binary, Code
+import httplib
+import requests
+from operator import itemgetter
+from threading import Thread
+
+from bs4 import BeautifulSoup
 from bson.json_util import dumps
-from os.path import join, dirname, abspath
+from django.http import HttpResponse
+from django.shortcuts import render
+from django.template import loader, RequestContext
+from pymongo import MongoClient
 
 from FBExecute import *
-from operator import itemgetter
+from People import People
+from SignAndSearch import Authenticate
+from models import Employee, CSPerson, DBRecord
+from .forms import UploadFileForm
 
 logging.basicConfig(filename='log_file.txt',level=logging.INFO)
 
@@ -1039,20 +1033,18 @@ def facebook(request):
 
 def fetchSocialScores(request):
     print "views.py: fetchSocialScores Start"
-    results = []
-    db_host = "localhost"
-    db_port = 27017
-    db_client = FBDb.connect(db_host, db_port)
-    db = db_client.facebook_db
-    cursor = db.buet3.find()
-    for result in cursor:
-        result["profiles"] = sorted(result["profiles"], key=itemgetter("score"), reverse=True)
-        results.append(result)
+    people = []
     counter_empty = 0
     counter_one = 0
     counter_some = 0
     counter_total = 0
-    for person in results:
+
+    db_client = FBDb.connect()
+    db = db_client.facebook_db
+    cursor = db.buet3.find()
+    for person in cursor:
+        person["profiles"] = sorted(person["profiles"], key=itemgetter("score"), reverse=True)
+        # update counters
         counter_total = counter_total + 1
         if len(person["profiles"]) == 0:
             counter_empty = counter_empty + 1
@@ -1060,15 +1052,18 @@ def fetchSocialScores(request):
             counter_one = counter_one + 1
         if len(person["profiles"]) > 0:
             counter_some = counter_some + 1
+        people.append(person)
+
     metadata = {}
     metadata["empty"] = counter_empty
     metadata["one"] = counter_one
     metadata["some"] = counter_some
     metadata["total"] = counter_total
     context = {
-        "entries": results,
+        "entries": people,
         "metadata": metadata,
     }
+
     print "views.py: fetchSocialScores End"
     return render(request, 'testApp/social_graph.html', context)
 

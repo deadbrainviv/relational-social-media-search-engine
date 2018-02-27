@@ -12,6 +12,7 @@ import cookielib
 import sys
 import time
 import os
+import requests
 
 from FBDb import *
 from FBExecute import *
@@ -73,10 +74,6 @@ class FBExecute:
 
     def visit_profile(self, browser, profile):
         response = browser.open(profile)
-        if response:
-            print "response exists!"
-        else:
-            print "response is not existing!"
         html = response.read()
         #print "### read the response"
         lines = html.split("\n")
@@ -222,6 +219,104 @@ class FBExecute:
             user["profile"] = link
             users.append(user)
         return users
+
+    def update_images(self):
+        all_profiles = []
+
+        # print total unique profiles
+        db_client = FBDb.connect()
+        db = db_client.facebook_db
+        cursor = db.buet3.find()
+        for person in cursor:
+            for profile in person["profiles"]:
+                if not all_profiles.__contains__(profile):
+                    all_profiles.append(profile)
+        print "No of total unique profiles: ", len(all_profiles)
+
+        count = 0
+        count_total = 0
+        browser = self.login_into_facebook("/Users/indervir/creds/logins.txt")
+        defunct_profiles = []
+        for profile in all_profiles:
+            url_pic = profile["pic"]
+            request_status = False
+            try:
+                r = requests.head(url_pic)
+                request_status = True
+            except:
+                request_status = False
+            if not request_status or (r.status_code != requests.codes.ok):
+                count = count + 1
+                if count != 1 and count % 5 == 0:
+                    browser = self.login_into_facebook("/Users/indervir/creds/logins.txt")
+                print "Profile going to be be opened", profile["profile"]
+                if profile["profile"] == "https://www.facebook.com/profile.php":
+                    defunct_profiles.append(profile)
+                else:
+                    response = None
+                    request_status = False
+                    try:
+                        response = browser.open(profile["profile"])
+                        request_status = True
+                    except:
+                        defunct_profiles.append(profile)
+                        request_status = False
+                    if not request_status:
+                        defunct_profiles.append(profile)
+                    else:
+                        html = response.read()
+                        if html.__contains__("The link you followed may be broken,"):
+                            defunct_profiles.append(profile)
+                        else:
+                            lines = html.split("\n")
+                            for line in lines:
+                                if "Profile Photo" in line:
+                                    line1 = ""
+                                    line1 = line.split("Profile Photo")[1].split("src=\"")[1]
+                                    line1 = line1.split("\" /></a></div>")[0]
+                                    if "amp;" in line1:
+                                        line1 = line1.split("amp;")[0] + line1.split("amp;")[1]
+                                        url_pic = line1
+            profile["pic"] = url_pic
+            self.update_profile_pic_in_db(profile["profile"], profile["pic"])
+            count_total = count_total + 1
+            print "Total profiles updated: ", count_total, " out of ", len(all_profiles)
+
+        self.remove_defunct_profiles(defunct_profiles)
+
+    def remove_defunct_profiles(self, defunct_profiles):
+        db_client = FBDb.connect()
+        db = db_client.facebook_db
+        cursor = db.buet3.find()
+        for person in cursor:
+            new_person_profiles = []
+            for profile in person["profiles"]:
+                if not profile in defunct_profiles:
+                    new_person_profiles.append(profile)
+            db_client.facebook_db.buet3.update(
+                {"_id": person["_id"]},
+                {
+                    "person": person["person"],
+                    "profiles": new_person_profiles
+                }
+            )
+
+
+    def update_profile_pic_in_db(self, target_profile, pic):
+        db_client = FBDb.connect()
+        db = db_client.facebook_db
+        cursor = db.buet3.find()
+        for person in cursor:
+            for profile in person["profiles"]:
+                if profile["profile"] == target_profile:
+                    profile["pic"] = pic
+            db_client.facebook_db.buet3.update(
+                {"_id": person["_id"]},
+                {
+                    "person": person["person"],
+                    "profiles": person["profiles"]
+                }
+            )
 
     def get_info_about_people(self, input_file, colleges, creds_file, db_host, db_port, replace):
         dicts = []

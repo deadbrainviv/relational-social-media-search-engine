@@ -1,18 +1,8 @@
 from FBDb import *
+from FBExecute import FBExecute
 
-db_client = FBDb.connect()
-cursor = FBDb.get_cursor(db_client, "buet3")
-for person in cursor:
-    for profile in person["profiles"]:
-        profile
-
-# db_client.facebook_db.buet3.update(
-#     {"_id": person["_id"]},
-#     {
-#         "person": person["person"],
-#         "profiles": person["profiles"]
-#     }
-# )
+fbExecute = FBExecute()
+fbExecute.update_images()
 
 # dict = {}
 # dict["score"] = 0

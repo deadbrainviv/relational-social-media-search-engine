@@ -99,7 +99,7 @@ if os.path.isfile(seeds_info_file):
             all_fb_profiles[profile["profile"]] = profile
 
     fb = FBExecute()
-    browser = fb.login_into_facebook(creds_file="logins.txt")
+    browser = fb.login_into_facebook(creds_file="/Users/indervir/creds/logins.txt")
     cursor = db_client.facebook_db.buet3.find()
 
     unver_persons = 0
@@ -131,7 +131,7 @@ if os.path.isfile(seeds_info_file):
                     profile = all_fb_profiles[k]
                 else:
                     if login_count%5 == 0:
-                        browser = fb.login_into_facebook(creds_file="logins.txt")
+                        browser = fb.login_into_facebook(creds_file="/Users/indervir/creds/logins.txt")
                     profile = fb.visit_profile(browser, k)
                     login_count = login_count + 1
                     all_fb_profiles[profile["profile"]] = profile
