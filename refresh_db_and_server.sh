@@ -13,6 +13,6 @@ do
         kill -9 $line
 done
 echo "Starting the server.."
-python manage.py runserver 0:8000 &
+python manage.py runserver &
 exit 0
 
