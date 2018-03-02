@@ -1031,8 +1031,8 @@ def facebook(request):
     }
     return render(request, 'testApp/searchGrad.html', context)
 
-def fetchSocialScores(request):
-    print "views.py: fetchSocialScores Start"
+def socialgraph(request):
+    print "views.py: socialgraph Start"
     people = []
     counter_empty = 0
     counter_one = 0
@@ -1064,11 +1064,11 @@ def fetchSocialScores(request):
         "metadata": metadata,
     }
 
-    print "views.py: fetchSocialScores End"
+    print "views.py: socialgraph End"
     return render(request, 'testApp/social_graph.html', context)
 
-def facebooktwo(request):
-    print "Method facebooktwo called!"
+def inputgroundtruth(request):
+    print "views.py: inputgroundtruth Start"
     results = get_facebook_entries("ground")
     counter_empty = 0
     counter_one = 0
@@ -1109,9 +1109,10 @@ def facebooktwo(request):
         "metadata": metadata,
         "type": "facebooktwo"
     }
+    print "views.py: inputgroundtruth End"
     return render(request, 'testApp/searchGrad.html', context)
 
-def facebookthree(request):
+def improvedsocialgraph(request):
     print "Method facebookthree called!"
     results = get_facebook_entries("combined")
     counter_empty = 0
@@ -1155,7 +1156,7 @@ def facebookthree(request):
     }
     return render(request, 'testApp/searchGrad.html', context)
 
-def facebookthreeand(request):
+def facialrecognition(request):
     print "Method facebookthree called!"
     jaccard_cutoff_html = request.POST.get("jaccard_cutoff_html")
     if not jaccard_cutoff_html:
@@ -1227,7 +1228,7 @@ def facebookthreeand(request):
     }
     return render(request, 'testApp/searchGrad.html', context)
 
-def fetchVisualRecogResults(request):
+def lists(request):
     print "views.py: fetchVisualRecogResults Start"
     results = []
     db_host = "localhost"

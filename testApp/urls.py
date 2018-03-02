@@ -25,20 +25,10 @@ urlpatterns = [
     url(r'^utdsearch/$', views.utdsearch, name='utdsearch'),
     url(r'^merge_update/$', views.mergedUpdate, name='mergedUpdate_update'),
 	## Facebook starts
-    url(r'^fetchSocialScores/$', views.fetchSocialScores, name='fetchSocialScores'),
-	url(r'^fetchVisualRecogResults/$', views.fetchVisualRecogResults, name='fetchVisualRecogResults'),
-	url(r'^groundtruth/$', views.facebooktwo, name='facebooktwo'),
-	url(r'^combined/$', views.facebookthree, name='facebookthree'),
-    url(r'^allresults/$', views.allresults, name='allresults'),
-
-	url(r'^facebook/$', views.facebook, name='facebook'),
-
-
-	url(r'^combinedexc/$', views.facebookthreeand, name='facebookthreeand'),
-	url(r'^listing/$', views.facebookfive, name='facebookfive'),
-	url(r'^verifiednonverified/$', views.facebooksix, name='facebooksix'),
-	url(r'^seedunverified/$', views.facebookseven, name='facebookseven'),
-
-	url(r'^markProfile/$', views.markProfile, name='markProfile')
+    url(r'^socialgraph/$', views.socialgraph, name='socialgraph'),
+	url(r'^inputgroundtruth/$', views.inputgroundtruth, name='inputgroundtruth'),
+	url(r'^improvedsocialgraph/$', views.improvedsocialgraph, name='improvedsocialgraph'),
+	url(r'^facialrecognition/$', views.facialrecognition, name='facialrecognition'),
+    url(r'^lists/$', views.lists, name='lists'),
 	## Facebook ends
 	]
