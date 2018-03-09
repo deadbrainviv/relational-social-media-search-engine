@@ -1,0 +1,8 @@
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /testApp/inputgroundtruth/
+WARNING:django.request:Not Found: /testApp/fetchSocialScores/
+WARNING:django.request:Not Found: /testApp/fetchSocialScores/
+WARNING:django.request:Not Found: /testApp/fetchSocialScores/
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico

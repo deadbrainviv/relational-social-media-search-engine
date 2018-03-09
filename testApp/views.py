@@ -941,7 +941,7 @@ def get_facebook_entries(sort_param):
     cursor = db.buet3.find()
     for result in cursor:
         if sort_param == "ground":
-
+            print "hello"
         elif sort_param == "combined":
             result["showscore"] = False
             result["showscore1"] = False
@@ -1062,6 +1062,42 @@ def socialgraph(request):
 def inputgroundtruth(request):
     print "views.py: inputgroundtruth Start"
     people = []
+    counter_empty = 0
+    counter_one = 0
+    counter_some = 0
+    counter_total = 0
+
+    db_client = FBDb.connect()
+    db = db_client.facebook_db
+    cursor = db.buet3.find()
+    for person in cursor:
+        person["profiles"] = sorted(person["profiles"], key=itemgetter("score"), reverse=True)
+        # update counters
+        counter_total = counter_total + 1
+        if len(person["profiles"]) == 0:
+            counter_empty = counter_empty + 1
+        if len(person["profiles"]) == 1:
+            counter_one = counter_one + 1
+        if len(person["profiles"]) > 0:
+            counter_some = counter_some + 1
+        people.append(person)
+
+    metadata = {}
+    metadata["empty"] = counter_empty
+    metadata["one"] = counter_one
+    metadata["some"] = counter_some
+    metadata["total"] = counter_total
+    context = {
+        "entries": people,
+        "metadata": metadata,
+    }
+
+    print "views.py: inputgroundtruth End"
+    return render(request, 'testApp/social_graph.html', context)
+
+def inputgroundtruth1(request):
+    print "views.py: inputgroundtruth Start"
+    people = []
     results = get_facebook_entries("ground")
     counter_empty = 0
     counter_one = 0
@@ -1082,16 +1118,16 @@ def inputgroundtruth(request):
         if len(person["profiles"]) > 0:
             counter_some = counter_some + 1
         people.append(person)
-    result["showscore"] = False
-    result["showscore1"] = False
-    result["showscore2"] = False
-    result["showjacc"] = False
-    result["watson"] = False
-    result["profiles"] = sorted(result["profiles"], key=itemgetter("score1"), reverse=True)
-    for profile in result["profiles"]:
-        if profile["score1"] > 0:
-            result["showscore1"] = True
 
+    # result["showscore"] = False
+    # result["showscore1"] = False
+    # result["showscore2"] = False
+    # result["showjacc"] = False
+    # result["watson"] = False
+    # result["profiles"] = sorted(result["profiles"], key=itemgetter("score1"), reverse=True)
+    # for profile in result["profiles"]:
+    #     if profile["score1"] > 0:
+    #         result["showscore1"] = True
 
     for person in results:
         counter_total = counter_total + 1
