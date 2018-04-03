@@ -18,9 +18,9 @@
 		{% csrf_token %}
 		<br>
 		{% if metadata%}
-			<table id="table_one" border="0" style="table-layout: fixed;width:1600px;margin-left:2cm;">
-				<tr style="width:1600px">
-					<td colspan="3" style="width:1600px">
+			<table id="table_one" border="0" style="table-layout: fixed;width:2200px;margin-left:2cm;">
+				<tr style="width:2200px">
+					<td colspan="3" style="width:2200px">
 						<b><font size="3">Input people list : &nbsp;&nbsp;&nbsp; {{metadata.total}}</font></b><br/>
 						<b><font size="3">Profiles with score > 1 : &nbsp;&nbsp;&nbsp;  {{metadata.some}}</font></b><br/>
 						<b><font size="3">Profiles with score = 1  : &nbsp;&nbsp;&nbsp;  {{metadata.one}}</font></b><br/>
@@ -33,77 +33,76 @@
 		{% endif %}
 		<div class="l-content">
 			<div id="selections_list" class="pricing-tables pure-g">
-				<table id="table_one" border="3" style="table-layout: fixed;width:1600px;margin-left:2cm;">
-					<thead style="width:1600px">
-						<tr style="width:1600px">
-							<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word"><font size="4">IMAGE</font></th>
-							<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word"><font size="4">NAME</font></th>
-							<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word"><font size="4">PROFILE</font></th>
-							<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word"><font size="4">UNIVERSITY</font></th>
-							<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word"><font size="4">INDUSTRY</font></th>
-							<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word"><font size="4">LOCATION</font></th>
-							<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word"><font size="4">WORK INFO</font></th>
-							<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word"><font size="4">CONNECTIONS</font></th>
-							<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word"><font size="4">MULTIPLE</font></th>
-							<th bgcolor="#FD6D4F" colspan="1" style="width:150px;word-wrap:break-word"><font size="4">SELECT</font></th>
+				<table id="table_one" border="3" style="table-layout:fixed;width:2200px;margin-left:2cm;">
+					<thead style="width:2200px">
+						<tr style="width:2200px">
+							<th bgcolor="#FD6D4F" colspan="1" style="width:200px;word-wrap:break-word"><font size="4">IMAGE</font></th>
+							<th bgcolor="#FD6D4F" colspan="1" style="width:200px;word-wrap:break-word"><font size="4">NAME</font></th>
+							<th bgcolor="#FD6D4F" colspan="1" style="width:200px;word-wrap:break-word"><font size="4">PROFILE</font></th>
+							<th bgcolor="#FD6D4F" colspan="1" style="width:200px;word-wrap:break-word"><font size="4">UNIVERSITY</font></th>
+							<th bgcolor="#FD6D4F" colspan="1" style="width:200px;word-wrap:break-word"><font size="4">INDUSTRY</font></th>
+							<th bgcolor="#FD6D4F" colspan="1" style="width:200px;word-wrap:break-word"><font size="4">LOCATION</font></th>
+							<th bgcolor="#FD6D4F" colspan="1" style="width:200px;word-wrap:break-word"><font size="4">WORK INFO</font></th>
+							<th bgcolor="#FD6D4F" colspan="1" style="width:200px;word-wrap:break-word"><font size="4">CONNECTIONS</font></th>
+							<th bgcolor="#FD6D4F" colspan="1" style="width:200px;word-wrap:break-word"><font size="4">MULTIPLE</font></th>
+							<th bgcolor="#FD6D4F" colspan="1" style="width:200px;word-wrap:break-word"><font size="4">SELECT</font></th>
 						</tr>
 					</thead>
 					<br>
-					<tbody style="width:1600px">
+					<tbody style="width:2200px">
 						{% for entry in entries %}
-							<tr style="width:1600px">
-								<td colspan="10" style="width:1600px;word-wrap:break-word">
-									<table border="1" style="width:1600px">
+							<tr style="width:2000px">
+								<td colspan="10" style="width:2000px;word-wrap:break-word">
+									<table border="1" style="width:2000px;table-layout:fixed;">
 										<br/>
-										<tr style="width:1500px;border-style:hidden;">
-											<td colspan="10" style="width:1500px;word-wrap:break-word">
+										<tr style="width:2000px;border-style:solid;">
+											<td colspan="10" style="width:2000px;word-wrap:break-word">
 												<font size="4"><b>&nbsp&nbsp&nbsp<b>Searched for '{{entry.person}}'</b></font>
 											</td>
 										</tr>
 										{% if entry.profiles|length == 0 %}
-											<tr style="width:1500px;border-style:solid;">
-												<td colspan="10" style="width:1500px;word-wrap:break-word" >
-													No (0) Facebook profiles found.
+											<tr style="width:2000px;border-style:solid;">
+												<td colspan="10" style="width:2000px;word-wrap:break-word">
+													<font size="4"><b>&nbsp&nbsp&nbsp<b>No (0) Facebook profiles found.</b></font>
 												</td>
 											</tr>
 										{% else %}
 											{% for profile in entry.profiles %}
 												{% if profile.actual != "no"%}
 													{% if profile.score > 0 %}
-														<tr style="width:1500px;border-style:solid;"><td colspan="10" style="width:1500px;word-wrap:break-word"></td></tr>
-														<tr style="width:1500px;border-style:solid;">
-															<td colspan="1" style="width:150px;word-wrap:break-word">
-																<img src="{{profile.pic}}"><br/>
-																<b>Social Graph:&nbsp;&nbsp;{{profile.score}}</b><br/>
+														<tr style="width:2000px;border-style:solid;">
+															<td colspan="10" style="width:2000px;word-wrap:break-word"></td>
+													  </tr>
+														<tr style="width:2000px;border-style:solid;">
+															<td colspan="1" style="width:200px;word-wrap:break-word">
+																<b>Social Graph:&nbsp;&nbsp;{{profile.score}}</b>
+																<img src="{{profile.pic}}">
 															</td>
-															<td colspan="1" style="width:150px;word-wrap:break-word" >
+															<td colspan="1" style="width:200px;word-wrap:break-word" >
 																{{profile.name}}
 															</td>
-															<td colspan="1" style="width:150px;word-wrap:break-word" >
+															<td colspan="1" style="width:200px;word-wrap:break-word" >
 																<a href="{{profile.profile}}">Facebook Profile</a>
 															</td>
-															<td colspan="1" style="width:150px;word-wrap:break-word" >
+															<td colspan="1" style="width:200px;word-wrap:break-word" >
 																{{profile.education}}
 															</td>
-															<td colspan="1" style="width:150px;word-wrap:break-word" >
+															<td colspan="1" style="width:200px;word-wrap:break-word" >
 																{{profile.work}}
 															</td>
-															<td colspan="1" style="width:150px;word-wrap:break-word" >
+															<td colspan="1" style="width:200px;word-wrap:break-word" >
 																{{profile.location}}
 															</td>
-															<td colspan="1" style="width:150px;word-wrap:break-word" >
+															<td colspan="1" style="width:200px;word-wrap:break-word" >
 																{{profile.work}}
 															</td>
-															<td colspan="1" style="width:150px;word-wrap:break-word" >
+															<td colspan="1" style="width:200px;word-wrap:break-word" >
 																Friend list hidden.
 															</td>
-															<td colspan="1" style="width:150px;word-wrap:break-word" >
+															<td colspan="1" style="width:200px;word-wrap:break-word" >
 																NA
 															</td>
-															<td colspan="1" style="width:150px;word-wrap:break-word" >
-																NA
-															</td>
-															<td colspan="1" style="width:150px;word-wrap:break-word" >
+															<td colspan="1" style="width:200px;word-wrap:break-word" >
 																NA
 															</td>
 														</tr>
@@ -115,8 +114,8 @@
 								</td>
 							</tr>
 				    {% endfor %}
-					<tr style="width:1600px">
-						<td colspan="5" style="width:800px">
+					<tr style="width:2000px">
+						<td colspan="5" style="width:1000px">
 							<br/>
 								<b><div align="center"><input name="facebook_form_submit" type="submit" value="Submit changes!"></div></b>
 							<br/>
