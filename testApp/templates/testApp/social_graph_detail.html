@@ -14,7 +14,7 @@
 {%	load staticfiles %}
 </head>
 <body>
-	<form action="/testApp/markProfile/" method="post">
+	<form action="/testApp/inputgroundtruth/" method="post">
 		{% csrf_token %}
 		<br>
 		{% if metadata%}
@@ -103,7 +103,7 @@
 																NA
 															</td>
 															<td colspan="1" style="width:200px;word-wrap:break-word" >
-																NA
+																<input type="checkbox" id="checkbox_id_{{profile.profile}}" name="groundtruth"/>
 															</td>
 														</tr>
 													{% endif %}
