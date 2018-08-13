@@ -1,2 +1,3 @@
 echo "Restoring from local dump folder..."
-mongorestore ../dump
+mongorestore -d facebook_db ../dump
+echo "Restore complete!"
