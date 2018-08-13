@@ -68,8 +68,6 @@
 											</tr>
 										{% else %}
 											{% for profile in entry.profiles %}
-												{% if profile.actual != "no"%}
-													{% if profile.score > 0 %}
 														<tr style="width:2000px;border-style:solid;">
 															<td colspan="10" style="width:2000px;word-wrap:break-word"></td>
 													  </tr>
@@ -103,11 +101,13 @@
 																NA
 															</td>
 															<td colspan="1" style="width:200px;word-wrap:break-word" >
-																<input type="checkbox" id="checkbox_id_{{profile.profile}}" name="groundtruth"/>
+																{% if profile.actual != "yes"%}
+																	<input type="checkbox" value="{{entry.person}}__splitby___{{profile.profile}}" name="groundtruth"/>
+																{% else %}
+																  <input type="checkbox" value="{{entry.person}}__splitby___{{profile.profile}}" name="groundtruth" checked/>
+																{% endif %}
 															</td>
 														</tr>
-													{% endif %}
-											  {% endif %}
 											{% endfor %}
 										{% endif %}
 									</table>
@@ -115,7 +115,7 @@
 							</tr>
 				    {% endfor %}
 					<tr style="width:2000px">
-						<td colspan="5" style="width:1000px">
+						<td colspan="10" style="width:2000px">
 							<br/>
 								<b><div align="center"><input name="facebook_form_submit" type="submit" value="Submit changes!"></div></b>
 							<br/>

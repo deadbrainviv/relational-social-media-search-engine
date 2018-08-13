@@ -16,6 +16,7 @@ from People import People
 from SignAndSearch import Authenticate
 from models import Employee, CSPerson, DBRecord
 from .forms import UploadFileForm
+import unicodedata
 
 logging.basicConfig(filename='log_file.txt',level=logging.INFO)
 
@@ -169,7 +170,39 @@ def inputgroundtruth(request):
             counter_some = counter_some + 1
         people.append(person)
 
-    print str(request.POST['groundtruth'])
+    dict = {}
+    if request.POST.has_key("groundtruth"):
+        for item in request.POST.getlist('groundtruth'):
+            if dict.has_key(item.split("__splitby___")[0]):
+                dict.get(item.split("__splitby___")[0]).append(item.split("__splitby___")[1])
+            else:
+                list = []
+                list.append(item.split("__splitby___")[1])
+                dict[item.split("__splitby___")[0]] = list
+    else:
+        print "No groud truth marked!"
+
+    # for k, v in dict.iteritems():
+    #     print k, " : ", v
+
+    db_client = FBDb.connect()
+    db = db_client.facebook_db
+    cursor = db.buet3.find()
+    for person in cursor:
+        person["profiles"] = sorted(person["profiles"], key=itemgetter("score"), reverse=True)
+        if person["person"] in dict.keys():
+            list = dict.get(person["person"])
+            for profile in person["profiles"]:
+                if isProfileInList(profile["profile"], list):
+                    profile["actual"] = "yes"
+                    print profile["profile"], "is going to be now ", profile["actual"]
+        db_client.facebook_db.buet3.update(
+            {"_id": person["_id"]},
+            {
+                "person": person["person"],
+                "profiles": person["profiles"],
+            }
+        )
 
     metadata = {}
     metadata["empty"] = counter_empty
@@ -183,6 +216,13 @@ def inputgroundtruth(request):
 
     print "views.py: inputgroundtruth End"
     return render(request, 'testApp/social_graph.html', context)
+
+def isProfileInList(profile, list):
+    for item in list:
+        unicodedata.normalize('NFKD', item).encode('ascii', 'ignore')
+        if item == profile:
+            return True
+    return False
 
 def inputgroundtruth1(request):
     print "views.py: inputgroundtruth Start"
